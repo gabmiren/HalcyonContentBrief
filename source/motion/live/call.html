@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../common.css">
+<style>
+html,body{background:transparent!important}
+#st{background:transparent!important}
+#ui{position:absolute;left:0;top:0;width:1080px;height:668px;background:#111214}
+#hdr{position:absolute;left:30px;right:30px;top:26px;height:84px;display:flex;align-items:center}
+.chn{font:700 34px/1 Poppins;color:#F2F3F5;display:flex;align-items:center;gap:16px}
+.srv{margin-left:18px;font:500 24px/1 Poppins;color:#949BA4}
+.live{margin-left:auto;display:flex;align-items:center;gap:14px}
+.lp{height:44px;padding:0 18px;border-radius:10px;background:#DA373C;color:#fff;font:700 22px/44px Poppins;letter-spacing:.1em}
+.tm{font:600 26px/1 Poppins;color:#B5BAC1;font-variant-numeric:tabular-nums}
+.tile{position:absolute;top:126px;width:495px;height:410px;border-radius:26px;background:#2B2D31;overflow:hidden}
+.tile .ring{position:absolute;inset:0;border-radius:26px;border:5px solid #23A55A;opacity:0;box-shadow:inset 0 0 30px rgba(35,165,90,.35)}
+.av{position:absolute;left:50%;top:44%;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:85px;display:flex;align-items:center;justify-content:center;font:800 78px/1 Poppins}
+.av .pulse{position:absolute;inset:-14px;border-radius:50%;border:5px solid #23A55A;opacity:0}
+.nm{position:absolute;left:20px;bottom:20px;height:50px;padding:0 18px;border-radius:12px;background:rgba(0,0,0,.55);display:flex;align-items:center;gap:10px;font:600 26px/1 Poppins;color:#F2F3F5}
+.tag{position:absolute;left:20px;top:20px;height:42px;padding:0 16px;border-radius:21px;border:2px dashed rgba(0,251,244,.6);display:flex;align-items:center;font:700 18px/1 Poppins;letter-spacing:.14em;color:#00FBF4}
+#share{position:absolute;left:30px;top:702px;height:52px;padding:0 20px;border-radius:12px;background:rgba(17,18,20,.85);display:flex;align-items:center;gap:12px;font:600 24px/1 Poppins;color:#F2F3F5}
+#share i{width:12px;height:12px;border-radius:6px;background:#DA373C;display:inline-block}
+#endc{position:absolute;inset:0;background:#030607;opacity:0}
+</style></head><body>
+<div id="st">
+ <div id="ui">
+  <div id="hdr"><div class="chn"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z" fill="#B5BAC1"/><path d="M16.5 12a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" fill="#B5BAC1"/></svg>live-coaching</div><span class="srv">Halcyon Discord</span>
+   <div class="live"><span class="lp">LIVE</span><span class="tm" id="tm">00:00</span></div></div>
+  <div class="tile" style="left:30px" id="t0"><div class="ring" id="r0"></div>
+   <div class="tag">FOUNDER · PLACEHOLDER</div>
+   <div class="av" style="background:linear-gradient(180deg,#5FFFF9,#00B3AE);color:#04100F"><div class="pulse" id="p0"></div>S</div>
+   <div class="nm">Steve <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z" fill="#B5BAC1"/></svg></div></div>
+  <div class="tile" style="left:555px" id="t1"><div class="ring" id="r1"></div>
+   <div class="tag">STUDENT · PLACEHOLDER</div>
+   <div class="av" style="background:#5865F2;color:#FFFFFF"><div class="pulse" id="p1"></div>T</div>
+   <div class="nm">Trader <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z" fill="#B5BAC1"/></svg></div></div>
+ </div>
+ <div id="share"><i></i>Steve is sharing his screen</div>
+ <div id="endc">
+  <div class="wm" style="top:600px;color:#AFAFAF">HALCYON DISCORD</div>
+  <div class="big" style="top:690px">Learn live<br><span style="color:#00FBF4">with traders.</span></div>
+  <div class="urlw" style="top:990px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1110px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="../base.js"></script><script src="../fx.js"></script><script src="spk.js"></script>
+<script>
+const T_END=43.47,DUR=46.5;$('ds').textContent=DISC;
+function act(t,w){let a=0;for(const [s,e,k] of SPK)if(k===w){a=Math.max(a,C(P(t,s-.05,.12))*(1-C(P(t,e-.05,.15))));}return a;}
+window.seek=function(t){
+ const s=Math.floor(t+754);$('tm').textContent=`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+ ['f','s'].forEach((w,i)=>{const a=act(t,w);$('r'+i).style.opacity=a;const p=$('p'+i);p.style.opacity=a*(0.5+0.5*Math.abs(Math.sin(t*7+i)));p.style.transform=`scale(${1+0.06*a*Math.abs(Math.sin(t*9+i))})`;});
+ const e=E(P(t,T_END,.45));$('endc').style.opacity=e;$('share').style.opacity=1-e;
+ growPill($('dc'),$('dct'),t,T_END+.5,0);$('lib').style.opacity=E(P(t,T_END+.9,.4));
+};
+seek(0);
+</script></body></html>
