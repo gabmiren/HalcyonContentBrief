@@ -36,8 +36,10 @@ memes=[vid("meme1-touch-grass.mp4","Touch grass","Cyan · first post · 12 s","D
   ["Discipline punchline works","Swap the cigarette for a coffee cup and the explosion for a calmer backdrop","Match Cyan v5 hair"],ai=True)]
 ads=[vid("ad-forgot-to-close.mp4","Forgot to close the trade","POV with sound design · Halloween · 23 s","Draft","retire",
   ["Says \"relax\" because positions auto-close, but the help center says an account not flat by 4:45 PM fails","Halloween is over; old character, code HWN, \"Halcyon Trading\", old disclaimer","Reuse the panic footage for an honest rules explainer"],ai=True)]
-edu=[vid("edu1-evaluation-checks.mp4","What an evaluation checks","Motion graphics · 20 s","Draft · being rebuilt","refresh",
-  ["No audio track: add voice or a Commercial Music Library track","Soften \"Most people fail\", swap to Halcyon's disclaimer, Discord end card","Add a \"save this\" prompt"]),
+edu=[vid("edu1-checklist.mp4","What an evaluation checks · Checklist","Motion graphics · glow panels · 21 s","Draft","new",
+  ["A checklist of the four rules the $50K Halcyon Dynamic evaluation checks, ticking off one per beat","Each rule gets its own animated panel: the target bar fills to $3,000, a chart shows a trailing vs end-of-day drawdown floor, then the contract limit and a clock running to 4:45 PM ET","Ends on \"Save this before your eval\" and the Discord end card"]),
+ vid("edu1-numbers.mp4","What an evaluation checks · Four numbers","Motion graphics · dealt cards · 20 s","Draft","new",
+  ["One big number per card: $3,000, $2,000, 5 / 25 and 4:45 PM","Each card deals in on the beat and files into a row at the top, then all four come together as a recap","Faster and punchier; the checklist version explains more"]),
  vid("edu2-arena-two-sessions.mp4","Why Arena has two sessions","Founder short · from Steve's Arena video · 35 s","Draft · needs compliance OK","hold",
   ["Session times match the help center","Trim to about 20 s; drop the cyan highlight on \"$10,000, $15,000, $20,000 in profit\"","Waits on counsel's Arena sign-off"])]
 promo=[vid("promo-dynamic.mp4","Halcyon Dynamic (current)","Your best seller in 20 s · unchanged","Draft","ready",

@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../common.css">
+<style>
+#hd{position:absolute;left:0;width:960px;top:0;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;font:800 84px/1.06 Poppins;letter-spacing:-.03em}
+#hd>div{width:860px}
+.row{position:absolute;left:48px;right:48px;height:104px;display:flex;align-items:center;border-bottom:1.5px solid rgba(0,251,244,.1)}
+.row .ck{width:50px;height:50px;border-radius:25px;border:2px solid rgba(0,251,244,.35);margin-right:26px;display:flex;align-items:center;justify-content:center;flex:none}
+.row .ck svg{width:28px;height:28px;opacity:0}
+.row .k{font:600 36px/1 Poppins;color:#7E8787;flex:1}
+.row .v{font:700 44px/1 Poppins;color:#3B4445}
+.row.on .k{color:#FFFFFF}.row.on .v{color:#00FBF4}
+.row.on .ck{background:#00FBF4;border-color:#00FBF4;box-shadow:0 0 20px rgba(0,251,244,.6)}.row.on .ck svg{opacity:1}
+.row.cur{background:linear-gradient(90deg,rgba(0,251,244,.10),rgba(0,251,244,0));border-radius:18px}
+.det{position:absolute;inset:0}
+.big2{font:800 120px/1 Poppins;letter-spacing:-.04em;color:#00FBF4;text-shadow:0 0 40px rgba(0,251,244,.35)}
+.sub{font:500 32px/1.35 Poppins;color:#AFAFAF}
+.cbig{width:340px;height:200px;border-radius:30px;border:2px solid rgba(0,251,244,.4);background:rgba(0,251,244,.07);display:flex;flex-direction:column;align-items:center;justify-content:center}
+</style></head><body>
+<div id="st">
+ <canvas id="bg" width="1080" height="1920"></canvas>
+ <div class="flare" id="fl" style="left:540px;top:900px"></div>
+ <div class="lab abs" id="eye" style="left:0;width:1080px;text-align:center;top:250px;padding-left:.16em">Halcyon Dynamic · $50K evaluation</div>
+ <div class="pan" id="ph" style="top:300px;height:200px"><div class="halo" id="halo" style="opacity:.6"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw0"></div></div><div id="hd"><div>What your evaluation checks</div></div></div>
+ <div class="pan" id="pk" style="top:540px;height:470px"><div class="pbg"></div>
+  <div class="row" id="r0" style="top:26px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="k">Profit target</span><span class="v">$3,000</span></div>
+  <div class="row" id="r1" style="top:130px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="k">Max drawdown</span><span class="v">$2,000</span></div>
+  <div class="row" id="r2" style="top:234px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="k">Contract limit</span><span class="v">5 / 25</span></div>
+  <div class="row" id="r3" style="top:338px;border:0"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="k">Session close</span><span class="v">4:45 PM</span></div>
+ </div>
+ <div class="pan" id="pd" style="top:1060px;height:560px"><div class="halo" style="opacity:.45"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw1"></div></div>
+  <!-- 1: target -->
+  <div class="det" id="d0">
+   <div class="lab abs" style="left:56px;top:54px">Profit target</div>
+   <div class="abs big2" style="left:56px;top:110px" id="tc">$0</div>
+   <div class="abs" style="left:56px;width:848px;top:290px;height:16px;border-radius:8px;background:rgba(0,251,244,.12)"><div id="tb" style="height:16px;width:848px;border-radius:8px;background:linear-gradient(90deg,#0A6E6B,#00FBF4);box-shadow:0 0 18px rgba(0,251,244,.7);transform-origin:0 50%"></div></div>
+   <div class="abs sub" style="left:56px;top:330px;font-size:26px">$0</div><div class="abs sub" style="right:56px;top:330px;font-size:26px">$3,000</div>
+   <div class="gw" style="left:0;top:410px"><div class="gp" id="t1"><span id="t1t" style="padding:0 40px;font-size:34px">Minimum 1 trading day</span></div></div>
+  </div>
+  <!-- 2: drawdown -->
+  <div class="det" id="d1">
+   <div class="lab abs" style="left:56px;top:54px">Max drawdown · $2,000</div>
+   <div class="segc abs" id="dt" style="left:480px;top:30px;width:430px;box-sizing:border-box"><div class="segi"></div><div class="sg" style="font-size:26px;height:64px">Trailing</div><div class="sg" style="font-size:26px;height:64px">End of day</div></div>
+   <canvas id="ddc" width="900" height="330" style="position:absolute;left:30px;top:120px"></canvas>
+   <div class="abs sub" id="ddn" style="left:56px;top:470px;font-size:28px;width:848px">The floor follows your highest balance.</div>
+  </div>
+  <!-- 3: contracts -->
+  <div class="det" id="d2">
+   <div class="lab abs" style="left:56px;top:54px">Contract limit</div>
+   <div class="abs" style="left:56px;top:140px;display:flex;gap:40px;align-items:center">
+    <div class="cbig" id="c0"><div class="big2" style="font-size:110px" id="cn0">5</div><div class="sub" style="font-size:30px">mini</div></div>
+    <div style="font:700 40px/1 Poppins;color:#7E8787">or</div>
+    <div class="cbig" id="c1"><div class="big2" style="font-size:110px" id="cn1">25</div><div class="sub" style="font-size:30px">micro</div></div>
+   </div>
+   <div class="abs sub" id="c2" style="left:56px;top:390px;font-size:30px;width:848px">At any one time.</div>
+  </div>
+  <!-- 4: close -->
+  <div class="det" id="d3">
+   <div class="lab abs" style="left:56px;top:54px">Session close</div>
+   <svg class="abs" style="left:56px;top:110px" width="300" height="300" viewBox="0 0 300 300">
+    <circle cx="150" cy="150" r="136" fill="rgba(0,251,244,.06)" stroke="rgba(0,251,244,.5)" stroke-width="4"/>
+    <g id="ticks"></g>
+    <line id="hh" x1="150" y1="150" x2="150" y2="80" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+    <line id="mh" x1="150" y1="150" x2="150" y2="40" stroke="#00FBF4" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="150" cy="150" r="10" fill="#00FBF4"/>
+   </svg>
+   <div class="abs" style="left:400px;top:150px"><div style="font:800 96px/1 Poppins;letter-spacing:-.03em" id="clk">4:00</div><div class="sub" style="margin-top:14px">PM ET</div></div>
+   <div class="gw" style="left:200px;width:760px;top:330px"><div class="gp" id="fp"><span id="fpt" style="padding:0 40px;font-size:34px">Be flat by 4:45</span></div></div>
+   <div class="abs sub" id="f2" style="left:400px;top:450px;font-size:28px">No overnight holds.</div>
+  </div>
+ </div>
+ <div id="end">
+  <div class="wm" style="top:540px">HALCYON DYNAMIC</div>
+  <div class="big" style="top:640px">Save this<br><span style="color:#00FBF4">before your eval.</span></div>
+  <div class="urlw" style="top:930px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1050px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="../base.js"></script><script src="../bgs.js"></script><script src="../fx.js"></script>
+<script>
+// Music: Sub Clair "Technology" from 29.852s, 124.2 BPM. Drop at 1.932s. Each rule gets 8 beats.
+const DROP=1.9319,BPv=0.48298,Bn=n=>DROP+BPv*n,DOWNS=[...Array(12)].map((_,k)=>Bn(4*k));
+const R=[Bn(0),Bn(8),Bn(16),Bn(24)],T_END=Bn(32),T_FIN=Bn(40);
+$('ds').textContent=DISC;words($('hd').firstChild);
+const ctx=$('bg').getContext('2d'),dc=$('ddc').getContext('2d');
+const tk=$('ticks');for(let i=0;i<12;i++){const a=i/12*Math.PI*2,l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',150+118*Math.sin(a));l.setAttribute('y1',150-118*Math.cos(a));l.setAttribute('x2',150+128*Math.sin(a));l.setAttribute('y2',150-128*Math.cos(a));l.setAttribute('stroke','rgba(0,251,244,.6)');l.setAttribute('stroke-width',4);tk.appendChild(l);}
+// balance path for the drawdown chart (3 sessions)
+const BAL=[];{let b=50000,s=7;const r=()=>{s=(s*16807)%2147483647;return s/2147483647};for(let i=0;i<=90;i++){b+=(r()-0.42)*240+(i>28&&i<40?-150:0)+(i>62&&i<70?-130:0);BAL.push(b);}}
+function drawDD(t,mode,k){dc.clearRect(0,0,900,330);const n=Math.max(2,Math.floor(90*k)),lo=47600,hi=51800,X=i=>10+i*880/90,Y=v=>320-(v-lo)/(hi-lo)*310;
+ dc.strokeStyle='rgba(0,251,244,.08)';dc.lineWidth=2;[30,60].forEach(d=>{dc.beginPath();dc.moveTo(X(d),0);dc.lineTo(X(d),330);dc.stroke();});
+ // floor: trailing follows the highest balance; end of day only steps at each close
+ let pk=50000,cl=50000;dc.save();dc.strokeStyle='#FF6B7A';dc.lineWidth=4;dc.setLineDash([12,8]);dc.beginPath();
+ for(let i=0;i<=n;i++){pk=Math.max(pk,BAL[i]);if(i>0&&i%30===0)cl=Math.max(cl,BAL[i]);const f=L(pk-2000,cl-2000,mode);i?dc.lineTo(X(i),Y(f)):dc.moveTo(X(i),Y(f));}
+ dc.stroke();dc.restore();
+ dc.save();dc.shadowColor='rgba(0,251,244,.9)';dc.shadowBlur=16;dc.strokeStyle='#5FFFF9';dc.lineWidth=5;dc.lineJoin='round';dc.beginPath();for(let i=0;i<=n;i++){i?dc.lineTo(X(i),Y(BAL[i])):dc.moveTo(X(i),Y(BAL[i]));}dc.stroke();dc.restore();
+ dc.fillStyle='#FF6B7A';dc.font='600 22px Poppins';dc.fillText('Drawdown floor',X(2),Y(47900));}
+function det(id,t,a,b){const el=$(id),i=E(P(t,a+.05,.35)),o=IN(P(t,b-.15,.2));el.style.visibility=t>=a&&t<b+.05?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*40-o*30}px)`;el.style.filter=`blur(${(1-i)*6+o*6}px)`;}
+window.seek=function(t){
+ drift(t);bgAurora(ctx,t,bgPulseAt(t,DOWNS));
+ const out=IN(P(t,T_END-.25,.3));
+ // headline: big in the middle for the intro, then docks at the top on the drop
+ const dk=IO(P(t,DROP-.2,.5)),ph=$('ph');
+ ph.style.top=L(780,300,dk)+'px';ph.style.height=L(330,180,dk)+'px';ph.style.opacity=E(P(t,0,.5))*(1-out);
+ $('hd').style.font=`800 ${L(96,62,dk)}px/1.06 Poppins`;
+ [...$('hd').firstChild.children].forEach((w,i)=>{w.style.color=t>=0.35+i*0.3?(i>=2?'#00FBF4':'#FFFFFF'):'#3B4445';});
+ $('eye').style.top=L(730,250,dk)+'px';$('eye').style.opacity=E(P(t,.2,.5))*(1-out);
+ sweepAt($('sw0'),t,DROP,.7);
+ flareAt($('fl'),t,[DROP,T_END].filter(a=>t>=a-.1).pop()??-9,.6);
+ // checklist and detail panels arrive on the drop
+ const ki=E(P(t,DROP,.45)),pk=$('pk');pk.style.opacity=ki*(1-out);pk.style.transform=`translateY(${(1-ki)*80}px)`;
+ const di=E(P(t,DROP+.15,.45)),pd=$('pd');pd.style.opacity=di*(1-out);pd.style.transform=`translateY(${(1-di)*100}px) scale(${1+0.012*bgPulseAt(t,DOWNS)})`;
+ const cur=R.filter(a=>t>=a).length-1;
+ for(let i=0;i<4;i++){const r=$('r'+i);r.classList.toggle('on',t>=R[i]+BPv);r.classList.toggle('cur',i===cur&&t<T_END);r.querySelector('.ck').style.transform=`scale(${t>=R[i]+BPv?B(P(t,R[i]+BPv,.3)):1})`;r.style.opacity=C(P(t,DROP+.1+i*BPv/2,.25));}
+ sweepAt($('sw1'),t,R.filter(a=>t>=a-.01).pop()??-9,.7);
+ // 1 target: counter and bar fill, then the min day pill
+ det('d0',t,R[0],R[1]);const tf=E(P(t,R[0]+BPv,BPv*3));$('tc').textContent='$'+(Math.round(3000*tf/10)*10).toLocaleString('en-US');$('tb').style.transform=`scaleX(${tf})`;growPill($('t1'),$('t1t'),t,R[0]+BPv*4,0);
+ // 2 drawdown: chart draws with the trailing floor, then flips to end of day
+ det('d1',t,R[1],R[2]);const md=E(P(t,R[1]+BPv*4,.5));segAt($('dt'),t,[[0,0],[R[1]+BPv*4,1]]);drawDD(t,md,E(P(t,R[1]+.1,BPv*3.5)));
+ $('ddn').textContent=t<R[1]+BPv*4?'Trailing: the floor follows your highest balance.':'End of day: the floor only moves at the close.';
+ // 3 contracts
+ det('d2',t,R[2],R[3]);['c0','c1'].forEach((id,i)=>{const a=R[2]+BPv*(1+i);$(id).style.transform=`scale(${B(P(t,a,.35))})`;$(id).style.opacity=C(P(t,a,.08));});
+ $('cn0').textContent=Math.round(5*E(P(t,R[2]+BPv,.6)));$('cn1').textContent=Math.round(25*E(P(t,R[2]+BPv*2,.6)));fadeIn($('c2'),t,R[2]+BPv*4,.35,20,0);
+ // 4 close: clock runs to 4:45, then the flat pill
+ det('d3',t,R[3],T_END);const cm=Math.round(45*IO(P(t,R[3]+.1,BPv*3)));$('clk').textContent=`4:${String(cm).padStart(2,'0')}`;
+ const ma=cm/60*360,ha=(4+cm/60)/12*360;$('mh').setAttribute('transform',`rotate(${ma} 150 150)`);$('hh').setAttribute('transform',`rotate(${ha} 150 150)`);
+ growPill($('fp'),$('fpt'),t,R[3]+BPv*4,0);fadeIn($('f2'),t,R[3]+BPv*5,.35,20,0);
+ // end card
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
+ growPill($('dc'),$('dct'),t,Bn(33),0);$('lib').style.opacity=E(P(t,Bn(34),.4));
+};
+seek(0);
+</script></body></html>

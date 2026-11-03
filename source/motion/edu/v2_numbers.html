@@ -1,0 +1,81 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../common.css">
+<style>
+#hk{position:absolute;left:90px;width:900px;top:0;text-align:center;font:800 104px/1.04 Poppins;letter-spacing:-.035em}
+.card{position:absolute;left:130px;width:820px;top:600px;height:720px;border-radius:44px;transform-origin:50% 50%}
+.card .pbg{border-radius:44px}
+.card .in{position:absolute;inset:0;padding:70px 64px;display:flex;flex-direction:column}
+.idx{display:inline-flex;align-self:flex-start;height:52px;padding:0 22px;border-radius:26px;border:1.5px solid rgba(0,251,244,.45);align-items:center;font:700 24px/1 Poppins;letter-spacing:.14em;color:#00FBF4}
+.lbl{margin-top:60px;font:600 46px/1 Poppins;color:#AFAFAF}
+.num{margin-top:26px;font:800 190px/0.95 Poppins;letter-spacing:-.05em;color:#00FBF4;text-shadow:0 0 50px rgba(0,251,244,.35);white-space:nowrap}
+.sub{margin-top:40px;font:500 38px/1.35 Poppins;color:#FFFFFF}
+.thumb{position:absolute;width:200px;height:120px;border-radius:22px;border:1.5px solid rgba(0,251,244,.35);background:rgba(4,14,15,.8);display:flex;flex-direction:column;justify-content:center;padding-left:22px;box-sizing:border-box}
+.thumb .a{font:600 18px/1 Poppins;letter-spacing:.08em;color:#7E8787;text-transform:uppercase}.thumb .b{margin-top:10px;font:800 40px/1 Poppins;color:#00FBF4;white-space:nowrap}
+</style></head><body>
+<div id="st">
+ <canvas id="bg" width="1080" height="1920"></canvas>
+ <div class="flare" id="fl" style="left:540px;top:960px"></div>
+ <div class="lab abs" id="eye" style="left:0;width:1080px;text-align:center;top:620px;padding-left:.16em">Halcyon Dynamic · $50K evaluation</div>
+ <div id="hk" style="top:700px"><span class="cyw">4 numbers</span> your evaluation checks</div>
+ <div class="thumb" id="th0" style="left:60px;top:230px"><div class="a">Target</div><div class="b">$3,000</div></div>
+ <div class="thumb" id="th1" style="left:300px;top:230px"><div class="a">Drawdown</div><div class="b">$2,000</div></div>
+ <div class="thumb" id="th2" style="left:540px;top:230px"><div class="a">Contracts</div><div class="b">5 / 25</div></div>
+ <div class="thumb" id="th3" style="left:780px;top:230px"><div class="a">Be flat by</div><div class="b">4:45 PM</div></div>
+ <div class="card" id="k0"><div class="halo" style="opacity:.55"></div><div class="pbg"></div><div class="swc"><div class="sw" id="s0"></div></div><div class="in">
+  <span class="idx">1 / 4</span><div class="lbl">Profit target</div><div class="num" id="n0">$0</div><div class="sub">Minimum 1 trading day<br>to pass.</div></div></div>
+ <div class="card" id="k1"><div class="halo" style="opacity:.55"></div><div class="pbg"></div><div class="swc"><div class="sw" id="s1"></div></div><div class="in">
+  <span class="idx">2 / 4</span><div class="lbl">Max drawdown</div><div class="num" id="n1">$0</div>
+  <div class="segc" id="dt" style="margin-top:46px"><div class="segi"></div><div class="sg">Trailing</div><div class="sg">End of day</div></div>
+  <div class="sub" style="margin-top:30px;font-size:34px;color:#AFAFAF">You pick the type at checkout.</div></div></div>
+ <div class="card" id="k2"><div class="halo" style="opacity:.55"></div><div class="pbg"></div><div class="swc"><div class="sw" id="s2"></div></div><div class="in">
+  <span class="idx">3 / 4</span><div class="lbl">Contract limit</div><div class="num" style="font-size:170px"><span id="n2a">0</span><span style="color:#7E8787;font-size:110px"> / </span><span id="n2b">0</span></div>
+  <div class="sub">5 mini or 25 micro,<br>at any one time.</div></div></div>
+ <div class="card" id="k3"><div class="halo" style="opacity:.55"></div><div class="pbg"></div><div class="swc"><div class="sw" id="s3"></div></div><div class="in">
+  <span class="idx">4 / 4</span><div class="lbl">Be flat by</div><div class="num" id="n3" style="font-size:180px">4:00</div>
+  <div class="sub">PM ET, every session.<br><span style="color:#AFAFAF">No overnight holds.</span></div></div></div>
+ <div id="end">
+  <div class="wm" style="top:820px">HALCYON DYNAMIC</div>
+  <div class="big" style="top:910px">Save this<br><span style="color:#00FBF4">before your eval.</span></div>
+  <div class="urlw" style="top:1200px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1320px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="../base.js"></script><script src="../bgs.js"></script><script src="../fx.js"></script>
+<script>
+// Music: "The Mountain" from 38.464s, 150 BPM. Hit at 1.60s. One card per 8 beats.
+const DROP=1.5998,BPv=0.39999,Bn=n=>DROP+BPv*n,DOWNS=[...Array(14)].map((_,k)=>Bn(4*k));
+const K=[Bn(0),Bn(8),Bn(16),Bn(24)],T_REC=Bn(32),T_END=Bn(38),T_FIN=Bn(46);
+$('ds').textContent=DISC;words($('hk'));
+const ctx=$('bg').getContext('2d');
+const TH=[[60,230],[300,230],[540,230],[780,230]];
+window.seek=function(t){
+ drift(t);bgCandles(ctx,t,bgPulseAt(t,DOWNS));
+ const out=IN(P(t,T_END-.25,.3));
+ // hook
+ const hi=E(P(t,.1,.4)),ho=IN(P(t,DROP-.15,.25));const hk=$('hk');hk.style.opacity=hi*(1-ho);hk.style.transform=`translateY(${(1-hi)*40-ho*60}px) scale(${1-0.1*ho})`;hk.style.visibility=t<DROP+.15?'visible':'hidden';
+ [...hk.children].forEach((w,i)=>{w.style.color=t>=0.3+i*0.2?(i<1?'#00FBF4':'#FFFFFF'):'#3B4445';});
+ $('eye').style.opacity=hi*(1-ho);
+ flareAt($('fl'),t,[DROP,T_REC,T_END].filter(a=>t>=a-.1).pop()??-9,.6);
+ // cards: deal in with a tilt on the downbeat, then fly up into their slot
+ for(let i=0;i<4;i++){const a=K[i],b=i<3?K[i+1]:T_REC,el=$('k'+i);
+  const ii=E(P(t,a-.04,.42)),oo=IO(P(t,b-.28,.34));
+  el.style.visibility=t>=a-.06&&t<b+.25?'visible':'hidden';
+  const tx=TH[i][0]+100-540,ty=TH[i][1]+60-960;
+  el.style.opacity=ii*(1-C((oo-.75)/.25));
+  el.style.transform=`perspective(1600px) translate(${tx*oo}px,${(1-ii)*500+ty*oo}px) rotateX(${(1-ii)*24}deg) rotateZ(${(1-ii)*(i%2?4:-4)}deg) scale(${(0.9+0.1*ii)*(1-0.76*oo)})`;
+  sweepAt($('s'+i),t,a+.3,.7);
+  const th=$('th'+i),tl=t>=b+.15;th.style.opacity=tl?E(P(t,b+.15,.2)):0;th.style.transform=`scale(${tl?B(P(t,b+.15,.3)):0.6})`;}
+ $('n0').textContent='$'+(Math.round(3000*E(P(t,K[0]+.1,BPv*3))/10)*10).toLocaleString('en-US');
+ $('n1').textContent='$'+(Math.round(2000*E(P(t,K[1]+.1,BPv*3))/10)*10).toLocaleString('en-US');
+ segAt($('dt'),t,[[0,0],[K[1]+BPv*4,1],[K[1]+BPv*6,0]]);
+ $('n2a').textContent=Math.round(5*E(P(t,K[2]+.1,BPv*2)));$('n2b').textContent=Math.round(25*E(P(t,K[2]+BPv*2,BPv*2)));
+ const cm=Math.round(45*IO(P(t,K[3]+.1,BPv*3)));$('n3').textContent=`4:${String(cm).padStart(2,'0')}`;
+ // recap: the four slots slide into a 2x2 grid in the middle
+ const rc=IO(P(t,T_REC,.5));for(let i=0;i<4;i++){const th=$('th'+i),gx=(i%2?735:345)-(TH[i][0]+100),gy=(i<2?840:1080)-(TH[i][1]+60);
+  if(t>=T_REC){const hop=Math.exp(-6*Math.max(0,t-Bn(33+i*0.5)))*(t>=Bn(33+i*0.5)?1:0),fl=4*Math.sin(t*2.2+i);th.style.transform=`translate(${gx*rc}px,${gy*rc+fl*rc}px) scale(${1+0.75*rc+0.06*hop})`;th.style.opacity=1-out;th.style.boxShadow=`0 0 ${40*hop}px rgba(0,251,244,${0.7*hop})`;th.style.borderColor=`rgba(0,251,244,${0.35+0.6*hop})`;}}
+ // end card
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
+ growPill($('dc'),$('dct'),t,Bn(40),0);$('lib').style.opacity=E(P(t,Bn(42),.4));
+};
+seek(0);
+</script></body></html>
