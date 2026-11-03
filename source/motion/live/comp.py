@@ -54,7 +54,7 @@ while i<N:
         ui=np.array(Image.open(pth).convert('RGBA'))[...,[2,1,0,3]] if os.path.exists(pth) else None
         if ui is not None:
             a=ui[...,3:4].astype(np.float32)/255;out=out*(1-a)+ui[...,:3].astype(np.float32)*a
-        if ok:
+        if ok and i>=78:
             m=key_caption(f).astype(np.float32)/255;h=m.shape[0];y0=598-h//2
             st=cv2.GaussianBlur(cv2.dilate(m,np.ones((9,9),np.uint8)),(0,0),2)
             r=out[y0:y0+h];r=r*(1-st[...,None]*0.85);r=r*(1-m[...,None])+255*m[...,None];out[y0:y0+h]=r

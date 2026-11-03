@@ -91,7 +91,7 @@ recreated=[refvid("recreate-original.mp4","Original · 83.6K views","@danielholm
   ["83.6K views and 3.6K likes on 3 Nov","\"When she's crashing out but you're in drawdown\"","The trading screen behind him is what makes the joke land"],pre="",tag="Original"),
  vid("recreate-remake.mp4","Crashing out vs drawdown","AI character · recreated trending meme · 15 s","Draft","new",
   ["Same movement and timing as the original, played by our AI character","Trading screen rebuilt in post: price rallies back into the red zone","Copy added to match the original"],ai=True)]
-livec=[vid("live-coaching.mp4","Live coaching in the Discord","Discord call mockup · founder + student placeholders · 46 s","Mockup · Steve to record","new",
+livec=[vid("live-coaching.mp4","Live coaching in the Discord","Discord call mockup · founder + student placeholders · 44 s","Mockup · Steve to record","new",
   ["Steve and a Discord member on a voice call while he shares a chart and walks through a trade","Speaking rings light up with whoever is talking; the chart is shown in dark mode like a screen share","Ends on \"Learn live with traders\" and Join our Discord","Audio and chart are borrowed from a reference video for this mockup only; the real version is Steve's own call"])]
 carousel=f'''<article class="card wide">
 <div class="phone"><div class="viewport" id="vp" aria-roledescription="carousel" aria-label="Carousel preview" tabindex="0">
