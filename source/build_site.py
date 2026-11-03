@@ -23,9 +23,7 @@ def refs(items):
     return '<div class="refs"><span>Works in the niche:</span>'+" ".join(f'<a href="{u}">{t}</a>' for t,u in items)+"</div>"
 
 proof=[vid("proof1-no-closed-beta.mp4","Why no closed beta","Founder short · from Steve's Arena video · 24 s","Draft · needs your OK","refresh",
-  ["Safe message, founder on camera, Discord end card","Fix: crop to 9:16 so Steve fills the frame, 3 to 5 word captions, readable disclaimer","Posts once counsel clears the Arena wording"]),
- vid("proof2-arena-rewards.mp4","How fast are Arena rewards","Founder short · from Steve's Arena video · 21 s","Draft · needs compliance OK","hold",
-  ["\"You literally could be paid the same day\" is a payout-speed claim","Promotes Arena's seat-funded pool","Needs Halcyon's written OK and counsel first"])]
+  ["Safe message, founder on camera, Discord end card","Fix: crop to 9:16 so Steve fills the frame, 3 to 5 word captions, readable disclaimer","Posts once counsel clears the Arena wording"])]
 ent_chars='''<div class="chars"><figure><img src="media/char-cyan.jpg" alt="Character sheet of Cyan: a tall man with teal hair, handlebar mustache and a charcoal three-piece suit"><figcaption><b>Cyan</b> deadpan gentleman · memes</figcaption></figure>
 <figure><img src="media/char-mark.jpg" alt="Character sheet of Mark: a young man in a grey hoodie with the hood up, joggers and white sneakers"><figcaption><b>Mark</b> young trader host · tutorials</figcaption></figure></div>'''
 tut=[vid("tutorial-mark-says-hi.mp4","Mark says hi","Mark · intro to the tutorial series · 12 s","Draft · voice being fixed","refresh",
