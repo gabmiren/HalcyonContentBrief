@@ -12,13 +12,13 @@ def vid(file,title,sub,status,call,notes,ai=False):
     return f'''<article class="card">
 <div class="media"><video src="media/{file}" controls playsinline preload="metadata"></video></div>
 <div class="info"><div class="chips"><span class="chip">{status}</span>{ai_tag}<span class="chip {cls}">{lab}</span></div>
-<h4>{title}</h4><p class="sub">{sub}</p><ul>{li}</ul></div></article>'''
+<h4>{title}</h4><p class="sub">{sub}</p></div></article>'''
 def refvid(file,title,handle,url,notes,pre='Example: ',tag='Example'):
     li="".join(f"<li>{n}</li>" for n in notes)
     return f'''<article class="card">
 <div class="media"><video src="media/{file}#t=1" controls playsinline preload="metadata"></video></div>
 <div class="info"><div class="chips"><span class="chip new">{tag}</span><span class="chip hold">Not ours</span></div>
-<h4>{pre}{title}</h4><p class="sub">By <a href="{url}">{handle} on TikTok</a></p><ul>{li}</ul></div></article>'''
+<h4>{pre}{title}</h4><p class="sub">By <a href="{url}">{handle} on TikTok</a></p></div></article>'''
 def refs(items):
     return '<div class="refs"><span>Works in the niche:</span>'+" ".join(f'<a href="{u}">{t}</a>' for t,u in items)+"</div>"
 
@@ -181,7 +181,7 @@ h3{{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#AFAFAF;m
 .chip.bad{{background:#fff;color:#000;border-color:#fff}}
 .chip.new{{background:#00FBF4;color:#000;border-color:#00FBF4}}
 h4{{margin:0 0 4px;font-size:18px}}
-.sub{{margin:0 0 10px;color:#AFAFAF;font-size:13px}}
+.sub{{margin:0;color:#AFAFAF;font-size:13px}}
 .info ul{{margin:0;padding-left:18px;color:#ddd;font-size:13.5px;line-height:1.55}}
 .refs{{margin-top:14px;font-size:13px;color:#AFAFAF;display:flex;flex-wrap:wrap;gap:6px 14px}}
 .chars{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:18px}}
