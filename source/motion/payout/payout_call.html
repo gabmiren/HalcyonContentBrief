@@ -1,0 +1,236 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="common.css">
+<style>
+@font-face{font-family:Orb;font-weight:500;src:url(node_modules/@fontsource/orbitron/files/orbitron-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Orb;font-weight:700;src:url(node_modules/@fontsource/orbitron/files/orbitron-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Sig;src:url(node_modules/@fontsource/great-vibes/files/great-vibes-latin-400-normal.woff2) format('woff2')}
+html,body{background:#0B0D0F}
+#st{background:#0B0D0F}
+/* call UI (same look as the live coaching mockup) */
+#ui{position:absolute;left:0;top:0;width:1080px;height:668px;background:#111214}
+#hdr{position:absolute;left:30px;right:30px;top:26px;height:84px;display:flex;align-items:center}
+.chn{font:700 34px/1 Poppins;color:#F2F3F5;display:flex;align-items:center;gap:16px}
+.srv{margin-left:18px;font:500 24px/1 Poppins;color:#949BA4}
+.live{margin-left:auto;display:flex;align-items:center;gap:14px}
+.lp{height:44px;padding:0 18px;border-radius:10px;background:#DA373C;color:#fff;font:700 22px/44px Poppins;letter-spacing:.1em}
+.tm{font:600 26px/1 Poppins;color:#B5BAC1;font-variant-numeric:tabular-nums}
+.tile{position:absolute;top:126px;width:495px;height:410px;border-radius:26px;background:#2B2D31;overflow:hidden}
+.tile .ring{position:absolute;inset:0;border-radius:26px;border:5px solid #23A55A;opacity:0;box-shadow:inset 0 0 30px rgba(35,165,90,.35)}
+.av{position:absolute;left:50%;top:44%;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:85px;display:flex;align-items:center;justify-content:center;font:800 78px/1 Poppins}
+.av .pulse{position:absolute;inset:-14px;border-radius:50%;border:5px solid #23A55A;opacity:0}
+.nm{position:absolute;left:20px;bottom:20px;height:50px;padding:0 18px;border-radius:12px;background:rgba(0,0,0,.55);display:flex;align-items:center;gap:10px;font:600 26px/1 Poppins;color:#F2F3F5}
+.tag{position:absolute;left:20px;top:20px;height:42px;padding:0 16px;border-radius:21px;border:2px dashed rgba(0,251,244,.6);display:flex;align-items:center;font:700 18px/1 Poppins;letter-spacing:.14em;color:#00FBF4}
+.badge{position:absolute;right:20px;top:20px;height:42px;padding:0 16px;border-radius:21px;background:rgba(0,251,244,.12);border:1.5px solid rgba(0,251,244,.55);display:flex;align-items:center;gap:8px;font:700 18px/1 Poppins;letter-spacing:.08em;color:#00FBF4}
+/* caption on the seam */
+#cap{position:absolute;left:0;width:1080px;top:563px;height:80px;display:flex;justify-content:center;align-items:center;z-index:20}
+#cw{font:800 66px/1 Poppins;letter-spacing:.02em;color:#fff;text-transform:uppercase;white-space:nowrap;text-shadow:0 4px 0 rgba(0,0,0,.55),0 0 24px rgba(0,0,0,.85)}
+#cw.hot{color:#00FBF4;text-shadow:0 4px 0 rgba(0,0,0,.55),0 0 26px rgba(0,251,244,.55)}
+/* shared screen */
+#scr{position:absolute;left:0;top:668px;width:1080px;height:1252px;background:#0B0D0F;overflow:hidden}
+#share{position:absolute;left:30px;top:34px;height:52px;padding:0 20px;border-radius:12px;background:rgba(17,18,20,.9);display:flex;align-items:center;gap:12px;font:600 24px/1 Poppins;color:#F2F3F5;z-index:5}
+#share i{width:12px;height:12px;border-radius:6px;background:#DA373C;display:inline-block}
+.win{position:absolute;left:40px;top:110px;width:1000px;height:1040px;border-radius:18px;background:#0F1416;border:1.5px solid #252B2E;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;transform-origin:50% 50%}
+.tb{position:absolute;left:0;top:0;right:0;height:60px;background:#171C1F;border-bottom:1px solid #252B2E;display:flex;align-items:center;padding:0 22px;font:600 22px/1 Poppins;color:#C9D1D3;gap:12px}
+.tb .ctl{margin-left:auto;display:flex;gap:26px;align-items:center;color:#8A9396;font:500 26px/1 Poppins}
+.tb .x{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.cnt{position:absolute;left:0;top:60px;width:1000px;height:980px}
+/* certificate (Halcyon's own design, as in the trader highlights draft) */
+.cert{position:absolute;left:40px;top:150px;width:920px;height:690px;border-radius:30px;background:#05080A;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 70px rgba(0,251,244,.12);overflow:hidden}
+.cert .bgg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 52%,rgba(0,90,95,.55),rgba(5,10,12,0) 70%),linear-gradient(160deg,#0B1416,#05080A 60%)}
+.cert svg.frame{position:absolute;inset:0}
+.cert .ttl{position:absolute;left:40px;width:740px;top:70px;text-align:center;font:500 38px/1 Orb;color:#E8F7F7;letter-spacing:-.01em}
+.cert .seal{position:absolute;right:52px;top:44px;width:88px;height:88px;border-radius:44px;border:4px dashed #2DF5A0;box-shadow:0 0 22px rgba(45,245,160,.6);display:flex;align-items:center;justify-content:center;font:700 13px/1 Orb;color:#00FBF4;background:#06201A}
+.cert .amt{position:absolute;left:0;width:920px;top:205px;text-align:center;font:700 170px/1 Orb;color:#8FFFFA;letter-spacing:-.02em;text-shadow:0 0 18px rgba(0,251,244,.9),0 0 50px rgba(0,251,244,.5)}
+.cert .cnm{position:absolute;left:0;width:920px;top:440px;text-align:center;font:500 44px/1 Orb;color:#FFFFFF;text-shadow:0 0 14px rgba(0,251,244,.5)}
+.cert .ln{position:absolute;left:170px;width:580px;top:500px;height:3px;background:linear-gradient(90deg,rgba(0,251,244,0),#00FBF4,rgba(0,251,244,0))}
+.cert .tx{position:absolute;left:0;width:920px;top:525px;text-align:center;font:500 19px/1.4 Orb;color:#C8D6D6}
+.cert .iss{position:absolute;right:120px;top:590px;font:500 20px/1 Orb;color:#E8F7F7}
+.cert .sig{position:absolute;right:110px;top:615px;font:38px/1 Sig;color:#E8F7F7}.cert .sig b{font:500 18px/1 Orb;margin-left:10px}
+.cert .flag{position:absolute;left:60px;top:590px;width:96px;height:62px;border-radius:4px;overflow:hidden}
+.smp{position:absolute;left:40px;top:96px;height:38px;padding:0 16px;border-radius:19px;border:1.5px dashed rgba(175,175,175,.7);font:700 16px/35px Poppins;letter-spacing:.14em;color:#AFAFAF}
+.ringb{position:absolute;left:500px;top:495px;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:4px solid #00FBF4;opacity:0;box-shadow:0 0 30px rgba(0,251,244,.6)}
+/* edit overlays (glass panels in Halcyon style) */
+.gl{position:absolute;left:70px;width:940px;border-radius:36px;background:linear-gradient(172deg,rgba(0,74,72,.72) 0%,rgba(6,18,20,.95) 40%,rgba(3,8,9,.97) 100%);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 80px rgba(0,190,185,.16),inset 0 1.5px 0 rgba(255,255,255,.10),inset 0 0 0 1.5px rgba(0,251,244,.2);padding:40px 48px;opacity:0}
+.ey{font:600 22px/1 Poppins;letter-spacing:.18em;color:#7E8787}
+.row{display:flex;align-items:center;gap:26px;margin-top:30px;font:700 46px/1.1 Poppins;color:#fff}
+.ck{flex:none;width:64px;height:64px;border-radius:32px;border:3px solid rgba(0,251,244,.35);display:flex;align-items:center;justify-content:center}
+.ck svg{opacity:0}
+.row.dim{color:#AFAFAF}
+.row .sm{display:block;font:600 24px/1.2 Poppins;color:#7E8787;letter-spacing:.12em;margin-bottom:8px}
+#cur{position:absolute;width:44px;height:44px;z-index:30;opacity:0;pointer-events:none}
+#disc{position:absolute;left:60px;width:960px;top:1176px;text-align:center;font:500 20px/1.45 Poppins;color:#6E7779;z-index:6}
+/* end card */
+#endc{position:absolute;inset:0;background:#030607;opacity:0;z-index:40}
+</style></head><body>
+<div id="st">
+ <div id="ui">
+  <div id="hdr"><div class="chn"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z" fill="#B5BAC1"/><path d="M16.5 12a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" fill="#B5BAC1"/></svg>reward-calls</div><span class="srv">Halcyon Discord</span>
+   <div class="live"><span class="lp">LIVE</span><span class="tm" id="tm">00:00</span></div></div>
+  <div class="tile" style="left:30px"><div class="ring" id="r0"></div>
+   <div class="tag">HOST · PLACEHOLDER</div>
+   <div class="av" style="background:linear-gradient(180deg,#5FFFF9,#00B3AE);color:#04100F"><div class="pulse" id="p0"></div>S</div>
+   <div class="nm">Steve <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z" fill="#B5BAC1"/></svg></div></div>
+  <div class="tile" style="left:555px"><div class="ring" id="r1"></div>
+   <div class="tag">TRADER · PLACEHOLDER</div>
+   <div class="av" style="background:#5865F2;color:#FFFFFF"><div class="pulse" id="p1"></div>J</div>
+   <div class="nm">Jordan <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z" fill="#B5BAC1"/></svg></div></div>
+ </div>
+ <div id="cap"><div id="cw"></div></div>
+ <div id="scr">
+  <div id="share"><i></i>Jordan is sharing their screen</div>
+  <!-- window 1: certificate -->
+  <div class="win" id="w1"><div class="tb"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="#00FBF4" stroke-width="2"/><path d="M6 16l4-5 3 3 2-2 3 4" fill="none" stroke="#00FBF4" stroke-width="2"/></svg>reward-certificate.png<div class="ctl"><span>–</span><span>□</span><span class="x">✕</span></div></div>
+   <div class="cnt"><div class="smp">SAMPLE</div><div class="cert" id="cert"></div><div class="ringb" id="rb"></div></div></div>
+  <!-- window 2: chart -->
+  <div class="win" id="w2"><div class="tb"><span id="sym" style="padding:6px 12px;border-radius:8px;color:#fff;font-weight:700">NQ · 5 min</span><span style="color:#7E8787;font-weight:500">Nasdaq 100 futures · replay</span><div class="ctl"><span>–</span><span>□</span><span class="x" id="wx">✕</span></div></div>
+   <div class="cnt"><canvas id="ch" width="1000" height="980"></canvas></div></div>
+  <!-- edit overlays -->
+  <div class="gl" id="rules" style="top:770px">
+   <div class="ey">JORDAN'S RULES</div>
+   <div class="row" id="ru0"><div class="ck"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>One contract</div>
+   <div class="row" id="ru1"><div class="ck"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>One trade</div>
+   <div class="row" id="ru2"><div class="ck"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Stopped out? Done for the day</div>
+  </div>
+  <div class="gl" id="chg" style="top:300px">
+   <div class="ey">WHAT CHANGED</div>
+   <div style="margin-top:22px;font:800 92px/1.02 Poppins;letter-spacing:-.03em" id="less">Trading <span style="color:#00FBF4">less.</span></div>
+   <div class="row dim" id="bf" style="margin-top:44px"><div class="ck" style="border-color:rgba(175,175,175,.45)"><svg width="30" height="30" viewBox="0 0 24 24" style="opacity:1"><path d="M7 7l10 10M17 7L7 17" stroke="#AFAFAF" stroke-width="3" stroke-linecap="round"/></svg></div><div><span class="sm">BEFORE</span>Forcing trades all morning</div></div>
+   <div class="row" id="nw"><div class="ck" id="nwck"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span class="sm">NOW</span>No setup? Close the chart</div></div>
+  </div>
+  <svg id="cur" viewBox="0 0 24 24"><path d="M4 2l15 11-6.5 1.2L16 21l-3 1.4-3.6-7L4 19z" fill="#fff" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/></svg>
+  <div id="disc">Rewards are paid from simulated accounts. Results vary and are not typical or guaranteed. T&amp;C apply.</div>
+ </div>
+ <div id="endc">
+  <div class="wm" style="top:600px;color:#AFAFAF">HALCYON DISCORD</div>
+  <div class="big" style="top:690px">Their strategy,<br><span style="color:#00FBF4">in their words.</span></div>
+  <div class="urlw" style="top:990px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1110px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="base.js"></script><script src="fx.js"></script>
+<script>
+// Speaker turns and word timings measured from the Higgsfield dialogue track (halcyon_payout_call_dialogue.mp3).
+const SPK=[[0.35,3.30,'h'],[3.60,6.98,'t'],[7.30,11.66,'h'],[11.96,20.89,'t'],[21.17,22.01,'h'],[22.31,28.87,'t'],[29.17,31.43,'h'],[31.73,39.28,'t'],[39.62,41.76,'h']];
+const W=[[0.35,.56,'Alright,'],[0.95,1.08,'so'],[1.08,1.16,'you'],[1.15,1.3,'just'],[1.33,1.44,'got'],[1.47,1.64,'your'],[1.66,1.9,'first'],[1.96,2.38,'reward.',1],[2.66,2.74,'How'],[2.74,2.92,'much'],[2.92,3.1,'was'],[3.1,3.25,'it?'],
+[3.64,5.39,'$2,350',1],[5.7,5.8,'It'],[5.8,6.0,'came'],[6.0,6.22,'through'],[6.22,6.9,'yesterday.'],
+[7.34,7.68,"Let's"],[7.71,7.95,'go!'],[8.26,8.55,'Okay,'],[8.86,9.08,'walk'],[9.08,9.32,'me'],[9.41,9.56,'through'],[9.56,9.86,'it.'],[10.16,10.26,'What'],[10.26,10.36,'are'],[10.36,10.5,'you'],[10.5,10.98,'actually'],[10.98,11.55,'trading?'],
+[11.96,12.32,'Just'],[12.32,12.9,'NQ,',1],[13.27,13.38,'and'],[13.38,13.72,'only'],[13.72,13.92,'the'],[13.92,14.24,'first',1],[14.24,14.6,'hour',1],[14.6,15.08,'after'],[15.08,15.28,'the'],[15.28,15.72,'open.'],
+[16.05,16.18,'I'],[16.18,16.48,'mark'],[16.48,16.68,'the'],[16.68,17.02,'opening',1],[17.02,17.5,'range,',1],[17.78,18.02,'wait'],[18.02,18.26,'for'],[18.26,18.38,'it'],[18.38,18.54,'to'],[18.54,18.88,'break,',1],
+[19.24,19.46,'then'],[19.46,19.72,'take'],[19.72,19.92,'the'],[19.92,20.22,'first',1],[20.28,20.82,'pullback.',1],
+[21.17,21.28,'And'],[21.28,21.56,"where's"],[21.56,21.64,'your'],[21.64,21.95,'stop?',1],
+[22.35,22.68,'Always'],[22.68,23.04,'under'],[23.04,23.2,'the'],[23.2,23.58,'pullback'],[23.58,23.95,'low.',1],[24.28,24.54,'One',1],[24.54,25.15,'contract,',1],[25.35,25.62,'one',1],[25.62,26.06,'trade.',1],
+[26.44,26.56,'If'],[26.56,26.7,'it'],[26.7,26.98,'stops'],[26.98,27.18,'me'],[27.18,27.46,'out,'],[27.77,28.06,"I'm"],[28.06,28.2,'done',1],[28.2,28.4,'for'],[28.4,28.52,'the'],[28.52,28.8,'day.',1],
+[29.54,29.66,'So'],[29.66,29.86,'what'],[29.86,30.34,'actually'],[30.34,30.86,'changed'],[30.86,31.12,'for'],[31.12,31.35,'you?'],
+[31.77,32.18,'Honestly,'],[32.18,32.65,'I'],[32.65,32.96,'trade',1],[32.96,33.45,'less.',1],[33.76,33.86,'I'],[33.86,34.02,'used'],[34.02,34.22,'to'],[34.22,34.46,'force'],[34.46,34.79,'trades'],[34.79,35.1,'all'],[35.1,35.59,'morning.'],
+[35.9,36.14,'Now'],[36.14,36.38,'if'],[36.38,36.58,'my'],[36.58,36.86,'setup'],[36.86,37.26,"doesn't"],[37.26,37.44,'show'],[37.44,37.7,'up,'],[37.93,38.04,'I'],[38.04,38.26,'just'],[38.26,38.6,'close',1],[38.6,38.79,'the'],[38.79,39.2,'chart.',1],
+[39.63,40.08,"That's"],[40.08,40.18,'the'],[40.18,40.32,'whole'],[40.32,40.72,'game.',1],[40.95,41.45,'Congrats,',1],[41.5,41.75,'man.']];
+const T_END=42.1,DUR=45.0;$('ds').textContent=DISC;
+const AMT=2350;
+
+// certificate markup (same frame as the trader highlights certificates)
+$('cert').innerHTML=`<div class="bgg"></div><svg class="frame" width="920" height="690" viewBox="0 0 920 690"><g fill="none" stroke="rgba(0,251,244,.55)" stroke-width="2">
+<path d="M40 70 L40 600 L90 650 L860 650"/><path d="M880 620 L880 90 L830 40 L60 40"/>
+<path d="M70 140 L120 140 L140 160 M70 560 L130 560 L150 540 M850 150 L800 150 L780 170 M850 540 L790 540 L770 520"/>
+<circle cx="460" cy="345" r="150" stroke="rgba(0,251,244,.22)"/><circle cx="460" cy="345" r="120" stroke="rgba(0,251,244,.16)" stroke-dasharray="6 8"/></g>
+<g fill="#FF2BD6"><path d="M20 20 L90 20 L20 90Z" opacity=".85"/><path d="M900 670 L830 670 L900 600Z" opacity=".85"/><path d="M900 20 L860 20 L900 60Z" opacity=".6"/><path d="M20 670 L60 670 L20 630Z" opacity=".6"/></g>
+<path d="M0 120 L120 0" stroke="rgba(0,251,244,.7)" stroke-width="3"/><path d="M800 690 L920 570" stroke="rgba(255,43,214,.7)" stroke-width="3"/></svg>
+<div class="ttl">Halcyon Reward Certificate</div><div class="seal">HALCYON</div><div class="amt" id="amt">$0</div><div class="cnm">Jordan T.</div><div class="ln"></div>
+<div class="tx">This certificate acknowledges the successful Rewards<br>earned under Halcyon Trader Funding LLC</div><div class="iss">Issued:&nbsp; 11/02/2026</div><div class="sig">Steven K.<b>CEO</b></div>
+<div class="flag"><div style="position:relative;width:96px;height:62px;background:repeating-linear-gradient(180deg,#B22234 0 9px,#FFFFFF 9px 18px)"><div style="position:absolute;left:0;top:0;width:42px;height:34px;background:#3C3B6E"></div></div></div>`;
+
+// ---------- chart (illustrative replay: opening range, break, first pullback) ----------
+const CND=[[20990,21018,20972,21010],[21010,21022,20995,20998],[20998,21012,20980,21005],
+ [21005,21016,20990,20994],[20994,21008,20984,21003],[21003,21019,20998,21012],[21012,21020,21001,21006],
+ [21006,21046,21004,21042],[21042,21048,21028,21031],[21031,21035,21021,21026]]; // o,h,l,c
+const ORH=21022,ORL=20972,PBL=21021,STOP=21016,ENTRY=21026;
+const X0=70,DX=60,CW=30,PY=p=>L(860,120,(p-20950)/(21070-20950));
+const cx=i=>X0+DX*i+DX/2;
+// when each candle appears
+const SHOW=[11.96,12.06,12.16, 17.78,17.96,18.14,18.32, 18.54, 19.46,19.92];
+const chx=$('ch').getContext('2d');
+function lab(c,txt,x,y,col,align='left',bg='rgba(11,15,16,.85)'){c.font='700 24px Poppins';const w=c.measureText(txt).width+24;const lx=align==='left'?x:align==='right'?x-w:x-w/2;
+ c.fillStyle=bg;rrect(c,lx,y-19,w,38,10);c.fill();c.strokeStyle=col;c.lineWidth=1.5;rrect(c,lx,y-19,w,38,10);c.stroke();c.fillStyle=col;c.textBaseline='middle';c.textAlign='left';c.fillText(txt,lx+12,y+1);}
+function rrect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function drawChart(t){
+ const c=chx;c.clearRect(0,0,1000,980);c.fillStyle='#0F1416';c.fillRect(0,0,1000,980);
+ // grid + axes
+ c.strokeStyle='rgba(255,255,255,.05)';c.lineWidth=1;
+ for(let p=20960;p<=21060;p+=20){const y=PY(p);c.beginPath();c.moveTo(0,y);c.lineTo(900,y);c.stroke();c.fillStyle='#6E7779';c.font='500 20px Poppins';c.textAlign='left';c.textBaseline='middle';c.fillText(p.toLocaleString('en-US'),912,y);}
+ ['9:30','9:45','10:00','10:15','10:30','10:45'].forEach((s,k)=>{const x=X0+DX*3*k;c.beginPath();c.moveTo(x,90);c.lineTo(x,880);c.stroke();c.fillStyle='#6E7779';c.textAlign='center';c.fillText(s,x,920);});
+ c.fillStyle='#6E7779';c.textAlign='left';c.font='500 20px Poppins';c.fillText('ET',20,960);
+ // first hour band
+ const fh=E(P(t,13.92,.5));if(fh>0){const x1=X0,x2=X0+DX*12;c.fillStyle=`rgba(0,251,244,${.06*fh})`;c.fillRect(x1,90,(x2-x1)*fh,790);
+  c.strokeStyle=`rgba(0,251,244,${.5*fh})`;c.setLineDash([8,8]);c.beginPath();c.moveTo(x1,90);c.lineTo(x1,880);c.moveTo(x1+(x2-x1)*fh,90);c.lineTo(x1+(x2-x1)*fh,880);c.stroke();c.setLineDash([]);
+  c.globalAlpha=fh;lab(c,'First hour after the open',x1+12,62,'#00FBF4');c.globalAlpha=1;}
+ // opening range
+ const orp=E(P(t,16.68,.45));if(orp>0){const yH=PY(ORH),yL=PY(ORL),xa=X0+4,xb=L(xa+DX*3-8,880,E(P(t,17.02,.6)));
+  c.fillStyle=`rgba(0,251,244,${.10*orp})`;c.fillRect(xa,yH,(xa+DX*3-8-xa)*orp,yL-yH);
+  c.strokeStyle=`rgba(0,251,244,${.85*orp})`;c.lineWidth=2.5;c.beginPath();c.moveTo(xa,yH);c.lineTo(xa+(xb-xa)*orp,yH);c.moveTo(xa,yL);c.lineTo(xa+(xb-xa)*orp,yL);c.stroke();
+  c.globalAlpha=orp;lab(c,'Opening range',X0+DX*1.5,yH-40,'#00FBF4','center');c.globalAlpha=1;}
+ // candles
+ CND.forEach((k,i)=>{const s=SHOW[i];if(t<s)return;const e=E(P(t,s,.22));const [o,h,l,cl]=k;const up=cl>=o;const x=cx(i);
+  const mid=PY((o+cl)/2);const yo=PY(o),yc=PY(cl),yh=PY(h),yl=PY(l);
+  let col=up?'#00FBF4':'#AFAFAF';
+  if(i===7){const g=Math.exp(-2.5*Math.max(0,t-18.54));c.shadowColor='#00FBF4';c.shadowBlur=10+40*g;}
+  c.strokeStyle=col;c.lineWidth=3;c.beginPath();c.moveTo(x,L(mid,yh,e));c.lineTo(x,L(mid,yl,e));c.stroke();
+  c.fillStyle=col;const top=L(mid,Math.min(yo,yc),e),bot=L(mid,Math.max(yo,yc),e);c.fillRect(x-CW/2,top,CW,Math.max(3,bot-top));c.shadowBlur=0;});
+ // break label + arrow
+ const bk=E(P(t,18.6,.4));if(bk>0){const x=cx(7),y=PY(21046)-20;c.globalAlpha=bk;c.strokeStyle='#00FBF4';c.lineWidth=4;c.beginPath();c.moveTo(x,y-10);c.lineTo(x,y-70+20*(1-bk));c.stroke();
+  c.fillStyle='#00FBF4';c.beginPath();c.moveTo(x-12,y-62);c.lineTo(x+12,y-62);c.lineTo(x,y-82);c.closePath();c.fill();lab(c,'Break',x,y-112,'#00FBF4','center');c.globalAlpha=1;}
+ // entry on the first pullback
+ const en=E(P(t,20.28,.4));if(en>0){const x=cx(9)+CW/2+14,y=PY(ENTRY);c.globalAlpha=en;
+  c.fillStyle='#00FBF4';c.shadowColor='#00FBF4';c.shadowBlur=20;c.beginPath();c.arc(x,y,9+4*Math.exp(-4*(t-20.28)),0,7);c.fill();c.shadowBlur=0;
+  const pr=P(t,20.28,.9);if(pr<1){c.strokeStyle=`rgba(0,251,244,${1-pr})`;c.lineWidth=3;c.beginPath();c.arc(x,y,9+40*pr,0,7);c.stroke();}
+  lab(c,'Entry · first pullback',x+22,y-46,'#00FBF4');c.globalAlpha=1;}
+ // stop under the pullback low
+ const sp=E(P(t,22.35,.6));if(sp>0){const y=PY(STOP),xa=cx(8)-30,xb=xa+(880-xa)*sp;c.strokeStyle='#FFFFFF';c.lineWidth=2.5;c.setLineDash([10,8]);c.beginPath();c.moveTo(xa,y);c.lineTo(xb,y);c.stroke();c.setLineDash([]);
+  const pl=E(P(t,23.2,.4));if(pl>0){c.globalAlpha=pl;c.strokeStyle='rgba(255,255,255,.5)';c.lineWidth=2;const yp=PY(PBL);c.beginPath();c.moveTo(cx(9)-26,yp);c.lineTo(cx(9)+26,yp);c.stroke();c.globalAlpha=1;}
+  const sl=E(P(t,23.58,.4));if(sl>0){c.globalAlpha=sl;lab(c,'Stop · under pullback low',590,y+34,'#FFFFFF','left');c.globalAlpha=1;}}
+}
+
+function act(t,w){let a=0;for(const [s,e,k] of SPK)if(k===w){a=Math.max(a,C(P(t,s-.05,.12))*(1-C(P(t,e-.05,.15))));}return a;}
+function curWord(t){let cur=null;for(let i=0;i<W.length;i++){const [s,e]=W[i];if(t>=s){const nx=W[i+1]?W[i+1][0]:99;const until=(nx-e>0.6)?e+0.3:nx;if(t<until)cur=W[i];}}return cur;}
+function tick(el,t,at){const k=E(P(t,at,.3));const ck=el.querySelector('.ck');ck.style.background=k>0?`rgba(0,251,244,${k})`:'transparent';ck.style.borderColor=k>0?'#00FBF4':'rgba(0,251,244,.35)';ck.style.boxShadow=k>0?`0 0 ${30*k}px rgba(0,251,244,.5)`:'none';ck.querySelector('svg').style.opacity=k;ck.style.transform=`scale(${1+0.18*Math.sin(Math.PI*C(P(t,at,.3)))})`;}
+function rowIn(el,t,at){const a=E(P(t,at,.35));el.style.opacity=a;el.style.transform=`translateX(${(1-a)*-40}px)`;}
+
+window.seek=function(t){
+ // call header timer and speaking rings
+ const s=Math.floor(t+1104);$('tm').textContent=`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+ ['h','t'].forEach((w,i)=>{const a=act(t,w);$('r'+i).style.opacity=a;const p=$('p'+i);p.style.opacity=a*(0.5+0.5*Math.abs(Math.sin(t*7+i)));p.style.transform=`scale(${1+0.06*a*Math.abs(Math.sin(t*9+i))})`;});
+ // caption
+ const cw=curWord(t),cel=$('cw');if(cw&&t<T_END){cel.textContent=cw[2];cel.className=cw[3]?'hot':'';const k=P(t,cw[0],.12);cel.style.transform=`scale(${0.88+0.12*E(k)})`;cel.style.opacity=1;}else cel.style.opacity=0;
+ // window 1 (certificate): on from the start, out at "walk me through it", back for the congrats
+ const w1=$('w1'),amt=$('amt');
+ const out1=IO(P(t,8.86,.45)),back=E(P(t,39.63,.5));
+ let a1,s1;if(t<39.63){a1=1-out1;s1=1-0.08*out1;}else{a1=back;s1=0.9+0.1*B(P(t,39.63,.5));}
+ w1.style.opacity=a1;w1.style.transform=`translateY(${t<39.63?out1*60:(1-back)*80}px) scale(${s1*(1+0.012*Math.sin(t*0.9))})`;w1.style.visibility=a1>0.001?'visible':'hidden';
+ const cnt=E(P(t,3.64,1.6));const v=Math.round(AMT*cnt);
+ if(t<3.64){amt.textContent='$?,???';amt.style.filter='blur(14px)';amt.style.opacity=.75;}else{amt.textContent='$'+v.toLocaleString('en-US');amt.style.filter=`blur(${Math.max(0,8*(1-cnt*3))}px)`;amt.style.opacity=1;}
+ const land=Math.exp(-3*Math.max(0,t-5.24))*(t>=5.24?1:0)+Math.exp(-3*Math.max(0,t-40.95))*(t>=40.95?1:0);
+ amt.style.transform=`scale(${1+0.06*land})`;amt.style.textShadow=`0 0 ${18+30*land}px rgba(0,251,244,.9),0 0 ${50+60*land}px rgba(0,251,244,.5)`;
+ const rb=$('rb');const rk=t>=40.95?P(t,40.95,.9):(t>=5.24?P(t,5.24,.9):0);const d=40+860*E(rk);rb.style.opacity=rk>0&&rk<1?Math.pow(1-rk,1.4):0;rb.style.width=rb.style.height=d+'px';rb.style.margin=(-d/2)+'px 0 0 '+(-d/2)+'px';rb.style.borderWidth=(5*(1-rk)+1)+'px';
+ // window 2 (chart): in after the certificate leaves, closed with the cursor at "close the chart"
+ const w2=$('w2');const in2=E(P(t,9.1,.5)),cl2=IO(P(t,38.3,.4));const a2=in2*(1-cl2);
+ w2.style.opacity=a2;w2.style.visibility=a2>0.001?'visible':'hidden';
+ const dim=E(P(t,29.54,.5))*(1-0);w2.style.filter=`brightness(${1-0.55*dim}) blur(${3*dim}px)`;
+ w2.style.transform=`translateY(${(1-in2)*60}px) scale(${(0.94+0.06*in2)*(1-0.15*cl2)*(1+0.01*Math.sin(t*0.8))})`;
+ if(a2>0.001)drawChart(t);
+ const sy=$('sym');const sg=Math.exp(-3*Math.max(0,t-12.32))*(t>=12.32?1:0);sy.style.background=`rgba(0,251,244,${0.12+0.5*sg})`;sy.style.boxShadow=`0 0 ${30*sg}px rgba(0,251,244,.6)`;
+ // rules card
+ const ru=$('rules');const ri=E(P(t,24.2,.4)),ro=IN(P(t,29.3,.35));ru.style.opacity=ri*(1-ro);ru.style.transform=`translateY(${(1-ri)*60+ro*40}px)`;
+ rowIn($('ru0'),t,24.2);rowIn($('ru1'),t,25.3);rowIn($('ru2'),t,27.7);tick($('ru0'),t,24.54);tick($('ru1'),t,25.62);tick($('ru2'),t,28.06);
+ // what changed card
+ const cg=$('chg');const ci=E(P(t,31.55,.45)),co=IN(P(t,39.35,.3));cg.style.opacity=ci*(1-co);cg.style.transform=`translateY(${(1-ci)*60}px) scale(${1-0.04*co})`;
+ const le=E(P(t,32.65,.35));$('less').style.opacity=le;$('less').style.transform=`translateY(${(1-le)*30}px)`;
+ rowIn($('bf'),t,33.76);rowIn($('nw'),t,35.9);tick($('nw'),t,38.79);
+ // cursor clicks the chart's close button
+ const cu=$('cur');const cm=IO(P(t,37.5,.7)),cv=C(P(t,37.4,.2))*(1-C(P(t,38.75,.25)));
+ const wx=$('wx').getBoundingClientRect(),sr=$('scr').getBoundingClientRect();const tx=wx.left-sr.left+18,ty=wx.top-sr.top+16;
+ cu.style.opacity=cv;cu.style.left=L(760,tx,cm)+'px';cu.style.top=L(900,ty,cm)+'px';cu.style.transform=`scale(${1-0.25*Math.sin(Math.PI*C(P(t,38.2,.18)))})`;
+ $('wx').style.background=t>=38.15&&t<38.6?'#C42B2B':'transparent';$('wx').style.color=t>=38.15&&t<38.6?'#fff':'';
+ // end card
+ const e=E(P(t,T_END,.45));$('endc').style.opacity=e;
+ growPill($('dc'),$('dct'),t,T_END+.5,0);$('lib').style.opacity=E(P(t,T_END+.9,.4));
+};
+seek(0);
+</script></body></html>

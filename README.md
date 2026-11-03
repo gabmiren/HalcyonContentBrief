@@ -4,7 +4,7 @@ Review page for Halcyon Trader Funding's social content, prepared by Miren Partn
 
 Open `index.html` (or the GitHub Pages link) to see every draft grouped by content pillar:
 
-- Community & Proof: founder talking heads, plus reference formats (tier list, profitable or not, reacting to clips and news)
+- Community & Proof: founder talking heads, payout calls with traders, plus reference formats (tier list, profitable or not, reacting to clips and news)
 - Entertainment: AI character tutorials, memes, recreated memes and ads
 - Education: explainers and Trade of the Week
 - Promo: the Halcyon Dynamic promo and four motion options
