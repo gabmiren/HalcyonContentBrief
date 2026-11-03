@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#000}
+#s{position:relative;width:1200px;height:540px;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
+#wall{position:absolute;left:0;top:0;width:240px;height:540px;background:radial-gradient(ellipse 260px 300px at 230px 300px,#7fb6ff 0%,#2f6fff 22%,#0b3bd6 45%,#06208a 70%,#030c3d 100%)}
+#wall:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 120px 260px at 300px 260px,rgba(255,255,255,.55),rgba(80,140,255,.0) 70%)}
+#win{position:absolute;left:220px;top:0;width:980px;height:540px;background:#0b0d12;box-shadow:-6px 0 18px rgba(0,0,0,.6)}
+#tb{position:absolute;left:0;top:0;width:980px;height:38px;background:linear-gradient(#d9dce3,#c4c8d0)}
+#tb2{position:absolute;left:0;top:38px;width:980px;height:24px;background:#151821;border-bottom:1px solid #262a35}
+.ic{position:absolute;top:12px;width:22px;height:13px;border-radius:3px;background:#8b909b}
+.btn{position:absolute;top:10px;width:30px;height:18px;border-radius:3px}
+svg{position:absolute;left:0;top:0}
+</style></head><body><div id="s">
+<div id="wall"></div>
+<div id="win"><div id="tb"></div><div id="tb2"></div><svg id="g" width="980" height="540"></svg></div>
+</div>
+<script>
+const tb=document.getElementById('tb');[12,40,68,96,140,168].forEach(x=>{const d=document.createElement('div');d.className='ic';d.style.left=x+'px';tb.appendChild(d);});
+[[800,'#e0505e'],[836,'#e0505e'],[872,'#9aa0aa'],[908,'#9aa0aa']].forEach(([x,c])=>{const d=document.createElement('div');d.className='btn';d.style.left=x+'px';d.style.background=c;tb.appendChild(d);});
+const g=document.getElementById('g');const NS='http://www.w3.org/2000/svg';
+const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e;};
+// grid and price axis
+for(let y=90;y<510;y+=42)el('line',{x1:44,x2:980,y1:y,y2:y,stroke:'#161a22','stroke-width':1});
+for(let y=90;y<510;y+=42)el('rect',{x:6,y:y-5,width:28,height:8,fill:'#5d6370',rx:2});
+// levels: short position, stop above, target below
+const STOP=150,ENT=206,TGT=338,X0=200,X1=520;
+el('line',{x1:44,x2:980,y1:STOP,y2:STOP,stroke:'#e0505e','stroke-width':2});
+el('line',{x1:44,x2:980,y1:ENT,y2:ENT,stroke:'#e0505e','stroke-width':2});
+el('line',{x1:44,x2:980,y1:TGT,y2:TGT,stroke:'#3ccf8e','stroke-width':2});
+el('line',{x1:44,x2:980,y1:172,y2:172,stroke:'#38b2a3','stroke-width':1.5,'stroke-dasharray':'3 4'});
+el('rect',{x:X0,y:STOP,width:X1-X0,height:ENT-STOP,fill:'#e4405a','fill-opacity':.85});
+el('rect',{x:X0,y:ENT,width:X1-X0,height:TGT-ENT,fill:'#14a69a','fill-opacity':.85});
+[[STOP,'#f08a2c'],[ENT,'#f08a2c'],[TGT,'#3ccf8e']].forEach(([y,c])=>{el('rect',{x:X0-26,y:y-6,width:24,height:12,rx:6,fill:c});});
+el('rect',{x:110,y:ENT-6,width:30,height:12,rx:6,fill:'#f08a2c'});el('rect',{x:146,y:ENT-6,width:12,height:12,rx:6,fill:'#f2f2f2'});
+el('rect',{x:110,y:TGT-6,width:30,height:12,rx:6,fill:'#3ccf8e'});
+el('rect',{x:44,y:STOP-6,width:30,height:12,rx:6,fill:'#e0505e'});el('rect',{x:44,y:172-6,width:30,height:12,rx:6,fill:'#38b2a3'});
+// candles after the box: drop toward target, then rally back through entry into the red zone
+const path=[214,240,226,262,290,276,312,328,300,316,286,262,276,240,222,236,198,182,192,166,156];
+let x=X1+22,prev=206;
+path.forEach((c,i)=>{const o=prev;const up=c<o;const top=Math.min(o,c)-4-((i*7)%6),bot=Math.max(o,c)+4+((i*5)%7);
+ el('line',{x1:x,x2:x,y1:top,y2:bot,stroke:up?'#2ad1c0':'#f3b8c0','stroke-width':2.5});
+ el('rect',{x:x-7,y:Math.min(o,c),width:14,height:Math.max(3,Math.abs(c-o)),fill:up?'#2ad1c0':'#f7c6cd'});
+ prev=c;x+=21;});
+el('rect',{x:940,y:prev-8,width:40,height:16,rx:3,fill:'#2ad1c0'});
+// time axis
+el('rect',{x:0,y:510,width:980,height:30,fill:'#10131a'});
+for(let t=60;t<980;t+=90)el('rect',{x:t,y:521,width:30,height:7,fill:'#5d6370',rx:2});
+</script></body></html>

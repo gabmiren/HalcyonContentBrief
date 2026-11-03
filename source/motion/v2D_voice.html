@@ -1,0 +1,84 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="common.css">
+<style>
+.q{position:absolute;left:0;width:960px;top:0;height:250px;line-height:250px !important;text-align:center;white-space:nowrap;font:800 80px/1.05 Poppins;letter-spacing:-.025em;color:#FFFFFF}
+.a{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.bigA{font:800 128px/1.02 Poppins;letter-spacing:-.035em}
+.cy{color:#00FBF4;text-shadow:0 0 36px rgba(0,251,244,.35)}
+.subA{margin-top:30px;font:500 36px/1.35 Poppins;color:#AFAFAF}
+.a .segc{width:820px;box-sizing:border-box}
+.a .segc .sg{font-size:34px}
+.dot{width:30px;height:30px;border-radius:15px;background:#00FBF4;box-shadow:0 0 18px rgba(0,251,244,.6);margin:0 12px}
+</style></head><body>
+<div id="st">
+ <canvas id="bg" width="1080" height="1920"></canvas>
+ <div class="lab abs" id="eye" style="left:0;width:1080px;text-align:center;top:330px;padding-left:.16em">Halcyon Dynamic</div>
+ <div class="flare" id="fl" style="left:540px;top:1060px"></div>
+ <div class="pan" id="pq" style="top:420px;height:250px"><div class="halo" id="haloq" style="opacity:.5"></div><div class="pbg"></div>
+  <div class="q" id="q0">Passed your eval?</div>
+  <div class="q" id="q1">Account size?</div>
+  <div class="q" id="q2">Drawdown?</div>
+  <div class="q" id="q3">Consistency rule?</div>
+  <div class="q" id="q4">Daily loss limit?</div>
+  <div class="q" id="q5">And the split?</div>
+ </div>
+ <div class="pan" id="pa" style="top:720px;height:640px"><div class="halo" id="haloa"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw"></div></div>
+  <div class="a" id="dots" style="flex-direction:row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  <div class="a" id="a0"><div class="bigA">Cool,<br><span class="cy">my guy.</span></div></div>
+  <div class="a" id="a1"><div class="bigA" style="font-size:112px">Now <span class="cy">you</span><br>make the rules.</div></div>
+  <div class="a" id="a2"><div class="segc" id="sz"><div class="segi"></div><div class="sg">50K</div><div class="sg">75K</div><div class="sg">100K</div><div class="sg">150K</div></div><div class="subA" id="a2s">Pick after you pass.</div></div>
+  <div class="a" id="a3"><div class="segc" id="dt"><div class="segi"></div><div class="sg">Trailing</div><div class="sg">End of day</div></div><div class="bigA" id="a3s" style="margin-top:56px;font-size:104px">Your <span class="cy">call.</span></div></div>
+  <div class="a" id="a4"><div class="bigA" id="a4b" style="font-size:118px"><span class="cy">Optional.</span></div><div class="segc" id="cr" style="width:520px;margin-top:56px"><div class="segi"></div><div class="sg">Off</div><div class="sg">On</div></div></div>
+  <div class="a" id="a5"><div class="bigA" id="a5b" style="font-size:112px">Never heard<br><span class="cy">of her!</span></div><div class="subA" id="a5s"></div></div>
+  <div class="a" id="a6"><div id="pct" class="cy" style="font:800 250px/1 Poppins;letter-spacing:-.045em">90%</div><div style="margin-top:6px;font:700 54px/1 Poppins">reward split</div><div class="subA" id="a6s" style="font-size:28px;color:#7E8787">Upgrade fee applies after you pass.</div></div>
+ </div>
+ <div id="end">
+  <div class="wm" style="top:560px">HALCYON DYNAMIC</div>
+  <div class="big" style="top:660px">One eval.<br><span style="color:#00FBF4">Your rules.</span></div>
+  <div class="urlw" style="top:960px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1080px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="base.js"></script><script src="bgs.js"></script><script src="fx.js"></script>
+<script>
+// Music: Sub Clair phonk instrumental from 14.961s, 82.5 BPM. Drop lands at 1.449s.
+const DROP=1.4488,BPv=0.7272,Bn=n=>DROP+BPv*n;
+const T_END=Bn(16),T_FIN=Bn(21);
+const CH=[0,2,4,6,8,10,13].map(Bn),DOWNS=[...Array(9)].map((_,k)=>Bn(2*k));
+$('ds').textContent=DISC;
+const ctx=$('bg').getContext('2d');
+// question panel: [id,in,out]; answer panel: [id,in,out]
+const QS=[['q0',0.1,Bn(4)],['q1',Bn(4),Bn(6)],['q2',Bn(6),Bn(8)],['q3',Bn(8),Bn(10)],['q4',Bn(10),Bn(13)],['q5',Bn(13),T_END]];
+const AS=[['a0',Bn(0),Bn(2)],['a1',Bn(2),Bn(4)],['a2',Bn(4)+.12,Bn(6)],['a3',Bn(6)+.12,Bn(8)],['a4',Bn(8.5),Bn(10)],['a5',Bn(10)+BPv,Bn(13)],['a6',Bn(13)+BPv*.5,T_END]];
+QS.forEach(([id])=>words($(id)));
+function q(t,[id,a,b]){const el=$(id),i=E(P(t,a,.3)),o=IN(P(t,b-.12,.18));el.style.visibility=t>=a-.01&&t<b+.08?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*50-o*50}px)`;el.style.filter=`blur(${(1-i)*6+o*6}px)`;
+ const lit0=id==='q0'?DROP-0.5:a+.05;[...el.children].forEach((w,k)=>{w.style.color=t>=lit0+k*BPv/4?'#FFFFFF':'#3B4445';});}
+function ans(t,[id,a,b]){const el=$(id),i=P(t,a,.32),o=IN(P(t,b-.12,.18));el.style.visibility=t>=a-.01&&t<b+.08?'visible':'hidden';el.style.opacity=C(i*3)*(1-o);el.style.transform=`scale(${(0.9+0.1*B(i))*(1-0.05*o)})`;el.style.filter=`blur(${(1-E(i))*8+o*6}px)`;}
+window.seek=function(t){
+ drift(t);bgCandles(ctx,t,bgPulseAt(t,DOWNS));
+ const endOut=IN(P(t,T_END-.25,.25)),inQ=E(P(t,0,.5));
+ // the question panel opens alone, the answer panel drops in on the drop
+ const pq=$('pq'),pa=$('pa');
+ const qk=CH.filter(c=>t>=c).map(c=>Math.exp(-8*(t-c))).pop()||0;
+ const qs=IO(P(t,0,DROP)),qy=L(380,0,qs);
+ pq.style.opacity=inQ*(1-endOut);pq.style.transform=`translateY(${qy}px) scale(${1+0.03*qk-0.06*endOut})`;
+ const ai=E(P(t,DROP-.05,.35));pa.style.opacity=ai*(1-endOut);pa.style.transform=`translateY(${(1-ai)*120}px) scale(${(0.92+0.08*ai)*(1+0.025*qk)*(1-0.06*endOut)})`;
+ $('eye').style.opacity=inQ*(1-endOut);$('eye').style.transform=`translateY(${qy}px)`;
+ $('haloa').style.opacity=0.6+0.4*bgPulseAt(t,DOWNS);
+ sweepAt($('sw'),t,CH.filter(a=>t>=a-.01).pop()??-9,.7);
+ flareAt($('fl'),t,[DROP,Bn(10)+BPv,T_END].filter(a=>t>=a-.1).pop()??-9,.6);
+ QS.forEach(s=>q(t,s));AS.forEach(s=>ans(t,s));
+ // answers that move on the beat
+ segAt($('sz'),t,[[0,0],[Bn(4.5),1],[Bn(5),2],[Bn(5.5),3]]);fadeIn($('a2s'),t,Bn(5.5),.3,16,0);
+ segAt($('dt'),t,[[0,0],[Bn(6.5),1],[Bn(7),0],[Bn(7.25),1]]);const cs=t>=Bn(7.5)?B(P(t,Bn(7.5),.35)):0;$('a3s').style.opacity=C(P(t,Bn(7.5),.08));$('a3s').style.transform=`scale(${cs})`;
+ segAt($('cr'),t,[[0,0],[Bn(9.25),1]]);
+ const dw=[[Bn(8)+.15,Bn(8.5)],[Bn(10)+.15,Bn(10)+BPv]].find(([a,b])=>t>=a-.05&&t<b+.05);const dd=$('dots');dd.style.visibility=dw?'visible':'hidden';
+ if(dw){const k=E(P(t,dw[0],.15))*(1-C(P(t,dw[1]-.08,.08)));dd.style.opacity=k;[...dd.children].forEach((d,i)=>{const ph=Math.sin((t-dw[0])*11-i*1.1);d.style.transform=`translateY(${-14*Math.max(0,ph)}px)`;d.style.opacity=0.45+0.55*Math.max(0,ph);});}
+ fadeIn($('a5s'),t,Bn(12),.35,20,0);
+ $('pct').textContent=Math.round(90*E(P(t,Bn(13)+BPv*.5,.75)))+'%';fadeIn($('a6s'),t,Bn(14.5),.35,16,0);
+ // end card
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
+ growPill($('dc'),$('dct'),t,Bn(17),0);$('lib').style.opacity=E(P(t,Bn(18),.4));
+};
+seek(0);
+</script></body></html>

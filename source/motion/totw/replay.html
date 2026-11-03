@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../common.css">
+<style>
+#cap{position:absolute;left:60px;width:960px;top:150px;height:150px;display:flex;align-items:center;justify-content:center;text-align:center;font:700 58px/1.12 Poppins;letter-spacing:-.02em}
+#cap span{color:#3B4445}#cap span.on{color:#FFFFFF}#cap span.cy.on{color:#00FBF4}
+.tag{display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:24px;font:600 22px/1 Poppins;letter-spacing:.14em;border:1.5px solid rgba(0,251,244,.35);color:#AFAFAF;margin-right:12px}
+.tag.on{background:rgba(0,251,244,.14);color:#00FBF4;border-color:#00FBF4}
+.pill{position:absolute;height:54px;padding:0 24px;display:flex;align-items:center;justify-content:center;border-radius:27px;font:700 26px/1 Poppins;letter-spacing:.06em;white-space:nowrap}
+#pS{background:linear-gradient(180deg,#5FFFF9,#00D9D3);color:#04100F;box-shadow:0 0 26px rgba(0,251,244,.55)}
+#pX{background:#FFFFFF;color:#04100F;box-shadow:0 0 22px rgba(255,255,255,.35)}
+.row{position:absolute;left:56px;right:56px;height:72px;display:flex;align-items:center;font:600 36px/1 Poppins;color:#7E8787}
+.row .ck{width:46px;height:46px;border-radius:23px;border:2px solid rgba(0,251,244,.35);margin-right:26px;display:flex;align-items:center;justify-content:center;flex:none}
+.row .ck svg{width:26px;height:26px;opacity:0}
+.row.on{color:#FFFFFF}.row.on .ck{background:#00FBF4;border-color:#00FBF4;box-shadow:0 0 20px rgba(0,251,244,.6)}.row.on .ck svg{opacity:1}
+.kv{position:absolute;left:56px;right:56px;display:flex;justify-content:space-between;align-items:baseline;font:500 34px/1 Poppins;color:#AFAFAF}
+.kv b{font:700 52px/1 Poppins;color:#FFFFFF}
+#hero{position:absolute;left:0;width:1080px;top:0;height:1920px}
+</style></head><body>
+<div id="st">
+ <canvas id="bg" width="1080" height="1920"></canvas>
+ <div class="flare" id="fl" style="left:540px;top:900px"></div>
+ <div id="cap"></div>
+ <!-- hook and result -->
+ <div id="hero">
+  <div class="gw" style="left:60px;top:760px"><div class="gp" id="hook" style="height:120px;border-radius:60px;font:800 64px/1 Poppins"><span id="hookt" style="padding:0 56px">Trade of the week</span></div></div>
+  <div class="abs" id="res" style="left:0;width:1080px;top:640px;text-align:center">
+   <div style="font:800 300px/1 Poppins;letter-spacing:-.05em;color:#00FBF4;text-shadow:0 0 60px rgba(0,251,244,.4)"><span id="cnt">64</span></div>
+   <div style="margin-top:6px;font:800 92px/1 Poppins;letter-spacing:-.03em">points</div>
+   <div class="gw" style="left:60px;position:relative;margin-top:44px"><div class="gp" id="nq"><span id="nqt" style="padding:0 44px">on the Nasdaq</span></div></div>
+  </div>
+ </div>
+ <!-- chart replay panel -->
+ <div class="pan" id="pc" style="top:330px;height:900px">
+  <div class="halo" style="opacity:.5"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw1"></div></div>
+  <div class="abs" style="left:40px;top:36px;display:flex"><span class="tag on">REPLAY</span><span class="tag">NASDAQ 100</span><span class="tag">5M</span></div>
+  <canvas id="ch" width="960" height="900" style="position:absolute;left:0;top:0"></canvas>
+  <div class="pill" id="pS">SHORT</div><div class="pill" id="pX">EXIT</div>
+  <div class="abs" style="left:40px;width:880px;top:812px;height:6px;border-radius:3px;background:rgba(0,251,244,.15)"><div id="scr" style="height:6px;width:880px;border-radius:3px;background:linear-gradient(90deg,#0A6E6B,#00FBF4);box-shadow:0 0 12px rgba(0,251,244,.7);transform-origin:0 50%"></div><div id="knob" style="position:absolute;top:-9px;width:24px;height:24px;margin-left:-12px;border-radius:12px;background:#00FBF4;box-shadow:0 0 16px rgba(0,251,244,.8)"></div></div>
+  <div class="abs" style="left:40px;top:838px;font:600 24px/1 Poppins;color:#AFAFAF" id="tnow">0:00</div>
+  <div class="abs" style="right:40px;top:838px;font:600 24px/1 Poppins;color:#7E8787">2:45</div>
+ </div>
+ <!-- checklist, then result -->
+ <div class="pan" id="pk" style="top:1270px;height:470px">
+  <div class="pbg"></div><div class="swc"><div class="sw" id="sw2"></div></div>
+  <div id="list">
+   <div class="lab abs" style="left:56px;top:40px">The plan</div>
+   <div class="row" id="k0" style="top:84px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Bearish FVG</div>
+   <div class="row" id="k1" style="top:158px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>50% pullback</div>
+   <div class="row" id="k2" style="top:232px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Short entry</div>
+   <div class="row" id="k3" style="top:306px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>20 EMA trail</div>
+   <div class="row" id="k4" style="top:380px"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#04100F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Exit on close</div>
+  </div>
+  <div id="resp">
+   <div class="lab abs" style="left:56px;top:40px">Result</div>
+   <div class="kv" style="top:104px"><span>Duration</span><b id="dur">2h 45m</b></div>
+   <div class="abs" id="segs" style="left:56px;right:56px;top:180px;height:14px;display:flex;gap:4px"></div>
+   <div class="kv" style="top:250px"><span>Strategy</span><b>50% FVG</b></div>
+   <div class="kv" style="top:350px"><span>Result</span><b style="color:#00FBF4" id="rpts">+64 pts</b></div>
+  </div>
+ </div>
+ <!-- reply panel -->
+ <div class="pan" id="pr" style="top:620px;height:560px">
+  <div class="halo" style="opacity:.6"></div><div class="pbg"></div>
+  <div class="abs" style="left:56px;top:56px;width:96px;height:96px;border-radius:48px;background:linear-gradient(180deg,#5FFFF9,#00D9D3);display:flex;align-items:center;justify-content:center;font:800 50px/1 Poppins;color:#04100F;box-shadow:0 0 30px rgba(0,251,244,.5)">H</div>
+  <div class="abs" style="left:176px;top:68px;font:700 38px/1 Poppins">Halcyon</div>
+  <div class="abs" style="left:176px;top:116px;font:500 26px/1 Poppins;color:#7E8787">asks the Discord</div>
+  <div class="abs" id="qtxt" style="left:56px;width:848px;top:200px;font:700 62px/1.15 Poppins;letter-spacing:-.02em"></div>
+  <div class="gw" style="left:0;top:420px"><div class="gp" id="dsc"><span id="dsct" style="padding:0 44px">Tell us in the Discord</span></div></div>
+ </div>
+ <div id="end">
+  <div class="wm" style="top:520px">HALCYON · TRADE OF THE WEEK</div>
+  <div class="big" style="top:610px">64 points<br><span style="color:#00FBF4">on the Nasdaq</span></div>
+  <div class="urlw" style="top:880px"><div class="url" id="strat" style="overflow:hidden;white-space:nowrap;padding:0;background:none;border:2px solid #00FBF4;color:#00FBF4;box-shadow:0 0 24px rgba(0,251,244,.3)"><span id="stratt" style="padding:0 44px">Reversal on 50% of FVG</span></div></div>
+  <div class="urlw" style="top:1000px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="ex" style="top:1130px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">EXAMPLE TRADE · SIMULATED ACCOUNT</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="../base.js"></script><script src="../bgs.js"></script><script src="../fx.js"></script>
+<script src="chart.js"></script><script src="wd.js"></script><script src="core.js"></script>
+<script>
+$('ds').textContent=DISC;
+const bgx=$('bg').getContext('2d'),cx=$('ch').getContext('2d');
+const segs=$('segs');for(let i=0;i<33;i++){const d=document.createElement('div');d.style.cssText='flex:1;border-radius:3px;background:rgba(0,251,244,.15)';segs.appendChild(d);}
+words($('hookt'));
+window.CAP_ID='cap';window.CAP_AVOID=['pS','pX','hook','res','pr'];
+const L1=W(1,0),L2=W(2,0),L6=W(6,0),L7=W(7,0);
+const DOWNS=[...Array(40)].map((_,k)=>L1+k*1.932);
+const Q8='Do you use the 20 EMA to trail your trades?';
+let lastCap=null;
+window.seek=function(t){
+ drift(t);bgAurora(bgx,t,0.4*bgPulseAt(t,DOWNS));
+ const endOut=IN(P(t,T_END-.25,.3));
+ // captions (hidden for the hook, the result and the reply panel)
+ const c=capAt(t),capOn=c&&c.l>=2&&c.l<=6&&t<T_END-.1;
+ const cap=$('cap');cap.style.visibility=capOn?'visible':'hidden';
+ if(capOn){const key=c.t0;if(lastCap!==key){cap.innerHTML='<div>'+capWords(c,t).map(([w])=>`<span class="${/^(20|50%|64|EMA|short|gap)$/.test(w)?'cy':''}">${w}</span>`).join(' ')+'</div>';lastCap=key;}
+  const lit=capWords(c,t);[...cap.firstChild.children].forEach((s,k)=>s.classList.toggle('on',lit[k][1]));}
+ // hook pill grows, words light on the voice
+ const hk=$('hook');growPill(hk,$('hookt'),t,0.15,0);const ho=IN(P(t,L1-.15,.25));hk.style.opacity=C(P(t,0.15,.1))*(1-ho);hk.style.transform=`scale(${1-0.15*ho})`;
+ [...$('hookt').children].forEach((w,i)=>{w.style.color=t>=W(0,i)?'#FFFFFF':'#3B4445';});
+ // result: counter rolls with "sixty four points"
+ const ri=E(P(t,L1-.05,.35)),ro=IN(P(t,L2-.35,.3));const rs=$('res');rs.style.opacity=ri*(1-ro);rs.style.transform=`scale(${(0.85+0.15*B(P(t,L1-.05,.4)))*(1-0.25*ro)}) translateY(${-ro*120}px)`;rs.style.visibility=t>L1-.1&&t<L2+.1?'visible':'hidden';
+ $('cnt').textContent=Math.round(64*E(P(t,W(1,0),We(1,2)-W(1,0))));
+ growPill($('nq'),$('nqt'),t,W(1,3),0);
+ flareAt($('fl'),t,[L1,L2,L6,L7,T_END].filter(a=>t>=a-.1).pop()??-9,.6);
+ // chart panel in on line 3, out for the reply
+ const pin=E(P(t,L2-.3,.5)),pout=IN(P(t,L7-.3,.3));const pc=$('pc');pc.style.opacity=pin*(1-pout);pc.style.transform=`translateY(${(1-pin)*120}px) scale(${0.94+0.06*pin-0.05*pout})`;pc.style.visibility=t>L2-.35&&t<L7+.1?'visible':'hidden';
+ sweepAt($('sw1'),t,[ST.fvg,ST.short,ST.exit].filter(a=>t>=a-.01).pop()??-9,.7);
+ cx.clearRect(0,0,960,900);
+ const zi=IO(P(t,ST.pb1,3.2));const V={i0:L(8,40,zi),i1:N+4,p0:PMIN-14,p1:PMAX+14};
+ const m=drawChart(cx,t,{x:30,y:110,w:900,h:670},V);
+ popAt($('pS'),t,ST.short,m.xs(D.E),m.ys(D.MID)-52);
+ popAt($('pX'),t,ST.exit,m.xs(X),m.ys(D.h[X])-46);
+ const hm=holdMins(t),fr=hm/165;$('scr').style.transform=`scaleX(${fr})`;$('knob').style.left=(880*fr)+'px';$('tnow').textContent=`${Math.floor(hm/60)}:${String(Math.floor(hm%60)).padStart(2,'0')}`;
+ // checklist ticks as each step is spoken, then the result card
+ const kin=E(P(t,L2,.5)),kout=IN(P(t,L7-.3,.3));const pk=$('pk');pk.style.opacity=kin*(1-kout);pk.style.transform=`translateY(${(1-kin)*120}px)`;pk.style.visibility=t>L2-.05&&t<L7+.1?'visible':'hidden';
+ [ST.fvg,ST.half,ST.short,ST.ema,ST.exit].forEach((a,i)=>{const r=$('k'+i);r.classList.toggle('on',t>=a);r.style.opacity=C(P(t,L2+.1+i*.12,.3));r.querySelector('.ck').style.transform=`scale(${t>=a?B(P(t,a,.3)):1})`;});
+ const sw=t>=L6-.1;$('list').style.opacity=1-C(P(t,L6-.15,.15));$('resp').style.opacity=C(P(t,L6-.05,.2));$('resp').style.visibility=sw?'visible':'hidden';
+ sweepAt($('sw2'),t,sw?L6:-9,.7);
+ const dn=Math.floor(33*E(P(t,W(6,0),We(6,5)-W(6,0))));[...segs.children].forEach((d,i)=>{d.style.background=i<dn?'#00FBF4':'rgba(0,251,244,.15)';d.style.boxShadow=i<dn?'0 0 8px rgba(0,251,244,.6)':'none';});
+ const mm=Math.round(165*E(P(t,W(6,0),We(6,5)-W(6,0))));$('dur').textContent=`${Math.floor(mm/60)}h ${String(mm%60).padStart(2,'0')}m`;
+ // reply panel types the question, then the Discord pill grows
+ const qi=E(P(t,L7-.2,.45));const pr=$('pr');pr.style.opacity=qi*(1-endOut);pr.style.transform=`translateY(${(1-qi)*100}px) scale(${1-0.05*endOut})`;pr.style.visibility=t>L7-.25&&t<T_END+.1?'visible':'hidden';
+ const nch=Math.round(Q8.length*C((t-W(7,0))/(We(7,9)-W(7,0))));$('qtxt').textContent=Q8.slice(0,nch)+(t<We(7,9)+.4&&t>=L7&&Math.floor(t*3)%2?'|':'');
+ growPill($('dsc'),$('dsct'),t,W(7,10),0);
+ // end card
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,DUR-T_END)}px)`;
+ growPill($('strat'),$('stratt'),t,T_END+.35,0);growPill($('dc'),$('dct'),t,T_END+.75,0);$('ex').style.opacity=E(P(t,T_END+1.1,.4));
+};
+seek(0);
+</script></body></html>

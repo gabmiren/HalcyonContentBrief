@@ -1,0 +1,31 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#05080A}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Poppins;color:#FFFFFF}
+canvas{position:absolute;left:0;top:0}
+.abs{position:absolute}
+.lab{font:600 24px/1 Poppins;letter-spacing:.16em;text-transform:uppercase;color:#7E8787;white-space:pre}
+.pan{position:absolute;left:60px;width:960px;border-radius:44px}
+.pbg{position:absolute;inset:0;border-radius:44px;background:linear-gradient(172deg,rgba(0,74,72,.62) 0%,rgba(6,18,20,.92) 36%,rgba(3,8,9,.95) 100%);box-shadow:0 50px 110px rgba(0,0,0,.65),0 0 90px rgba(0,190,185,.14),inset 0 1.5px 0 rgba(255,255,255,.10),inset 0 0 0 1.5px rgba(0,251,244,.16)}
+.halo{position:absolute;left:-140px;right:-140px;top:-120px;bottom:-120px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,190,185,.22),rgba(0,120,118,.08) 60%,rgba(0,90,90,0))}
+.gw{position:absolute;left:0;width:960px;display:flex;justify-content:center}
+.gp{height:92px;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;flex:none;border-radius:46px;font:700 40px/1 Poppins;border:1.5px solid rgba(0,251,244,.75);background:linear-gradient(180deg,rgba(0,110,107,.55),rgba(4,14,15,.92));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.16),0 0 40px rgba(0,190,185,.35)}
+.gp span{flex:none}
+.chip{display:flex;align-items:center;justify-content:center;height:84px;border-radius:42px;font:700 34px/1 Poppins;border:1.5px solid rgba(0,251,244,.28);background:rgba(4,14,15,.7);color:#AFAFAF}
+.chip.on{border-color:#00FBF4;color:#04100F;background:linear-gradient(180deg,#5FFFF9,#00D9D3);box-shadow:0 0 30px rgba(0,251,244,.45)}
+/* end card */
+#end{position:absolute;inset:0}
+.wm{position:absolute;left:0;width:1080px;text-align:center;font:600 30px/1 Poppins;letter-spacing:.32em;padding-left:.32em;color:#AFAFAF}
+.big{position:absolute;left:0;width:1080px;text-align:center;font:800 104px/1.04 Poppins;letter-spacing:-.03em}
+.urlw{position:absolute;left:0;width:1080px;display:flex;justify-content:center}
+.url{height:88px;display:inline-flex;align-items:center;justify-content:center;padding:0 48px;border-radius:44px;font:700 34px/1 Poppins;color:#04100F;background:linear-gradient(180deg,#5FFFF9,#00D9D3);box-shadow:0 0 40px rgba(0,251,244,.35)}
+.ds{position:absolute;left:150px;width:780px;text-align:center;font:500 22px/1.5 Poppins;color:#7E8787}
+/* segmented control with a sliding highlight */
+.segc{position:relative;display:flex;border-radius:46px;border:1.5px solid rgba(0,251,244,.28);background:rgba(4,14,15,.72);padding:6px}
+.sg{flex:1;height:78px;display:flex;align-items:center;justify-content:center;font:700 32px/1 Poppins;color:#AFAFAF;position:relative;z-index:2;white-space:nowrap}
+.sg.on{color:#04100F}
+.segi{position:absolute;top:6px;height:78px;border-radius:39px;background:linear-gradient(180deg,#5FFFF9,#00D9D3);box-shadow:0 0 30px rgba(0,251,244,.45);z-index:1}
+/* light sweep inside a glass panel */
+.swc{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.sw{position:absolute;top:-20%;bottom:-20%;width:38%;left:31%;background:linear-gradient(90deg,rgba(0,251,244,0),rgba(150,255,250,.16),rgba(0,251,244,0));opacity:0}
+/* soft flare */
+.flare{position:absolute;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(closest-side,rgba(170,255,252,.55),rgba(0,251,244,.18) 40%,rgba(0,251,244,0));opacity:0;pointer-events:none;mix-blend-mode:screen}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halcyon content drafts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#050505;color:#fff;font-family:Inter,Helvetica,Arial,sans-serif}
+a{color:#00FBF4}
+header{max-width:1180px;margin:0 auto;padding:36px 20px 8px}
+header .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#AFAFAF;margin:0 0 8px}
+header h1{font-size:34px;margin:0 0 8px;letter-spacing:-.01em}
+header p{color:#AFAFAF;margin:0;font-size:15px;max-width:760px;line-height:1.5}
+nav.tabs{position:sticky;top:0;z-index:5;background:rgba(5,5,5,.92);backdrop-filter:blur(6px);border-bottom:1px solid #1d1d1d}
+nav.tabs div{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:8px;flex-wrap:wrap}
+nav.tabs a{text-decoration:none;color:#fff;border:1px solid #2a2a2a;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600}
+nav.tabs a b{color:#00FBF4;margin-left:6px}
+main{max-width:1180px;margin:0 auto;padding:10px 20px 80px}
+section{padding-top:34px}
+.sec-head{display:flex;align-items:baseline;gap:12px}
+h2{font-size:28px;margin:0}
+.share{color:#00FBF4;font-weight:800;font-size:22px}
+.desc{color:#AFAFAF;margin:6px 0 4px;font-size:15px}
+h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#AFAFAF;margin:26px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:#0c0c0c;border:1px solid #1f1f1f;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.media{background:#000;aspect-ratio:9/16}
+.media video{width:100%;height:100%;display:block;background:#000}
+.info{padding:14px 16px 16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px;border:1px solid #2c2c2c;color:#cfcfcf}
+.chip.ai{border-color:#555;color:#fff}
+.chip.ok{background:#00FBF4;color:#000;border-color:#00FBF4}
+.chip.warn{border-color:#00FBF4;color:#00FBF4}
+.chip.hold{border-color:#AFAFAF;color:#AFAFAF}
+.chip.bad{background:#fff;color:#000;border-color:#fff}
+.chip.new{background:#00FBF4;color:#000;border-color:#00FBF4}
+h4{margin:0 0 4px;font-size:18px}
+.sub{margin:0 0 10px;color:#AFAFAF;font-size:13px}
+.info ul{margin:0;padding-left:18px;color:#ddd;font-size:13.5px;line-height:1.55}
+.refs{margin-top:14px;font-size:13px;color:#AFAFAF;display:flex;flex-wrap:wrap;gap:6px 14px}
+.chars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:18px}
+.chars figure{margin:0;background:#0c0c0c;border:1px solid #1f1f1f;border-radius:16px;overflow:hidden}
+.chars img{width:100%;display:block}
+.chars figcaption{padding:12px 16px;font-size:14px;color:#AFAFAF}.chars b{color:#fff;margin-right:6px}
+.card.wide{flex-direction:row;flex-wrap:wrap}
+.card.wide .phone{flex:0 0 auto;width:min(400px,100%);padding:16px}
+.card.wide .info{flex:1 1 320px}
+.viewport{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;border-radius:12px;border:1px solid #222;background:#000;touch-action:pan-y}
+.track{display:flex;height:100%;transition:transform .35s ease}
+.slide{flex:0 0 100%;height:100%;position:relative;overflow:hidden}
+.scaler{position:absolute;left:0;top:0;width:1080px;height:1440px;transform-origin:0 0}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid #333;background:rgba(0,0,0,.6);color:#fff;font-size:22px;cursor:pointer}
+.nav:hover{border-color:#00FBF4;color:#00FBF4}.prev{left:8px}.next{right:8px}.nav[disabled]{opacity:.25;cursor:default}
+.dots{display:flex;gap:8px;justify-content:center;margin:12px 0 4px}
+.dot{width:9px;height:9px;border-radius:50%;background:#333;border:0;padding:0;cursor:pointer}.dot[aria-current="true"]{background:#00FBF4}
+.count{text-align:center;color:#AFAFAF;font-size:13px}
+.lab{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#AFAFAF;margin:16px 0 8px}
+pre{white-space:pre-wrap;background:#050505;border:1px solid #222;border-radius:12px;padding:14px;font:13.5px/1.55 Inter,Helvetica,Arial,sans-serif;margin:0}
+.copy{margin-top:10px;background:#00FBF4;color:#000;border:0;border-radius:10px;padding:10px 16px;font-weight:700;font-size:14px;cursor:pointer}
+".compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;margin-top:18px}
+.compare figure{margin:0;background:#0c0c0c;border:1px solid #1f1f1f;border-radius:16px;overflow:hidden}
+.compare img{width:100%;display:block}
+.compare figcaption{padding:12px 16px;font-size:14px;color:#AFAFAF}.compare b{color:#fff;margin-right:6px}
+.card.notes{margin-top:18px}
+footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:#6f6f6f;font-size:13px}
+</style>
+</head>
+<body>
+<header><p class="eyebrow">Halcyon Trader Funding · new TikTok account · Miren Partners</p>
+<h1>Content drafts</h1>
+<p>Every draft built so far from the content pillars brief, with its status and review notes from 3 Nov 2026. Reference posts belong to other creators and are linked to show the format works; we never copy them.</p></header>
+<nav class="tabs" aria-label="Pillars"><div><a href="#community">Community &amp; Proof<b>40%</b></a><a href="#entertainment">Entertainment<b>40%</b></a><a href="#education">Education<b>10%</b></a><a href="#promo">Promo<b>10%</b></a></div></nav>
+<main><section id="community"><div class="sec-head"><h2>Community &amp; Proof</h2><span class="share">40%</span></div><p class="desc">The founder, real traders and the community on camera. Every post invites people into the Discord.</p><h3>Founder talking head</h3><div class="grid"><article class="card">
+<div class="media"><video src="media/proof1-no-closed-beta.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft · needs your OK</span><span class="chip warn">Needs changes</span></div>
+<h4>Why no closed beta</h4><p class="sub">Founder short · from Steve's Arena video · 24 s</p><ul><li>Safe message, founder on camera, Discord end card</li><li>Fix: crop to 9:16 so Steve fills the frame, 3 to 5 word captions, readable disclaimer</li><li>Posts once counsel clears the Arena wording</li></ul></div></article><article class="card">
+<div class="media"><video src="media/proof2-arena-rewards.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft · needs compliance OK</span><span class="chip hold">On hold</span></div>
+<h4>How fast are Arena rewards</h4><p class="sub">Founder short · from Steve's Arena video · 21 s</p><ul><li>"You literally could be paid the same day" is a payout-speed claim</li><li>Promotes Arena's seat-funded pool</li><li>Needs Halcyon's written OK and counsel first</li></ul></div></article></div><h3>Founder tier list</h3><p class="desc" style="margin:-4px 0 14px">Steve ranks one trading topic from S to F (setups, habits, sessions) while the tier list fills in below him. Easy to run as a series, and every ranking gets people talking in the comments. No ranking other prop firms.</p><p class="lab" style="margin:0 0 10px">Examples from other creators, not Halcyon drafts</p><div class="grid"><article class="card">
+<div class="media"><video src="media/ex-tierlist-setups.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Ranking trading setups</h4><p class="sub">By <a href="https://www.tiktok.com/@sellingrips/video/7691740202875882783">@sellingrips on TikTok</a></p><ul><li>Solo founder at a desk, tier list fills the bottom half</li><li>Each setup gets a small chart as it lands in its row</li><li>Closest match for Steve</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-tierlist-stocks.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Ranking stocks</h4><p class="sub">By <a href="https://www.tiktok.com/@_russellckai/video/7642209212478573845">@_russellckai on TikTok</a></p><ul><li>Phone-camera selfie, fast and casual</li><li>Title on screen the whole time: "ranking stocks tier list"</li><li>Shows how low the production bar can be</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-tierlist-strategies.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Ranking trading strategies</h4><p class="sub">By <a href="https://www.tiktok.com/@kingzeltzin_6/video/7670271908440509717">@kingzeltzin_6 on TikTok</a></p><ul><li>Two hosts trade opinions on each pick</li><li>Disagreements keep people watching and commenting</li><li>Works if Steve brings on a guest or a team member</li></ul></div></article></div><h3>Profitable or not profitable</h3><p class="desc" style="margin:-4px 0 14px">Steve, or a trader from the Discord, hears a quick list of trading habits and calls each one profitable or not, with a one-line reason. A big tick or cross pops up for every answer. Fast to film, and people jump into the comments to argue the calls.</p><p class="lab" style="margin:0 0 10px">Examples from other creators, not Halcyon drafts</p><div class="grid"><article class="card">
+<div class="media"><video src="media/ex-pnp-expo.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Expo guest, quick fire</h4><p class="sub">By <a href="https://www.tiktok.com/@wayondtv/video/7623424230847237394">@wayondtv on TikTok</a></p><ul><li>Host reads a habit off his phone, the guest calls it in one or two words</li><li>Big tick or cross pops on every answer</li><li>Quick cutaways to other guests keep the pace up</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-pnp-sitdown.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Sit-down version</h4><p class="sub">By <a href="https://www.tiktok.com/@wayondtv/video/7613034553493523730">@wayondtv on TikTok</a></p><ul><li>Two chairs by a window, calmer and more premium</li><li>Same list, more room for the guest to explain</li><li>Easiest to film with Steve in an office</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-pnp-floor.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Event floor</h4><p class="sub">By <a href="https://www.tiktok.com/@wayondtalks/video/7674638334735551762">@wayondtalks on TikTok</a></p><ul><li>Shot at a trading expo with a branded mic</li><li>Guest gives a short reason after each call</li><li>Fits any meetup or event Halcyon attends</li></ul></div></article></div><h3>Founder reacts to a clip</h3><p class="desc" style="margin:-4px 0 14px">Steve plays a viral trading clip (a blown account, a revenge trade, a flex) and gives his honest take as a founder. It borrows the attention the clip already has and shows how he thinks. Use TikTok stitch or duet so the original creator is credited, and skip clips from other prop firms or ones that show earnings.</p><p class="lab" style="margin:0 0 10px">Examples from other creators, not Halcyon drafts</p><div class="grid"><article class="card">
+<div class="media"><video src="media/ex-react-revenge.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Reacting to a revenge-trading clip</h4><p class="sub">By <a href="https://www.tiktok.com/@danielholmestrades/video/7469766820224978192">@danielholmestrades on TikTok</a></p><ul><li>The clip plays small over his shot, then he talks to camera</li><li>Turns someone else's mistake into his own rules</li><li>Bold captions with one key word highlighted</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-react-lambo.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Reacting to a lifestyle flex</h4><p class="sub">By <a href="https://www.tiktok.com/@danielholmestrades/video/7455656190224157970">@danielholmestrades on TikTok</a></p><ul><li>Calls out a "month 1 to month 12" Lamborghini clip</li><li>Grounded take: it takes time, unfollow the flex pages</li><li>Fits Halcyon's no-earnings-claims line well</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-react-split.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Split-screen reaction</h4><p class="sub">By <a href="https://www.tiktok.com/@thebigdaddymax/video/7683139024256535839">@thebigdaddymax on TikTok</a></p><ul><li>Founder on top, the clip underneath the whole time</li><li>Reactions land live, no talking-head section</li><li>Lowest editing effort of the four</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-react-loss.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Reacting to a fast loss</h4><p class="sub">By <a href="https://www.tiktok.com/@jayfroneman/video/7699194939690749205">@jayfroneman on TikTok</a></p><ul><li>Title bar sets it up: "Hedge Fund COO reacts"</li><li>Plays the trade, then explains what went wrong</li><li>Answers a viewer comment on screen to keep the thread going</li></ul></div></article></div><h3>Founder reacts to news</h3><p class="desc" style="margin:-4px 0 14px">Steve answers one market headline in a single take: CPI, a Fed decision, jobs data, a big move in oil or the indices. The question sits in a caption box the whole time, and he explains what it means for futures traders. Simple to film on a phone at his desk. Keep it to explaining what happened, with no predictions or trade calls.</p><p class="lab" style="margin:0 0 10px">Examples from other creators, not Halcyon drafts</p><div class="grid"><article class="card">
+<div class="media"><video src="media/ex-news-ipo-money.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Explaining a big company headline</h4><p class="sub">By <a href="https://www.tiktok.com/@alexisanddean/video/7702147565600443661">@alexisanddean on TikTok</a></p><ul><li>The viewer's question sits in a caption box for the whole video</li><li>Shot on a phone at his desk, news on the TV behind him</li><li>Plain, calm explanation in about a minute</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-news-market-down.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: "Why is the market down this week?"</h4><p class="sub">By <a href="https://www.tiktok.com/@alexisanddean/video/7696962249792998686">@alexisanddean on TikTok</a></p><ul><li>Ties the week's drop to a few clear causes</li><li>Hand gestures and the TV keep a static shot moving</li><li>Closest fit for Halcyon: a futures trader's view of the week</li></ul></div></article><article class="card">
+<div class="media"><video src="media/ex-news-ipo-story.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Example</span><span class="chip hold">Not ours</span></div>
+<h4>Example: Longer take on the same story</h4><p class="sub">By <a href="https://www.tiktok.com/@alexisanddean/video/7701036629175143711">@alexisanddean on TikTok</a></p><ul><li>Four and a half minutes, same setup</li><li>Shows the format holds even when it runs long</li><li>For Halcyon, keep most to under 90 seconds</li></ul></div></article></div><div class="refs"><span>Works in the niche:</span><a href="https://www.tiktok.com/@elevatebasics/video/7229676115785207045">Prop firm CEO on trader habits</a> <a href="https://www.tiktok.com/@ak.nq/video/7699491375506525470">Trader story</a> <a href="https://www.tiktok.com/@tizztrades/video/7702143469627723028">"Did you take W or L?"</a> <a href="https://www.tiktok.com/@chibotai/video/7701012021239680286">Street interview</a></div></section><section id="entertainment"><div class="sec-head"><h2>Entertainment</h2><span class="share">40%</span></div><p class="desc">Two recurring AI characters, Cyan and Mark, in three formats: tutorials, memes and ads. Always labelled as AI; they never pose as customers.</p><div class="chars"><figure><img src="media/char-cyan.jpg" alt="Character sheet of Cyan: a tall man with teal hair, handlebar mustache and a charcoal three-piece suit"><figcaption><b>Cyan</b> deadpan gentleman · memes</figcaption></figure>
+<figure><img src="media/char-mark.jpg" alt="Character sheet of Mark: a young man in a grey hoodie with the hood up, joggers and white sneakers"><figcaption><b>Mark</b> young trader host · tutorials</figcaption></figure></div><h3>Tutorials</h3><div class="grid"><article class="card">
+<div class="media"><video src="media/tutorial-mark-says-hi.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft · voice being fixed</span><span class="chip ai">AI</span><span class="chip warn">Needs changes</span></div>
+<h4>Mark says hi</h4><p class="sub">Mark · intro to the tutorial series · 12 s</p><ul><li>"Make the most out of Halcyon… so you can do the same" reads as an AI customer implying results</li><li>Rewrite: "I'm Mark, an AI character. One futures rule a week, under 30 seconds."</li><li>Hide the Apple logo; AI label on</li></ul></div></article></div><h3>Meme with AI character</h3><div class="grid"><article class="card">
+<div class="media"><video src="media/meme1-touch-grass.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip ai">AI</span><span class="chip ok">Close to ready</span></div>
+<h4>Touch grass</h4><p class="sub">Cyan · first post · 12 s</p><ul><li>Already the approved Cyan v5 look</li><li>Pigeons forming a double top, then "Short." is a trader-only joke</li><li>Add a Discord end card; needs Halcyon's OK on Cyan</li></ul></div></article><article class="card">
+<div class="media"><video src="media/meme2-done-for-the-day.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip ai">AI</span><span class="chip warn">Needs changes</span></div>
+<h4>Done for the day</h4><p class="sub">Cyan · when the trade hits target · 15 s</p><ul><li>Discipline punchline works</li><li>Swap the cigarette for a coffee cup and the explosion for a calmer backdrop</li><li>Match Cyan v5 hair</li></ul></div></article></div><div class="refs"><span>Works in the niche:</span><a href="https://www.tiktok.com/@maxsancho1/video/7699137365456981278">Expectation vs reality</a> <a href="https://www.tiktok.com/@vinc_nq/video/7698108253888089376">Trader-vs-family joke</a> <a href="https://www.tiktok.com/@kojiro_0o/video/7696582759455657248">Market-day reaction</a></div><h3>Meme + caption</h3><div class="grid"><article class="card">
+<div class="media"><video src="media/meme3-life-after-profit.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip new">New</span></div>
+<h4>Life after taking profit</h4><p class="sub">Viral clip + one-line caption · 21 s</p><ul><li>Caption box on top, the clip in the middle, Halcyon logo below</li><li>Easy to make weekly from trending clips</li><li>The clip belongs to someone else: credit or license it before posting</li></ul></div></article></div><h3>Recreated memes</h3><p class="desc" style="margin:-4px 0 14px">A meme that already worked, remade with our AI character. The original sits next to the remake so you can compare.</p><div class="grid"><article class="card">
+<div class="media"><video src="media/recreate-original.mp4#t=1" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip new">Original</span><span class="chip hold">Not ours</span></div>
+<h4>Original · 83.6K views</h4><p class="sub">By <a href="https://www.tiktok.com/@danielholmestrades/video/7657167264470371604">@danielholmestrades on TikTok</a></p><ul><li>83.6K views and 3.6K likes on 3 Nov</li><li>"When she's crashing out but you're in drawdown"</li><li>The trading screen behind him is what makes the joke land</li></ul></div></article><article class="card">
+<div class="media"><video src="media/recreate-remake.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip ai">AI</span><span class="chip new">New</span></div>
+<h4>Remake with our AI character</h4><p class="sub">Higgsfield Genjutsu motion transfer · 15 s</p><ul><li>Same movement and timing as the original, played by our AI character</li><li>Trading screen rebuilt in post: price rallies back into the red zone</li><li>Copy added to match the original</li></ul></div></article></div><h3>Ads</h3><div class="grid"><article class="card">
+<div class="media"><video src="media/ad-forgot-to-close.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip ai">AI</span><span class="chip bad">Retire</span></div>
+<h4>Forgot to close the trade</h4><p class="sub">POV with sound design · Halloween · 23 s</p><ul><li>Says "relax" because positions auto-close, but the help center says an account not flat by 4:45 PM fails</li><li>Halloween is over; old character, code HWN, "Halcyon Trading", old disclaimer</li><li>Reuse the panic footage for an honest rules explainer</li></ul></div></article></div></section><section id="education"><div class="sec-head"><h2>Education</h2><span class="share">10%</span></div><p class="desc">Short explainers people save for later.</p><h3>Explainers</h3><div class="grid"><article class="card">
+<div class="media"><video src="media/edu1-evaluation-checks.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft · being rebuilt</span><span class="chip warn">Needs changes</span></div>
+<h4>What an evaluation checks</h4><p class="sub">Motion graphics · 20 s</p><ul><li>No audio track: add voice or a Commercial Music Library track</li><li>Soften "Most people fail", swap to Halcyon's disclaimer, Discord end card</li><li>Add a "save this" prompt</li></ul></div></article><article class="card">
+<div class="media"><video src="media/edu2-arena-two-sessions.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft · needs compliance OK</span><span class="chip hold">On hold</span></div>
+<h4>Why Arena has two sessions</h4><p class="sub">Founder short · from Steve's Arena video · 35 s</p><ul><li>Session times match the help center</li><li>Trim to about 20 s; drop the cyan highlight on "$10,000, $15,000, $20,000 in profit"</li><li>Waits on counsel's Arena sign-off</li></ul></div></article></div><h3>Trade of the Week</h3><p class="desc" style="margin:-4px 0 14px">A weekly reel that tells one trader's trade as a calm process story: the setup, the wait, the entry, how it was managed, the exit. Same script and voice as the approved 18th Street series, in Halcyon's glow style. The result is shown in points, since a dollar figure reads as an earnings claim. This is an example trade for illustration; the real series needs the trader's written OK and their actual chart.</p><div class="grid"><article class="card">
+<div class="media"><video src="media/totw-founder.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft · founder to film</span><span class="chip new">New</span></div>
+<h4>Founder reply</h4><p class="sub">Chart on top, founder below · 39 s</p><ul><li>The bottom half is a placeholder that talks with the voice; swap in Steve filmed chest-up and keep the layout</li><li>Opens on a Discord comment and a "Halcyon breaks down this week's top trade" title box</li><li>A light trade log highlights "50% of the fair value gap" and "20 EMA" as they're spoken</li></ul></div></article><article class="card">
+<div class="media"><video src="media/totw-replay.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip new">New</span></div>
+<h4>Replay panels</h4><p class="sub">Chart replay in glass panels · 39 s</p><ul><li>The trade plays back with a 0:00 to 2:45 scrubber while a checklist ticks off each step</li><li>Flips to a result card, then a reply card types the question</li><li>Closest to the approved 18th Street default</li></ul></div></article><article class="card">
+<div class="media"><video src="media/totw-faceless.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip new">New</span></div>
+<h4>Faceless edit</h4><p class="sub">Founder-edit pacing, no presenter · 39 s</p><ul><li>Hard cuts between chart framings with a slow push in each shot</li><li>Giant "64 points" on the drop and "No early exit" one word at a time</li><li>Proof card with highlight sweeps, then the question card</li></ul></div></article></div><div class="refs"><span>Works in the niche:</span><a href="https://www.tiktok.com/@thequantbuilder/video/7699030814419422497">Myth-buster</a> <a href="https://www.tiktok.com/@diegotradez/video/7699193253261790478">The math of an evaluation</a> <a href="https://www.tiktok.com/@thedigital..lpn1/video/7697662424081681667">Real-life metaphor</a></div></section><section id="promo"><div class="sec-head"><h2>Promo</h2><span class="share">10%</span></div><p class="desc">One product or offer per post. Every price, rule and code is checked with Halcyon first.</p><h3>Ours: current draft plus 4 new motion options</h3><p class="desc" style="margin:-4px 0 14px">All four now use the glow-panel system from 18th Street (living background, glass panels, one hero at a time), recoloured to Halcyon cyan and Poppins. D keeps your original script in Halcyon's voice. Every change lands on the beat of its track. Backgrounds: aurora for A and B, candle field for C and D. Music is the three Sub Clair / Pixabay-style tracks you sent; confirm with Halcyon before posting, since their compliance doc asks for TikTok Commercial Music Library audio. Facts read from the site on 3 Nov; no prices shown.</p><div class="grid"><article class="card">
+<div class="media"><video src="media/promo-dynamic.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Draft</span><span class="chip ok">Close to ready</span></div>
+<h4>Halcyon Dynamic (current)</h4><p class="sub">Your best seller in 20 s · unchanged</p><ul><li>Best-looking draft; values match the site ($3,000 target, $2,000 drawdown, 1 day)</li><li>Audio is silent: add a track</li><li>Confirm "Traders' top choice" and "no daily loss limit" wording, then compliance review</li></ul></div></article><article class="card">
+<div class="media"><video src="media/promo-dynamic-v2A_builder.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Reworked</span><span class="chip new">New</span></div>
+<h4>Option A · The Builder</h4><p class="sub">Aurora · Sub Clair "Technology" · 15.5 s</p><ul><li>One glass panel the whole way: headline words light up on the drop, the evaluation rows cascade, a progress bar fills to "You passed"</li><li>Reward-account builder with sliding highlights: size steps 50K to 150K one per half-beat while the drawdown counts up, then drawdown type and consistency slide on the beat</li><li>Light sweeps and flares on the drop, the pass and the stats; the Discord pill grows on the end card</li></ul></div></article><article class="card">
+<div class="media"><video src="media/promo-dynamic-v2B_fork.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Reworked</span><span class="chip new">New</span></div>
+<h4>Option B · The Fork</h4><p class="sub">Aurora · Sub Clair "Technology" · 15.5 s</p><ul><li>The line draws up through the intro and the node flares on the drop; rule tags pop on the next three beats</li><li>"Passed" grows over the node, then the line forks into four sizes on half-beats and a spark runs up to 100K</li><li>The camera dives through the node into the stats, then the end card</li></ul></div></article><article class="card">
+<div class="media"><video src="media/promo-dynamic-v2C_card.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Reworked</span><span class="chip new">New</span></div>
+<h4>Option C · The Card</h4><p class="sub">Candle field · "The Mountain" · 16 s</p><ul><li>The card rises, lights on the drop and fills in row by row; "Passed" grows, then the card turns over in 3D</li><li>Four reward-account cards deal on half-beats and a ring hops across them to land on 150K</li><li>150K grows back into the main card; rule toggles slide on downbeats, then the stats and end card</li></ul></div></article><article class="card">
+<div class="media"><video src="media/promo-dynamic-v2D_voice.mp4" controls playsinline preload="metadata"></video></div>
+<div class="info"><div class="chips"><span class="chip">Reworked</span><span class="chip new">New</span></div>
+<h4>Option D · Their voice</h4><p class="sub">Candle field · Sub Clair phonk instrumental · 16.7 s</p><ul><li>Your original script, now in the glow style: the question sits in a top panel, the answer drops into the panel below</li><li>A typing indicator holds the beat before the punchlines ("Optional.", "Never heard of her!")</li><li>A new question every two beats (1.45 s) instead of every 2 s, with sliding controls for size, drawdown and consistency</li></ul></div></article></div><div class="refs"><span>Works in the niche:</span><a href="https://www.tiktok.com/@fundednext/video/7694625035557932309">Rules explainer (prop firm)</a></div></section></main>
+<footer>Halcyon offers simulated educational accounts. Results not guaranteed. T&amp;C apply.</footer>
+<script>
+(function(){
+  var track=document.getElementById('track'), vp=document.getElementById('vp');if(!track)return;
+  var n=track.children.length, i=0, dots=document.getElementById('dots'), count=document.getElementById('count');
+  for(var k=0;k<n;k++){var b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Go to slide '+(k+1));(function(k){b.onclick=function(){go(k)}})(k);dots.appendChild(b);}
+  function fit(){var s=vp.clientWidth/1080;Array.prototype.forEach.call(document.querySelectorAll('.scaler'),function(el){el.style.transform='scale('+s+')'});}
+  function go(k){i=Math.max(0,Math.min(n-1,k));track.style.transform='translateX('+(-100*i)+'%)';
+    Array.prototype.forEach.call(dots.children,function(d,j){d.setAttribute('aria-current',j===i?'true':'false')});
+    count.textContent=(i+1)+' / '+n;document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===n-1;}
+  document.getElementById('prev').onclick=function(){go(i-1)};document.getElementById('next').onclick=function(){go(i+1)};
+  vp.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1);});
+  var x0=null;vp.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  vp.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(i+(dx<0?1:-1));x0=null;});
+  window.addEventListener('resize',fit);fit();go(0);
+  document.getElementById('copyBtn').onclick=function(){var b=this;try{navigator.clipboard.writeText(document.getElementById('cap').textContent).then(function(){b.textContent='Copied'},function(){b.textContent='Select and copy the text above'})}catch(e){b.textContent='Select and copy the text above'}};
+})();
+</script>
+</body>
+</html>

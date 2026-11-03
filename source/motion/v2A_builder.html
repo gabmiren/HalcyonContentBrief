@@ -1,0 +1,106 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="common.css">
+<style>
+#hd{position:absolute;left:70px;width:820px;top:370px;text-align:center;font:800 100px/1.06 Poppins;letter-spacing:-.03em;color:#3B4445}
+.layer{position:absolute;inset:0}
+.row{position:absolute;left:70px;width:820px;height:118px;display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid rgba(0,251,244,.12)}
+.row .k{font:500 36px/1 Poppins;color:#AFAFAF}.row .v{font:700 54px/1 Poppins;color:#FFFFFF}
+.sl{position:absolute;left:70px;font:600 24px/1 Poppins;letter-spacing:.16em;color:#7E8787;text-transform:uppercase}
+.sc{position:absolute;left:70px;width:820px}
+#railw{position:absolute;left:150px;width:780px;top:1470px}
+#rail{position:absolute;left:0;width:780px;top:20px;height:4px;background:rgba(0,251,244,.15);border-radius:2px}
+#railf{position:absolute;left:0;top:0;height:4px;width:780px;background:linear-gradient(90deg,#0A6E6B,#00FBF4);box-shadow:0 0 14px rgba(0,251,244,.7);transform-origin:0 50%;border-radius:2px}
+.node{position:absolute;top:0;width:44px;height:44px;border-radius:22px;border:3px solid rgba(0,251,244,.5);background:#05080A}
+.nl{position:absolute;top:70px;width:400px;text-align:center;font:600 24px/1 Poppins;letter-spacing:.14em;color:#7E8787}
+</style></head><body>
+<div id="st">
+ <canvas id="bg" width="1080" height="1920"></canvas>
+ <div class="flare" id="fl" style="left:540px;top:900px"></div>
+ <div class="lab abs" id="eye" style="left:0;width:1080px;text-align:center;top:300px;padding-left:.16em">Halcyon Dynamic</div>
+ <div class="pan" id="p1" style="top:420px;height:960px">
+  <div class="halo" id="halo"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw"></div></div>
+  <div class="layer" id="s0"><div id="hd">Pick your rules after you pass.</div></div>
+  <div class="layer" id="s1">
+   <div class="sl" style="top:110px">Step 1 · One evaluation</div>
+   <div class="row" id="r0" style="top:180px"><span class="k">Account size</span><span class="v">$50K</span></div>
+   <div class="row" id="r1" style="top:298px"><span class="k">Profit target</span><span class="v">$3,000</span></div>
+   <div class="row" id="r2" style="top:416px"><span class="k">Drawdown</span><span class="v">$2,000</span></div>
+   <div class="row" id="r3" style="top:534px"><span class="k">Minimum days</span><span class="v">1</span></div>
+   <div class="abs lab" id="progl" style="left:70px;top:700px;color:#AFAFAF">Profit target progress</div>
+   <div class="abs" id="prog" style="left:70px;width:820px;top:742px;height:6px;border-radius:3px;background:rgba(0,251,244,.12)"><div id="progf" style="height:6px;width:820px;border-radius:3px;background:linear-gradient(90deg,#0A6E6B,#00FBF4);box-shadow:0 0 14px rgba(0,251,244,.7);transform-origin:0 50%"></div></div>
+   <div class="gw" style="top:800px"><div class="gp" id="pass"><span id="passt">You passed</span></div></div>
+  </div>
+  <div class="layer" id="s2">
+   <div class="sl" style="top:84px">Step 2 · Build your reward account</div>
+   <div class="sl" style="top:160px;color:#AFAFAF">Size</div>
+   <div class="sc segc" id="sz" style="top:198px"><div class="segi"></div><div class="sg">50K</div><div class="sg">75K</div><div class="sg">100K</div><div class="sg">150K</div></div>
+   <div class="sc" style="top:332px;display:flex;align-items:baseline;justify-content:space-between"><span style="font:500 34px/1 Poppins;color:#AFAFAF">Drawdown</span><span id="ddn" style="font:800 66px/1 Poppins">$2,000</span></div>
+   <div class="sl" style="top:470px;color:#AFAFAF">Drawdown type</div>
+   <div class="sc segc" id="dt" style="top:508px"><div class="segi"></div><div class="sg">Trailing</div><div class="sg">End of day</div></div>
+   <div class="sl" style="top:660px;color:#AFAFAF">Consistency rule</div>
+   <div class="sc segc" id="cr" style="top:698px"><div class="segi"></div><div class="sg">Off</div><div class="sg">On</div></div>
+  </div>
+  <div class="layer" id="s3">
+   <div class="sc" id="st1" style="top:120px"><div style="font:800 88px/1.04 Poppins;letter-spacing:-.025em">No daily<br>loss limit!</div></div>
+   <div class="abs" id="dv" style="left:70px;width:820px;top:520px;height:2px;background:rgba(0,251,244,.3);transform-origin:0 50%"></div>
+   <div class="sc" id="st2" style="top:580px;display:flex;align-items:baseline;gap:28px"><span id="pct" style="font:800 176px/1 Poppins;letter-spacing:-.045em;color:#00FBF4;text-shadow:0 0 40px rgba(0,251,244,.35)">90%</span><span style="font:600 46px/1.15 Poppins">reward<br>split</span></div>
+   <div class="sc" id="st3" style="top:860px;font:500 26px/1 Poppins;color:#7E8787">Upgrade fee applies after you pass.</div>
+  </div>
+ </div>
+ <div id="railw"><div id="rail"><div id="railf"></div></div><div class="node" id="n0" style="left:-22px"></div><div class="node" id="n1" style="left:758px"></div><div class="nl" id="l0" style="left:-200px">EVALUATION</div><div class="nl" id="l1" style="left:580px">REWARD ACCOUNT</div></div>
+ <div id="end">
+  <div class="wm" style="top:560px">HALCYON DYNAMIC</div>
+  <div class="big" style="top:660px">One eval.<br><span style="color:#00FBF4">Your rules.</span></div>
+  <div class="urlw" style="top:960px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1080px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="base.js"></script><script src="bgs.js"></script><script src="fx.js"></script>
+<script>
+// Music: Sub Clair "Technology" from 29.852s, 124.2 BPM. Drop (beat 65 of the track) lands at 1.932s.
+const DROP=1.9319, BPv=0.48298, Bn=n=>DROP+BPv*n, DOWNS=[...Array(9)].map((_,k)=>Bn(4*k));
+const T_S1=Bn(4),T_PROG=Bn(6),T_PASS=Bn(8),T_S2=Bn(9),T_S3=Bn(16),T_END=Bn(20),T_FIN=Bn(28);
+$('ds').textContent=DISC; words($('hd'));
+const ctx=$('bg').getContext('2d');
+function layer(id,t,a,b,dy=40){const i=E(P(t,a,.32)),o=IN(P(t,b-.12,.2));const el=$(id);el.style.visibility=t>=a-.01&&t<b+.1?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*dy-o*dy*.6}px) scale(${0.97+0.03*i})`;el.style.filter=`blur(${(1-i)*6+o*6}px)`;}
+window.seek=function(t){
+ drift(t);bgAurora(ctx,t,bgPulseAt(t,DOWNS));
+ const inA=E(P(t,0,.7)),push=IO(P(t,0,DROP)),out=IN(P(t,T_END-.25,.3));
+ const p1=$('p1');p1.style.opacity=inA*(1-out);
+ const kick=Math.exp(-7*Math.max(0,t-DROP))*(t>=DROP?1:0);
+ p1.style.transform=`translateY(${(1-push)*140}px) scale(${(0.86+0.14*push)*(1-0.12*out)+0.02*kick+0.008*Math.sin(t*1.1)})`;
+ $('halo').style.opacity=0.6+0.4*bgPulseAt(t,DOWNS);
+ $('eye').style.opacity=inA*(1-out);
+ // light sweeps and flares on the big moments
+ const sw=[DROP,T_PASS,T_S3].filter(a=>t>=a-.01).pop();sweepAt($('sw'),t,sw??-9,.75);
+ const fa=[DROP,T_PASS,T_END].filter(a=>t>=a-.1).pop();flareAt($('fl'),t,fa??-9,.6);
+ // headline: grey words arrive in the intro, light up on half-beats from the drop
+ layer('s0',t,0,T_S1);
+ [...$('hd').children].forEach((w,i)=>{const pre=E(P(t,.2+i*.22,.3)),lit=t>=DROP+i*BPv/2;w.style.opacity=pre;w.style.transform=`translateY(${(1-pre)*26}px)`;w.style.color=lit?(i>=3?'#00FBF4':'#FFFFFF'):'#3B4445';});
+ // step 1: rows cascade on half-beats, progress fills, pass pill grows on the downbeat
+ layer('s1',t,T_S1,T_S2);
+ for(let i=0;i<4;i++){const a=E(P(t,T_S1+i*BPv/2,.35));const r=$('r'+i);r.style.opacity=a*(1-0.55*P(t,T_PASS,.25));r.style.transform=`translateX(${(1-a)*70}px)`;}
+ const pa=E(P(t,T_PROG-.2,.3));$('prog').style.opacity=pa;$('progl').style.opacity=pa;$('progf').style.transform=`scaleX(${IO(P(t,T_PROG,T_PASS-T_PROG))})`;
+ growPill($('pass'),$('passt'),t,T_PASS);
+ // step 2: sliding highlights, one move per beat
+ layer('s2',t,T_S2,T_S3);
+ const si=segAt($('sz'),t,[[0,0],[Bn(10),1],[Bn(10.5),2],[Bn(11),3]]);
+ const ddv=[2000,2500,3000,4000];const dpos=[[Bn(10),1],[Bn(10.5),2],[Bn(11),3]].reduce((p,[a,i])=>L(p,i,E(P(t,a,.32))),0);
+ const lo=Math.floor(dpos),hi=Math.min(3,lo+1);$('ddn').textContent='$'+(Math.round(L(ddv[lo],ddv[hi],dpos-lo)/10)*10).toLocaleString('en-US');
+ segAt($('dt'),t,[[0,0],[Bn(13),1]]);segAt($('cr'),t,[[0,0],[Bn(15),1]]);
+ // step 3: stats in the same panel
+ layer('s3',t,T_S3,T_END);
+ fadeIn($('st1'),t,T_S3,.4,40,6);$('dv').style.transform=`scaleX(${E(P(t,Bn(17),.5))})`;
+ fadeIn($('st2'),t,Bn(18),.4,40,6);$('pct').textContent=Math.round(90*E(P(t,Bn(18),.8)))+'%';
+ fadeIn($('st3'),t,Bn(19),.4,20,0);
+ // step rail below the panel
+ const rv=E(P(t,T_S1-.2,.4))*(1-out);$('railw').style.opacity=rv;
+ const rl=E(P(t,T_PASS,.6));$('railf').style.transform=`scaleX(${rl})`;
+ const on=(id,b)=>{$(id).style.background=b?'#00FBF4':'#05080A';$(id).style.boxShadow=b?'0 0 20px rgba(0,251,244,.7)':'none';};on('n0',t>=T_S1);on('n1',rl>.97);
+ $('l0').style.color=t>=T_S1&&t<T_S2?'#FFFFFF':'#7E8787';$('l1').style.color=t>=T_S2?'#FFFFFF':'#7E8787';
+ // end card: lands on the downbeat, Discord pill grows on the next beat
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
+ growPill($('dc'),$('dct'),t,Bn(21),0);$('lib').style.opacity=E(P(t,Bn(22),.4));
+};
+seek(0);
+</script></body></html>

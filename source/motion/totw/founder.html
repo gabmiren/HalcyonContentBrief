@@ -1,0 +1,118 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../common.css">
+<style>
+#top{position:absolute;left:0;top:0;width:1080px;height:960px;overflow:hidden}
+#bot{position:absolute;left:0;top:960px;width:1080px;height:960px;overflow:hidden}
+#cap{position:absolute;left:0;width:1080px;top:927px;height:0;display:flex;justify-content:center;align-items:center;z-index:5}
+#cap span{display:inline-block;padding:14px 30px;border-radius:16px;background:rgba(0,0,0,.72);font:600 52px/1 Poppins;color:#FFFFFF;white-space:nowrap;transform:translateY(-50%)}
+.pill{position:absolute;height:54px;padding:0 24px;display:flex;align-items:center;justify-content:center;border-radius:27px;font:700 26px/1 Poppins;letter-spacing:.06em;white-space:nowrap}
+#pS{background:linear-gradient(180deg,#5FFFF9,#00D9D3);color:#04100F;box-shadow:0 0 26px rgba(0,251,244,.55)}
+#pX{background:#FFFFFF;color:#04100F}
+.giant{position:absolute;left:0;width:1080px;text-align:center;font:900 220px/0.92 Poppins;letter-spacing:-.05em;text-transform:uppercase}
+.lg{position:absolute;left:90px;width:900px;border-radius:28px;background:#F2F5F5;color:#04100F;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.lg .r{display:flex;justify-content:space-between;align-items:center;padding:22px 40px;font:600 32px/1 Poppins;border-top:1.5px solid #DDE3E3;position:relative}
+.lg .r span:first-child{color:#5E6A6A;font-weight:500}
+.mk{position:absolute;left:24px;right:24px;top:8px;bottom:8px;border-radius:12px;background:rgba(0,251,244,.38);transform-origin:0 50%}
+.r b{position:relative}
+</style></head><body>
+<div id="st">
+ <div id="top">
+  <canvas id="bg" width="1080" height="1920" style="position:absolute;left:0;top:0"></canvas>
+  <canvas id="ch" width="1080" height="960" style="position:absolute;left:0;top:0"></canvas>
+  <div class="pill" id="pS">SHORT</div><div class="pill" id="pX">EXIT</div>
+  <div class="flare" id="fl" style="left:540px;top:480px"></div>
+  <!-- opening comment card -->
+  <div class="pan" id="cm" style="top:300px;height:250px"><div class="pbg"></div>
+   <div class="abs" style="left:48px;top:48px;width:80px;height:80px;border-radius:40px;background:#2A3436;display:flex;align-items:center;justify-content:center;font:700 38px/1 Poppins;color:#AFAFAF">T</div>
+   <div class="abs" style="left:152px;top:56px;font:600 26px/1 Poppins;color:#7E8787">Comment from the Discord</div>
+   <div class="abs" style="left:152px;top:100px;width:760px;font:700 50px/1.15 Poppins">What was the best trade this week?</div>
+  </div>
+  <div id="res"><div class="giant" style="top:250px;color:#00FBF4;text-shadow:0 0 70px rgba(0,251,244,.45)"><span id="cnt">64</span></div><div class="giant" style="top:460px;font-size:140px">points</div></div>
+  <div class="giant" id="no" style="top:300px;font-size:330px;color:#FFFFFF;text-shadow:0 0 60px rgba(255,255,255,.25)">No</div>
+  <!-- light trade log -->
+  <div class="lg" id="lg" style="top:420px">
+   <div style="display:flex;justify-content:space-between;align-items:center;padding:26px 40px"><span style="font:700 24px/1 Poppins;letter-spacing:.16em;color:#5E6A6A">TRADE LOG</span><span style="font:700 22px/1 Poppins;letter-spacing:.1em;padding:10px 18px;border-radius:18px;background:#04100F;color:#00FBF4">EXAMPLE TRADE</span></div>
+   <div class="r"><div class="mk" id="m0"></div><span style="position:relative">Entry</span><b>50% of the fair value gap</b></div>
+   <div class="r"><div class="mk" id="m1"></div><span style="position:relative">Trail</span><b>20 EMA</b></div>
+   <div class="r"><span>Exit</span><b>Close back above the 20 EMA</b></div>
+  </div>
+  <div class="pan" id="pf" style="top:250px;height:460px"><div class="halo" style="opacity:.6"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw"></div></div>
+   <div class="abs" style="left:0;width:960px;top:70px;text-align:center"><div class="lab">From plan to profit</div><div style="margin-top:30px;font:800 150px/1 Poppins;letter-spacing:-.04em;color:#00FBF4;text-shadow:0 0 50px rgba(0,251,244,.35)" id="dur">2h 45m</div><div style="margin-top:24px;font:600 40px/1 Poppins;color:#AFAFAF">+64 points · 50% FVG</div></div>
+  </div>
+  <div class="pan" id="qc" style="top:230px;height:520px"><div class="halo" style="opacity:.6"></div><div class="pbg"></div>
+   <div class="abs" style="left:56px;top:56px;width:84px;height:84px;border-radius:42px;background:linear-gradient(180deg,#5FFFF9,#00D9D3);display:flex;align-items:center;justify-content:center;font:800 44px/1 Poppins;color:#04100F">H</div>
+   <div class="abs" style="left:164px;top:80px;font:700 36px/1 Poppins">Halcyon</div>
+   <div class="abs" style="left:56px;width:848px;top:180px;font:700 58px/1.15 Poppins;letter-spacing:-.02em">Do you use the <span style="color:#00FBF4">20 EMA</span> to trail your trades?</div>
+   <div class="gw" style="left:0;top:390px"><div class="gp" id="dsc"><span id="dsct" style="padding:0 44px">Tell us in the Discord</span></div></div>
+  </div>
+ </div>
+ <div id="bot">
+  <canvas id="fd" width="1080" height="960"></canvas>
+  <div class="abs" style="left:40px;top:860px;height:56px;padding:0 24px;border-radius:28px;border:2px dashed rgba(0,251,244,.6);display:flex;align-items:center;font:700 24px/1 Poppins;letter-spacing:.16em;color:#00FBF4">FOUNDER · PLACEHOLDER</div>
+ </div>
+ <!-- title box on the seam -->
+ <div class="abs" id="tb" style="left:140px;width:800px;top:850px;padding:28px 0;border-radius:24px;background:#FFFFFF;color:#04100F;text-align:center;font:800 54px/1.12 Poppins;letter-spacing:-.02em;z-index:6;box-shadow:0 20px 60px rgba(0,0,0,.5)">Halcyon breaks down<br><span style="color:#008F8A">this week's top trade</span></div>
+ <div id="cap"></div>
+ <div id="end">
+  <div class="wm" style="top:520px">HALCYON · TRADE OF THE WEEK</div>
+  <div class="big" style="top:610px">64 points<br><span style="color:#00FBF4">on the Nasdaq</span></div>
+  <div class="urlw" style="top:880px"><div class="url" id="strat" style="overflow:hidden;white-space:nowrap;padding:0;background:none;border:2px solid #00FBF4;color:#00FBF4;box-shadow:0 0 24px rgba(0,251,244,.3)"><span id="stratt" style="padding:0 44px">Reversal on 50% of FVG</span></div></div>
+  <div class="urlw" style="top:1000px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="ex" style="top:1130px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">EXAMPLE TRADE · SIMULATED ACCOUNT</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="../base.js"></script><script src="../bgs.js"></script><script src="../fx.js"></script>
+<script src="chart.js"></script><script src="wd.js"></script><script src="core.js"></script>
+<script>
+$('ds').textContent=DISC;
+const bgx=$('bg').getContext('2d'),cx=$('ch').getContext('2d'),fx=$('fd').getContext('2d');
+window.CAP_ID='cap';window.CAP_AVOID=['tb','lg','pf','qc','pS','pX'];
+const L1=W(1,0),L2=W(2,0),L6=W(6,0),L7=W(7,0);
+const SH=[[0,0,34],[L2,0,N+4],[W(2,7),30,S+10],[W(3,0),S-12,S+16],[W(3,6),S-4,S+6],[W(3,12),S-8,iE+10],[W(3,23),iE-9,iE+7],[W(4,0),S-6,N+3],[W(4,9),S-16,N+4],[W(5,3),S-10,N+3],[W(5,10),X-12,X+4],[L6,S-16,N+4]];
+function shotAt(t){let k=0;for(let i=0;i<SH.length;i++)if(t>=SH[i][0])k=i;const nx=SH[k+1]?SH[k+1][0]:DUR;return [SH[k],P(t,SH[k][0],Math.max(.5,nx-SH[k][0]))];}
+function viewFor(i0,i1,push,t){const r=rev(t);i1=Math.min(i1,Math.max(i0+24,r+8));const c=(i0+i1)/2,hw=(i1-i0)/2*(1-0.07*push);const a=Math.max(0,Math.floor(c-hw)),b=Math.min(N-1,Math.ceil(c+hw));let lo=1e9,hi=-1e9;const bb=Math.max(a+3,Math.min(b,Math.floor(r)));for(let i=a;i<=bb;i++){lo=Math.min(lo,D.l[i]);hi=Math.max(hi,D.h[i]);}const m=(hi-lo)*0.2+4;return {i0:c-hw,i1:c+hw,p0:lo-m,p1:hi+m};}
+// founder placeholder: a line-drawn figure that talks along with the voice
+function talk(t){for(const L of WD)for(const [w,a,b] of L)if(t>=a&&t<=b)return 0.35+0.65*Math.abs(Math.sin((t-a)*16));return 0;}
+function drawFounder(t){fx.clearRect(0,0,1080,960);const g=fx.createLinearGradient(0,0,0,960);g.addColorStop(0,'#071012');g.addColorStop(1,'#020405');fx.fillStyle=g;fx.fillRect(0,0,1080,960);
+ const sp=talk(t),nod=Math.sin(t*1.7)*12+sp*5,cx0=540+Math.sin(t*.9)*16;
+ fx.save();fx.strokeStyle='rgba(0,251,244,.75)';fx.lineWidth=5;fx.lineCap='round';fx.shadowColor='rgba(0,251,244,.6)';fx.shadowBlur=14;
+ fx.beginPath();fx.moveTo(150,960);fx.bezierCurveTo(190,700,360,640,cx0,640);fx.bezierCurveTo(720,640,890,700,930,960);fx.stroke();
+ fx.beginPath();fx.moveTo(cx0-70,640);fx.lineTo(cx0-60,560);fx.moveTo(cx0+70,640);fx.lineTo(cx0+60,560);fx.stroke();
+ fx.beginPath();fx.ellipse(cx0,390+nod,150,180,0,0,Math.PI*2);fx.stroke();
+ fx.beginPath();fx.arc(cx0-55,360+nod,10,0,Math.PI*2);fx.arc(cx0+55,360+nod,10,0,Math.PI*2);fx.fillStyle='rgba(0,251,244,.85)';fx.fill();
+ fx.beginPath();fx.ellipse(cx0,465+nod,46,4+30*sp,0,0,Math.PI*2);fx.stroke();
+ fx.restore();
+ fx.fillStyle='rgba(175,175,175,.5)';fx.font='500 26px Poppins';fx.textAlign='center';fx.fillText('Film the founder here, framed chest-up',540,120);}
+window.seek=function(t){
+ drift(t);bgAurora(bgx,t,0.3+0.3*Math.sin(t*1.3));
+ const inOpen=t<L1-.05,inRes=t>=L1-.05&&t<L2,inNo=t>=W(5,0)-.02&&t<W(5,3),inProof=t>=L6&&t<L7,inQ=t>=L7,inEnd=t>=T_END-.06;
+ const inLog=(t>=W(3,15)&&t<We(3,22)+.5)||(t>=W(4,2)&&t<We(4,7)+.4);
+ // chart
+ cx.clearRect(0,0,1080,960);const [sh,pu]=shotAt(t);const V=viewFor(sh[1],sh[2],pu,t);const m=drawChart(cx,t,{x:20,y:60,w:1040,h:820},V);
+ const chartFull=!(inRes||inNo||inProof||inQ||inEnd);$('ch').style.opacity=inOpen?0.3:inLog?0.35:chartFull?1:0.15;
+ popAt($('pS'),t,ST.short,m.xs(D.E),m.ys(D.MID)-52,chartFull&&!inLog);popAt($('pX'),t,ST.exit,m.xs(X),m.ys(D.h[X])-46,chartFull&&!inLog);
+ // opening comment and title box
+ $('cm').style.visibility=t<L1+.2&&!inRes?'visible':'hidden';$('cm').style.transform=`scale(${B(P(t,.1,.35))})`;
+ $('tb').style.visibility=inOpen?'visible':'hidden';$('tb').style.transform=`scale(${B(P(t,.35,.35))})`;
+ // result punch
+ $('res').style.visibility=inRes?'visible':'hidden';$('res').style.transform=`scale(${1.06-0.06*E(P(t,L1,.4))})`;$('cnt').textContent=Math.round(64*E(P(t,W(1,0),We(1,2)-W(1,0))));
+ flareAt($('fl'),t,[L1,W(5,0)].filter(a=>t>=a-.1).pop()??-9,.55);
+ // NO
+ $('no').style.visibility=inNo?'visible':'hidden';$('no').style.transform=`scale(${1.1-0.1*E(P(t,W(5,0),.25))})`;
+ // trade log with highlights
+ $('lg').style.visibility=inLog?'visible':'hidden';$('lg').style.transform=`translateY(${(1-E(P(t,t<W(4,0)?W(3,15):W(4,2),.3)))*40}px)`;
+ $('m0').style.transform=`scaleX(${t<W(4,0)?E(P(t,W(3,17),.4)):0})`;$('m1').style.transform=`scaleX(${t>=W(4,0)?E(P(t,W(4,3),.4)):0})`;
+ // proof and question
+ $('pf').style.visibility=inProof?'visible':'hidden';$('pf').style.transform=`scale(${1.04-0.04*E(P(t,L6,.4))})`;sweepAt($('sw'),t,inProof?L6+.1:-9,.7);
+ const mm=Math.round(165*E(P(t,W(6,0),We(6,5)-W(6,0))));$('dur').textContent=`${Math.floor(mm/60)}h ${String(mm%60).padStart(2,'0')}m`;
+ $('qc').style.visibility=inQ&&!inEnd?'visible':'hidden';$('qc').style.transform=`scale(${1.04-0.04*E(P(t,L7,.4))})`;growPill($('dsc'),$('dsct'),t,W(7,10),0);
+ // founder half
+ drawFounder(t);const fo=1-C(P(t,T_END-.06,.3));$('bot').style.opacity=fo;$('top').style.opacity=fo;
+ // captions on the seam
+ const c=capAt(t);const on=c&&c.l>=1&&!inRes&&!inNo&&!inEnd&&!inOpen;$('cap').style.visibility=on?'visible':'hidden';if(on)$('cap').innerHTML=`<span>${c.txt}</span>`;
+ // end card
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=inEnd?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,DUR-T_END)}px)`;
+ growPill($('strat'),$('stratt'),t,T_END+.35,0);growPill($('dc'),$('dct'),t,T_END+.75,0);$('ex').style.opacity=E(P(t,T_END+1.1,.4));
+};
+seek(0);
+</script></body></html>

@@ -1,0 +1,108 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="common.css">
+<style>
+.hl{position:absolute;left:90px;width:900px;top:250px;text-align:center;font:800 84px/1.08 Poppins;letter-spacing:-.03em}
+#card{position:absolute;border-radius:40px}
+#card .pbg,#card .halo{border-radius:40px}
+#card .swc{border-radius:40px}
+.face{position:absolute;inset:0;padding:64px}
+.mini{position:absolute;width:390px;height:280px;border-radius:32px}
+.mini .pbg{border-radius:32px}
+.mini .in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 40px}
+.big1{font:800 132px/1 Poppins;letter-spacing:-.04em}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:26px 0;border-bottom:1.5px solid rgba(0,251,244,.12)}
+.kv .k{font:500 34px/1 Poppins;color:#AFAFAF}.kv .v{font:700 46px/1 Poppins}
+.face .segc{margin-top:18px}
+#ring{position:absolute;width:390px;height:280px;border-radius:32px;border:3px solid #00FBF4;box-shadow:0 0 40px rgba(0,251,244,.5),inset 0 0 30px rgba(0,251,244,.2);pointer-events:none}
+</style></head><body>
+<div id="st">
+ <canvas id="bg" width="1080" height="1920"></canvas>
+ <div class="lab abs" id="eye" style="left:0;width:1080px;text-align:center;top:170px;padding-left:.16em">Halcyon Dynamic</div>
+ <div class="hl" id="h0">Start with one evaluation.</div>
+ <div class="hl" id="h1">Pass it.</div>
+ <div class="hl" id="h2">Pick your <span style="color:#00FBF4">reward account.</span></div>
+ <div class="hl" id="h3">Then set <span style="color:#00FBF4">your rules.</span></div>
+ <div class="hl" id="h4">Built in.</div>
+ <div class="mini" id="m0" style="left:130px;top:620px"><div class="pbg"></div><div class="in"><div style="font:800 76px/1 Poppins">50K</div><div style="margin-top:14px;font:500 30px/1.2 Poppins;color:#AFAFAF">$2,000 drawdown</div></div></div>
+ <div class="mini" id="m1" style="left:560px;top:620px"><div class="pbg"></div><div class="in"><div style="font:800 76px/1 Poppins">75K</div><div style="margin-top:14px;font:500 30px/1.2 Poppins;color:#AFAFAF">$2,500 drawdown</div></div></div>
+ <div class="mini" id="m2" style="left:130px;top:940px"><div class="pbg"></div><div class="in"><div style="font:800 76px/1 Poppins">100K</div><div style="margin-top:14px;font:500 30px/1.2 Poppins;color:#AFAFAF">$3,000 drawdown</div></div></div>
+ <div class="mini" id="m3" style="left:560px;top:940px"><div class="pbg"></div><div class="in"><div style="font:800 76px/1 Poppins;color:#00FBF4">150K</div><div style="margin-top:14px;font:500 30px/1.2 Poppins;color:#AFAFAF">$4,000 drawdown</div></div></div>
+ <div id="ring"></div>
+ <div class="flare" id="fl" style="left:540px;top:910px"></div>
+ <div id="card"><div class="halo" id="halo"></div><div class="pbg"></div><div class="swc"><div class="sw" id="sw"></div></div>
+  <div class="face" id="f0"><div class="lab">Evaluation</div><div class="big1" style="margin-top:36px" id="e50">$50K</div>
+   <div style="margin-top:40px"><div class="kv" id="k0"><span class="k">Profit target</span><span class="v">$3,000</span></div><div class="kv" id="k1"><span class="k">Drawdown</span><span class="v">$2,000</span></div><div class="kv" id="k2" style="border:0"><span class="k">Minimum days</span><span class="v">1</span></div></div></div>
+  <div class="face" id="f1" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center"><div class="lab">Next</div><div style="margin-top:30px;font:800 96px/1.05 Poppins;letter-spacing:-.03em">Reward<br>account</div><div style="margin-top:30px;font:500 36px/1.3 Poppins;color:#AFAFAF">Built your way.</div></div>
+  <div class="face" id="f2"><div class="lab">Reward account</div><div class="big1" style="margin-top:30px;color:#00FBF4">150K</div><div style="margin-top:14px;font:500 32px/1 Poppins;color:#AFAFAF">$4,000 drawdown</div>
+   <div class="lab" style="margin-top:56px;color:#AFAFAF">Drawdown type</div><div class="segc" id="dt"><div class="segi"></div><div class="sg">Trailing</div><div class="sg">End of day</div></div>
+   <div class="lab" style="margin-top:40px;color:#AFAFAF">Consistency rule</div><div class="segc" id="cr"><div class="segi"></div><div class="sg">Off</div><div class="sg">On</div></div></div>
+  <div class="face" id="f3"><div class="lab">Reward account</div>
+   <div id="r1" style="margin-top:46px;font:800 80px/1.05 Poppins;letter-spacing:-.025em">No daily<br>loss limit!</div><div id="r1s"></div>
+   <div id="r2" style="margin-top:52px;display:flex;align-items:baseline;gap:26px"><span id="pct" style="font:800 150px/1 Poppins;letter-spacing:-.04em;color:#00FBF4;text-shadow:0 0 40px rgba(0,251,244,.35)">90%</span><span style="font:600 42px/1.15 Poppins">reward<br>split</span></div></div>
+  <div class="gw" style="top:640px;left:-70px"><div class="gp" id="pass"><span id="passt" style="padding:0 10px">Passed</span></div></div>
+ </div>
+ <div class="ds abs" id="note" style="top:1440px;font-size:26px">Upgrade fee applies after you pass.</div>
+ <div id="end">
+  <div class="wm" style="top:560px">HALCYON DYNAMIC</div>
+  <div class="big" style="top:660px">One eval.<br><span style="color:#00FBF4">Your rules.</span></div>
+  <div class="urlw" style="top:960px"><div class="url" id="dc" style="overflow:hidden;white-space:nowrap;padding:0"><span id="dct" style="padding:0 48px">Questions? Join our Discord</span></div></div>
+  <div class="wm" id="lib" style="top:1080px;font-size:24px;letter-spacing:.16em;padding-left:.16em;color:#7E8787">LINK IN BIO</div>
+  <div class="ds" id="ds" style="top:1700px"></div>
+ </div>
+</div>
+<script src="base.js"></script><script src="bgs.js"></script><script src="fx.js"></script>
+<script>
+// Music: "The Mountain" from 38.464s, 150 BPM. Drop lands at 1.60s.
+const DROP=1.5998,BPv=0.39999,Bn=n=>DROP+BPv*n,DOWNS=[...Array(10)].map((_,k)=>Bn(4*k));
+const T_PASS=Bn(4),T_FLIP=Bn(6),T_DEAL=Bn(8),T_PICK=Bn(12),T_STAT=Bn(20),T_PCT=Bn(24),T_END=Bn(28),T_FIN=Bn(36);
+$('ds').textContent=DISC;words($('h0'));
+const ctx=$('bg').getContext('2d');
+const FULL={x:130,y:500,w:820,h:820},MINIS=[[130,620],[560,620],[130,940],[560,940]],MINI3={x:560,y:940,w:390,h:280};
+function head(id,t,a,b){const el=$(id),i=E(P(t,a,.32)),o=IN(P(t,b-.1,.2));el.style.visibility=t>=a-.01&&t<b+.12?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*36-o*24}px) scale(${0.96+0.04*i})`;el.style.filter=`blur(${(1-i)*6+o*4}px)`;}
+function face(id,t,a,b){const el=$(id),i=E(P(t,a,.3)),o=IN(P(t,b-.05,.18));el.style.visibility=t>=a-.01&&t<b+.12?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*24}px)`;}
+function rect(el,r){el.style.left=r.x+'px';el.style.top=r.y+'px';el.style.width=r.w+'px';el.style.height=r.h+'px';}
+window.seek=function(t){
+ drift(t);bgCandles(ctx,t,bgPulseAt(t,DOWNS));
+ const endOut=IN(P(t,T_END-.3,.3));
+ head('h0',t,0.15,T_PASS);head('h1',t,T_PASS,T_DEAL);head('h2',t,T_DEAL,T_PICK);head('h3',t,T_PICK,T_STAT);head('h4',t,T_STAT,T_END);
+ [...$('h0').children].forEach((w,i)=>{w.style.color=t>=DROP+i*BPv/2?'#FFFFFF':'#3B4445';w.style.opacity=E(P(t,.15+i*.22,.3));});
+ $('eye').style.opacity=E(P(t,0,.6))*(1-endOut);
+ // card: rises in, flips on b6, tucks away for the deal, grows back out of the picked card
+ const card=$('card');let r=FULL,op=1,ry=0;
+ const rise=IO(P(t,0,DROP)),kick=t>=DROP?Math.exp(-7*(t-DROP)):0;
+ if(t<T_DEAL){r={x:130,y:500+(1-rise)*200,w:820,h:820};op=C(P(t,0,.5));const fl=P(t,T_FLIP,.5);ry=fl<.5?90*IN(fl*2):-90*(1-E((fl-.5)*2));}
+ else if(t<T_PICK){const k=E(P(t,T_DEAL,.35));r={x:130+k*205,y:500-k*40,w:820*(1-.5*k),h:820*(1-.5*k)};op=1-k;}
+ else{const k=IO(P(t,T_PICK,.5));r={x:L(MINI3.x,FULL.x,k),y:L(MINI3.y,FULL.y,k),w:L(MINI3.w,FULL.w,k),h:L(MINI3.h,FULL.h,k)};op=C(P(t,T_PICK,.06))*(1-endOut);}
+ rect(card,r);card.style.opacity=op;card.style.visibility=op>0.001?'visible':'hidden';
+ const dk=bgPulseAt(t,DOWNS.filter(d=>d>=T_PICK+.5));
+ card.style.transform=`perspective(1800px) rotateY(${ry}deg) scale(${1+0.025*kick+0.012*dk*(t>T_PICK+.5?1:0)+0.005*Math.sin(t*1.1)-0.05*endOut})`;
+ $('halo').style.opacity=t>=DROP?0.7+0.3*bgPulseAt(t,DOWNS):0.35;
+ sweepAt($('sw'),t,[DROP,T_PASS,T_PICK+.45,T_STAT].filter(a=>t>=a-.01).pop()??-9,.7);
+ flareAt($('fl'),t,[DROP,T_FLIP+.25,T_PICK,T_END].filter(a=>t>=a-.1).pop()??-9,.6);
+ // faces
+ const front=t<T_FLIP+.25;
+ face('f0',t,0,front?T_DEAL:T_FLIP+.25);$('f0').style.visibility=front?'visible':'hidden';
+ $('e50').style.color=t<DROP?'#3B4445':'#FFFFFF';
+ for(let i=0;i<3;i++)fadeIn($('k'+i),t,DROP+BPv*(1+i),.3,24,0);
+ face('f1',t,T_FLIP+.25,T_DEAL+.4);$('f1').style.visibility=(t>=T_FLIP+.25&&t<T_DEAL+.4)?'visible':'hidden';
+ face('f2',t,T_PICK+.35,T_STAT);face('f3',t,T_STAT,T_END+1);
+ // pass pill grows on the card
+ growPill($('pass'),$('passt'),t,T_PASS);$('pass').style.opacity=C(P(t,T_PASS,.1))*(1-C(P(t,T_FLIP,.12)));
+ // minis deal on half-beats; a ring hops across them on the beats, lands on 150K
+ for(let i=0;i<4;i++){const at=T_DEAL+.1+i*BPv/2,a=B(P(t,at,.4)),el=$('m'+i);el.style.visibility=t>=at&&t<T_PICK+.5?'visible':'hidden';
+  const dim=t>=T_PICK&&i!==3?IN(P(t,T_PICK,.35)):0;el.style.opacity=C(P(t,at,.08))*(1-dim)*(i===3?1-C(P(t,T_PICK,.06)):1);
+  el.style.transform=`translateY(${(1-a)*80}px) scale(${0.85+0.15*a-0.08*dim})`;}
+ const hop=[[Bn(10),0],[Bn(10.5),1],[Bn(11),2],[Bn(11.5),3]];let hp=0;hop.slice(1).forEach(([a,i])=>{hp=L(hp,i,E(P(t,a,.18)));});
+ const hx=L(MINIS[Math.floor(hp)][0],MINIS[Math.min(3,Math.floor(hp)+1)][0],hp%1),hy=L(MINIS[Math.floor(hp)][1],MINIS[Math.min(3,Math.floor(hp)+1)][1],hp%1);
+ const rg=$('ring');rg.style.left=hx+'px';rg.style.top=hy+'px';rg.style.opacity=C(P(t,Bn(10)-.05,.1))*(1-C(P(t,T_PICK,.06)));rg.style.transform=`scale(${1+0.04*Math.sin(Math.PI*(hp%1))})`;
+ // toggles slide on the downbeats
+ segAt($('dt'),t,[[0,0],[Bn(16),1]]);segAt($('cr'),t,[[0,0],[Bn(18),1]]);
+ // stats in the card
+ fadeIn($('r1'),t,T_STAT+.08,.4,30,6);fadeIn($('r1s'),t,Bn(21),.4,20,0);fadeIn($('r2'),t,T_PCT,.4,30,6);
+ $('pct').textContent=Math.round(90*E(P(t,T_PCT,.75)))+'%';
+ $('note').style.opacity=E(P(t,Bn(26),.4))*(1-endOut);
+ // end card
+ const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
+ growPill($('dc'),$('dct'),t,Bn(30),0);$('lib').style.opacity=E(P(t,Bn(32),.4));
+};
+seek(0);
+</script></body></html>
