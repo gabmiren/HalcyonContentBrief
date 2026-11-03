@@ -98,7 +98,7 @@ tlours=[vid("tierlist-founder.mp4","Ranking trading setups","Founder placeholder
 frours=[vid("founder-reacts.mp4","Reacting to a trader Q&A","Founder placeholder on top, clip below · 60 s","Mockup · Steve to film","new",
   ["Steve's slot sits on top while a quick-fire trader Q&A plays below","He pauses the clip to react, so the take is his and the clip is the setup","Post as a TikTok stitch or duet so the original creator is credited"])]
 thl=[vid("trader-highlights.mp4","Top 5 rewards this week","Motion graphics · certificate countdown · 9 s · no music","Draft · sample certificates","new",
-  ["A fast #5 to #1 countdown of the week's reward certificates, styled like the certificate carousel on Halcyon's site","Each amount counts up as its certificate slides in; #1 stays for a congrats line and Join our Discord","Names and amounts here are samples: use the real top 5 with each trader's written OK, plus the disclaimer"])]
+  ["A fast #5 to #1 countdown of the week's reward certificates, styled like the certificate carousel on Halcyon's site","Each amount counts up as its certificate slides in; then all five line up together with a congrats line and Join our Discord","Names and amounts here are samples: use the real top 5 with each trader's written OK, plus the disclaimer"])]
 carousel=f'''<article class="card wide">
 <div class="phone"><div class="viewport" id="vp" aria-roledescription="carousel" aria-label="Carousel preview" tabindex="0">
 <div class="track" id="track">
