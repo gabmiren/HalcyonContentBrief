@@ -173,9 +173,9 @@ posts = [
             "fixed": "9:16 with the IG top and bottom bars kept clear. Glowing number with a unit, one line, the feed cover in a white post frame inside a glowing panel, and a Tap to read pill. Add the link sticker over the panel.",
             "cadence": "With each feed post"},
   "versions": [
-   {"name": "+3.03%", "caption": "Story. Link sticker to the News brief.", "frames": one("bnA", "Story"), "links": []},
-   {"name": "4:45 PM ET", "caption": "Story. Link sticker to Know your hours.", "frames": one("bnB", "Story"), "links": []},
-   {"name": "40 pts", "caption": "Story. Link sticker to How many points is your drawdown?", "frames": one("bnC", "Story"), "links": []},
+   {"name": "+3.03%", "caption": "Story. Link sticker to the News brief (on standby).", "frames": one("bnA", "Story"), "links": []},
+   {"name": "4:45 PM ET", "caption": "Story. Link sticker to Myth or fact (Mon 9).", "frames": one("bnB", "Story"), "links": []},
+   {"name": "40 pts", "caption": "Story. Link sticker to How many points is your drawdown? (Sat 7)", "frames": one("bnC", "Story"), "links": []},
   ]},
 ]
 

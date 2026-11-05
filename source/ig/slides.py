@@ -422,7 +422,7 @@ def story(name, big, unit, line, card_img, card_title, seed, kind):
         f'<p style="font-size:46px;font-weight:500;line-height:1.25;margin:40px 0 0">{line}</p></div>'
         f'<div class="gp hot" style="position:absolute;left:64px;right:64px;top:1150px;display:flex;align-items:center;gap:40px;padding:30px">'
         f'<div style="width:420px;flex:none;background:#fff;border-radius:22px;padding:12px;transform:rotate(-3deg);box-shadow:0 30px 70px rgba(0,0,0,.7)">'
-        f'<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 10px"><div style="width:28px;height:28px;border-radius:50%;background:#03070A;border:3px solid #00FBF4"></div><span style="color:#111;font-size:16px;font-weight:500">halcyontraderfunding</span></div>'
+        f'<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 10px"><div style="width:28px;height:28px;border-radius:50%;background:#03070A;border:3px solid #00FBF4"></div><span style="color:#111;font-size:16px;font-weight:600">Halcyon</span></div>'
         f'<img src="{card_img}" style="width:100%;display:block;border-radius:8px"></div>'
         f'<div><p style="font-size:36px;font-weight:700;line-height:1.2;margin:0">{card_title}</p><div style="margin-top:26px"><span class="pill on" style="font-size:20px">&larr; Tap to read</span></div></div></div>'
         '<div style="position:absolute;left:64px;right:64px;top:300px;display:flex;justify-content:center">' + wordmark("margin:0") + '</div>', story=True)
