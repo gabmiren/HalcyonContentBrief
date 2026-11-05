@@ -43,8 +43,9 @@
 <script src="../base.js"></script><script src="../bgs.js"></script><script src="../fx.js"></script>
 <script>
 // Music: "The Mountain" from 38.464s, 150 BPM. Hit at 1.60s. One card per 8 beats.
-const DROP=1.5998,BPv=0.39999,Bn=n=>DROP+BPv*n,DOWNS=[...Array(14)].map((_,k)=>Bn(4*k));
-const K=[Bn(0),Bn(8),Bn(16),Bn(24)],T_REC=Bn(32),T_END=Bn(38),T_FIN=Bn(46);
+const SP=+(new URLSearchParams(location.search).get("sp")||1.5),HOOK=+(new URLSearchParams(location.search).get("hook")||1.6);
+const DROP=1.5998+HOOK,BPr=0.39999,BPv=BPr*SP,Bn=n=>DROP+BPv*n,DOWNS=[...Array(80)].map((_,k)=>DROP+BPr*4*k);
+const K=[Bn(0),Bn(8),Bn(16),Bn(24)],T_REC=Bn(32),T_END=Bn(38),T_FIN=T_END+8*BPr;
 $('ds').textContent=DISC;words($('hk'));
 const ctx=$('bg').getContext('2d');
 const TH=[[60,230],[300,230],[540,230],[780,230]];
@@ -75,7 +76,7 @@ window.seek=function(t){
   if(t>=T_REC){const hop=Math.exp(-6*Math.max(0,t-Bn(33+i*0.5)))*(t>=Bn(33+i*0.5)?1:0),fl=4*Math.sin(t*2.2+i);th.style.transform=`translate(${gx*rc}px,${gy*rc+fl*rc}px) scale(${1+0.75*rc+0.06*hop})`;th.style.opacity=1-out;th.style.boxShadow=`0 0 ${40*hop}px rgba(0,251,244,${0.7*hop})`;th.style.borderColor=`rgba(0,251,244,${0.35+0.6*hop})`;}}
  // end card
  const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
- growPill($('dc'),$('dct'),t,Bn(40),0);$('lib').style.opacity=E(P(t,Bn(42),.4));
+ growPill($('dc'),$('dct'),t,T_END+2*BPr,0);$('lib').style.opacity=E(P(t,T_END+3.5*BPr,.4));
 };
 seek(0);
 </script></body></html>

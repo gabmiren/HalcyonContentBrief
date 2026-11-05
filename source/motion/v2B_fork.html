@@ -62,8 +62,9 @@
 <script src="base.js"></script><script src="bgs.js"></script><script src="fx.js"></script>
 <script>
 // Music: Sub Clair "Technology" from 29.852s, 124.2 BPM. Drop lands at 1.932s.
-const DROP=1.9319,BPv=0.48298,Bn=n=>DROP+BPv*n,DOWNS=[...Array(9)].map((_,k)=>Bn(4*k));
-const T_PASS=Bn(4),T_FORK=Bn(6),T_SPARK=Bn(8),T_DD=Bn(9),T_CON=Bn(12),T_ZOOM=Bn(14),T_S2=Bn(17),T_END=Bn(20),T_FIN=Bn(28);
+const SP=+(new URLSearchParams(location.search).get("sp")||1.5),HOOK=+(new URLSearchParams(location.search).get("hook")||0);
+const DROP=1.9319+HOOK,BPr=0.48298,BPv=BPr*SP,M=n=>n<9?n:n+1,Bn=n=>DROP+BPv*M(n),DOWNS=[...Array(80)].map((_,k)=>DROP+BPr*4*k);
+const T_PASS=Bn(4),T_FORK=Bn(6.5),T_SPARK=Bn(8),T_DD=Bn(9),T_CON=Bn(12),T_ZOOM=Bn(14.5),T_S2=Bn(17.5),T_END=Bn(21.5),T_FIN=T_END+8*BPr;
 $('ds').textContent=DISC;words($('h0'));
 const ctx=$('bg').getContext('2d');
 const brs=[...document.querySelectorAll('.br')];
@@ -83,12 +84,12 @@ window.seek=function(t){
  const kick=t>=DROP?Math.exp(-6*(t-DROP)):0;$('core').setAttribute('r',t<DROP?0:18+14*kick);
  flareAt($('fl'),t,[DROP,T_PASS,T_ZOOM].filter(a=>t>=a-.1).pop()??-9,.6);
  // rule tags pop on the beats, clear when the fork opens
- for(let i=0;i<3;i++){const a=t>=Bn(1+i)?B(P(t,Bn(1+i),.35)):0,o=IN(P(t,T_FORK-.1,.25));const el=$('t'+i);el.style.opacity=C(P(t,Bn(1+i),.08))*(1-o)*(t>=T_PASS?0.55:1);el.style.transform=`scale(${a*(1-0.1*o)})`;}
+ for(let i=0;i<3;i++){const a=t>=Bn(1+i)?B(P(t,Bn(1+i),.35)):0,o=IN(P(t,T_FORK-.1,.25));const el=$('t'+i);el.style.opacity=C(P(t,Bn(1+i),.08))*(1-o)*(t>=T_PASS?0.8:1);el.style.transform=`scale(${a*(1-0.1*o)})`;}
  // passed pill grows over the node, then shrinks back into it at the fork
  growPill($('pass'),$('passt'),t,T_PASS);const po=IN(P(t,T_FORK-.05,.25));$('pass').style.transform=`scale(${1-0.6*po})`;$('pass').style.opacity=C(P(t,T_PASS,.1))*(1-po);
  // branches draw on half-beats, chips pop at their tips
  brs.forEach((b,i)=>{draw(b,E(P(t,T_FORK+i*BPv/2,.55)));b.style.opacity=t>=T_SPARK+BPv*.6&&i!==2?0.22:1;});
- for(let i=0;i<4;i++){const at=T_FORK+.3+i*BPv/2;const el=$('b'+i);el.style.opacity=C(P(t,at,.08))*(t>=T_SPARK+BPv*.6&&i!==2?0.35:1)*(1-zoom);el.style.transform=`scale(${B(P(t,at,.35))*(i===2?1+0.12*Math.exp(-7*Math.max(0,t-T_SPARK-BPv*.6))*(t>=T_SPARK+BPv*.6?1:0):1)})`;el.classList.toggle('on',t>=T_SPARK+BPv*.6&&i===2);}
+ for(let i=0;i<4;i++){const at=T_FORK+.3+i*BPv/2;const el=$('b'+i);el.style.opacity=C(P(t,at,.08))*(t>=T_SPARK+BPv*.6&&i!==2?0.62:1)*(1-zoom);el.style.transform=`scale(${B(P(t,at,.35))*(i===2?1+0.12*Math.exp(-7*Math.max(0,t-T_SPARK-BPv*.6))*(t>=T_SPARK+BPv*.6?1:0):1)})`;el.classList.toggle('on',t>=T_SPARK+BPv*.6&&i===2);}
  // a spark runs up the 100K branch, then the stem feeds the controls
  const sk=IO(P(t,T_SPARK,BPv*.6)),bp=brs[2],pt=bp.getPointAtLength(bp.getTotalLength()*sk);
  $('spark').setAttribute('cx',pt.x);$('spark').setAttribute('cy',pt.y);$('spark').style.opacity=t>=T_SPARK&&sk<1?1:0;
@@ -104,7 +105,7 @@ window.seek=function(t){
  // end card
  const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
  $('eline').style.transform=`scaleX(${E(P(t,T_END+.15,.5))*(0.94+0.06*Math.sin(t*2))})`;
- growPill($('dc'),$('dct'),t,Bn(21),0);$('lib').style.opacity=E(P(t,Bn(22),.4));
+ growPill($('dc'),$('dct'),t,T_END+1*BPr,0);$('lib').style.opacity=E(P(t,T_END+2*BPr,.4));
  flareAt($('fl'),t,[DROP,T_PASS,T_ZOOM].filter(a=>t>=a-.1).pop()??-9,.6);
 };
 seek(0);

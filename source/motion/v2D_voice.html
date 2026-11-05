@@ -42,14 +42,15 @@
 <script src="base.js"></script><script src="bgs.js"></script><script src="fx.js"></script>
 <script>
 // Music: Sub Clair phonk instrumental from 14.961s, 82.5 BPM. Drop lands at 1.449s.
-const DROP=1.4488,BPv=0.7272,Bn=n=>DROP+BPv*n;
-const T_END=Bn(16),T_FIN=Bn(21);
-const CH=[0,2,4,6,8,10,13].map(Bn),DOWNS=[...Array(9)].map((_,k)=>Bn(2*k));
+const SP=+(new URLSearchParams(location.search).get("sp")||1.5),HOOK=+(new URLSearchParams(location.search).get("hook")||0);
+const DROP=1.4488+HOOK,BPr=0.7272,BPv=BPr*SP,M=n=>n<6?n:(n<8?n+1:n+2),Bn=n=>DROP+BPv*M(n);
+const T_END=Bn(16),T_FIN=T_END+5*BPr;
+const CH=[0,2,4,6,8,10,13].map(Bn),DOWNS=[...Array(80)].map((_,k)=>DROP+BPr*2*k);
 $('ds').textContent=DISC;
 const ctx=$('bg').getContext('2d');
 // question panel: [id,in,out]; answer panel: [id,in,out]
 const QS=[['q0',0.1,Bn(4)],['q1',Bn(4),Bn(6)],['q2',Bn(6),Bn(8)],['q3',Bn(8),Bn(10)],['q4',Bn(10),Bn(13)],['q5',Bn(13),T_END]];
-const AS=[['a0',Bn(0),Bn(2)],['a1',Bn(2),Bn(4)],['a2',Bn(4)+.12,Bn(6)],['a3',Bn(6)+.12,Bn(8)],['a4',Bn(8.5),Bn(10)],['a5',Bn(10)+BPv,Bn(13)],['a6',Bn(13)+BPv*.5,T_END]];
+const AS=[['a0',Bn(0),Bn(2)],['a1',Bn(2),Bn(4)+.07],['a2',Bn(4)+.18,Bn(6)],['a3',Bn(6)+.12,Bn(8)],['a4',Bn(8.5),Bn(10)],['a5',Bn(10)+BPv,Bn(13)],['a6',Bn(13)+BPv*.5,T_END]];
 QS.forEach(([id])=>words($(id)));
 function q(t,[id,a,b]){const el=$(id),i=E(P(t,a,.3)),o=IN(P(t,b-.12,.18));el.style.visibility=t>=a-.01&&t<b+.08?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*50-o*50}px)`;el.style.filter=`blur(${(1-i)*6+o*6}px)`;
  const lit0=id==='q0'?DROP-0.5:a+.05;[...el.children].forEach((w,k)=>{w.style.color=t>=lit0+k*BPv/4?'#FFFFFF':'#3B4445';});}
@@ -69,16 +70,16 @@ window.seek=function(t){
  flareAt($('fl'),t,[DROP,Bn(10)+BPv,T_END].filter(a=>t>=a-.1).pop()??-9,.6);
  QS.forEach(s=>q(t,s));AS.forEach(s=>ans(t,s));
  // answers that move on the beat
- segAt($('sz'),t,[[0,0],[Bn(4.5),1],[Bn(5),2],[Bn(5.5),3]]);fadeIn($('a2s'),t,Bn(5.5),.3,16,0);
+ segAt($('sz'),t,[[0,0],[Bn(4.4),1],[Bn(4.7),2],[Bn(5),3]]);fadeIn($('a2s'),t,Bn(5),.3,16,0);
  segAt($('dt'),t,[[0,0],[Bn(6.5),1],[Bn(7),0],[Bn(7.25),1]]);const cs=t>=Bn(7.5)?B(P(t,Bn(7.5),.35)):0;$('a3s').style.opacity=C(P(t,Bn(7.5),.08));$('a3s').style.transform=`scale(${cs})`;
  segAt($('cr'),t,[[0,0],[Bn(9.25),1]]);
  const dw=[[Bn(8)+.15,Bn(8.5)],[Bn(10)+.15,Bn(10)+BPv]].find(([a,b])=>t>=a-.05&&t<b+.05);const dd=$('dots');dd.style.visibility=dw?'visible':'hidden';
  if(dw){const k=E(P(t,dw[0],.15))*(1-C(P(t,dw[1]-.08,.08)));dd.style.opacity=k;[...dd.children].forEach((d,i)=>{const ph=Math.sin((t-dw[0])*11-i*1.1);d.style.transform=`translateY(${-14*Math.max(0,ph)}px)`;d.style.opacity=0.45+0.55*Math.max(0,ph);});}
  fadeIn($('a5s'),t,Bn(12),.35,20,0);
- $('pct').textContent=Math.round(90*E(P(t,Bn(13)+BPv*.5,.75)))+'%';fadeIn($('a6s'),t,Bn(14.5),.35,16,0);
+ $('pct').textContent=Math.round(90*E(P(t,Bn(13)+BPv*.5,.75)))+'%';fadeIn($('a6s'),t,Bn(13.55),.35,16,0);
  // end card
  const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
- growPill($('dc'),$('dct'),t,Bn(17),0);$('lib').style.opacity=E(P(t,Bn(18),.4));
+ growPill($('dc'),$('dct'),t,T_END+1*BPr,0);$('lib').style.opacity=E(P(t,T_END+2*BPr,.4));
 };
 seek(0);
 </script></body></html>

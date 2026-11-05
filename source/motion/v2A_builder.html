@@ -58,8 +58,9 @@
 <script src="base.js"></script><script src="bgs.js"></script><script src="fx.js"></script>
 <script>
 // Music: Sub Clair "Technology" from 29.852s, 124.2 BPM. Drop (beat 65 of the track) lands at 1.932s.
-const DROP=1.9319, BPv=0.48298, Bn=n=>DROP+BPv*n, DOWNS=[...Array(9)].map((_,k)=>Bn(4*k));
-const T_S1=Bn(4),T_PROG=Bn(6),T_PASS=Bn(8),T_S2=Bn(9),T_S3=Bn(16),T_END=Bn(20),T_FIN=Bn(28);
+const SP=+(new URLSearchParams(location.search).get("sp")||1.5),HOOK=+(new URLSearchParams(location.search).get("hook")||0);
+const DROP=1.9319+HOOK,BPr=0.48298,BPv=BPr*SP,M=n=>n<9?n:n+1,Bn=n=>DROP+BPv*M(n), DOWNS=[...Array(80)].map((_,k)=>DROP+BPr*4*k);
+const T_S1=Bn(4),T_PROG=Bn(6),T_PASS=Bn(8),T_S2=Bn(9),T_S3=Bn(16),T_END=Bn(21),T_FIN=T_END+8*BPr;
 $('ds').textContent=DISC; words($('hd'));
 const ctx=$('bg').getContext('2d');
 function layer(id,t,a,b,dy=40){const i=E(P(t,a,.32)),o=IN(P(t,b-.12,.2));const el=$(id);el.style.visibility=t>=a-.01&&t<b+.1?'visible':'hidden';el.style.opacity=i*(1-o);el.style.transform=`translateY(${(1-i)*dy-o*dy*.6}px) scale(${0.97+0.03*i})`;el.style.filter=`blur(${(1-i)*6+o*6}px)`;}
@@ -91,8 +92,8 @@ window.seek=function(t){
  // step 3: stats in the same panel
  layer('s3',t,T_S3,T_END);
  fadeIn($('st1'),t,T_S3,.4,40,6);$('dv').style.transform=`scaleX(${E(P(t,Bn(17),.5))})`;
- fadeIn($('st2'),t,Bn(18),.4,40,6);$('pct').textContent=Math.round(90*E(P(t,Bn(18),.8)))+'%';
- fadeIn($('st3'),t,Bn(19),.4,20,0);
+ fadeIn($('st2'),t,Bn(17),.4,40,6);$('pct').textContent=Math.round(90*E(P(t,Bn(17),.8)))+'%';
+ fadeIn($('st3'),t,Bn(17.25),.4,20,0);
  // step rail below the panel
  const rv=E(P(t,T_S1-.2,.4))*(1-out);$('railw').style.opacity=rv;
  const rl=E(P(t,T_PASS,.6));$('railf').style.transform=`scaleX(${rl})`;
@@ -100,7 +101,7 @@ window.seek=function(t){
  $('l0').style.color=t>=T_S1&&t<T_S2?'#FFFFFF':'#7E8787';$('l1').style.color=t>=T_S2?'#FFFFFF':'#7E8787';
  // end card: lands on the downbeat, Discord pill grows on the next beat
  const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
- growPill($('dc'),$('dct'),t,Bn(21),0);$('lib').style.opacity=E(P(t,Bn(22),.4));
+ growPill($('dc'),$('dct'),t,T_END+1*BPr,0);$('lib').style.opacity=E(P(t,T_END+2*BPr,.4));
 };
 seek(0);
 </script></body></html>

@@ -78,8 +78,9 @@
 <script src="../base.js"></script><script src="../bgs.js"></script><script src="../fx.js"></script>
 <script>
 // Music: Sub Clair "Technology" from 29.852s, 124.2 BPM. Drop at 1.932s. Each rule gets 8 beats.
-const DROP=1.9319,BPv=0.48298,Bn=n=>DROP+BPv*n,DOWNS=[...Array(12)].map((_,k)=>Bn(4*k));
-const R=[Bn(0),Bn(8),Bn(16),Bn(24)],T_END=Bn(32),T_FIN=Bn(40);
+const SP=+(new URLSearchParams(location.search).get("sp")||1.5),HOOK=+(new URLSearchParams(location.search).get("hook")||0);
+const DROP=1.9319+HOOK,BPr=0.48298,BPv=BPr*SP,Bn=n=>DROP+BPv*n,DOWNS=[...Array(80)].map((_,k)=>DROP+BPr*4*k);
+const R=[Bn(0),Bn(8),Bn(16),Bn(24)],T_END=Bn(32),T_FIN=T_END+8*BPr;
 $('ds').textContent=DISC;words($('hd').firstChild);
 const ctx=$('bg').getContext('2d'),dc=$('ddc').getContext('2d');
 const tk=$('ticks');for(let i=0;i<12;i++){const a=i/12*Math.PI*2,l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',150+118*Math.sin(a));l.setAttribute('y1',150-118*Math.cos(a));l.setAttribute('x2',150+128*Math.sin(a));l.setAttribute('y2',150-128*Math.cos(a));l.setAttribute('stroke','rgba(0,251,244,.6)');l.setAttribute('stroke-width',4);tk.appendChild(l);}
@@ -114,8 +115,8 @@ window.seek=function(t){
  // 1 target: counter and bar fill, then the min day pill
  det('d0',t,R[0],R[1]);const tf=E(P(t,R[0]+BPv,BPv*3));$('tc').textContent='$'+(Math.round(3000*tf/10)*10).toLocaleString('en-US');$('tb').style.transform=`scaleX(${tf})`;growPill($('t1'),$('t1t'),t,R[0]+BPv*4,0);
  // 2 drawdown: chart draws with the trailing floor, then flips to end of day
- det('d1',t,R[1],R[2]);const md=E(P(t,R[1]+BPv*4,.5));segAt($('dt'),t,[[0,0],[R[1]+BPv*4,1]]);drawDD(t,md,E(P(t,R[1]+.1,BPv*3.5)));
- $('ddn').textContent=t<R[1]+BPv*4?'Trailing: the floor follows your highest balance.':'End of day: the floor only moves at the close.';
+ det('d1',t,R[1],R[2]);const md=E(P(t,R[1]+BPv*3.65,.5));segAt($('dt'),t,[[0,0],[R[1]+BPv*3.65,1]]);drawDD(t,md,E(P(t,R[1]+.1,BPv*3.5)));
+ $('ddn').textContent=t<R[1]+BPv*3.65?'Trailing: the floor follows your high.':'End of day: moves at the close.';
  // 3 contracts
  det('d2',t,R[2],R[3]);['c0','c1'].forEach((id,i)=>{const a=R[2]+BPv*(1+i);$(id).style.transform=`scale(${B(P(t,a,.35))})`;$(id).style.opacity=C(P(t,a,.08));});
  $('cn0').textContent=Math.round(5*E(P(t,R[2]+BPv,.6)));$('cn1').textContent=Math.round(25*E(P(t,R[2]+BPv*2,.6)));fadeIn($('c2'),t,R[2]+BPv*4,.35,20,0);
@@ -125,7 +126,7 @@ window.seek=function(t){
  growPill($('fp'),$('fpt'),t,R[3]+BPv*4,0);fadeIn($('f2'),t,R[3]+BPv*5,.35,20,0);
  // end card
  const e=E(P(t,T_END-.06,.45));$('end').style.opacity=e;$('end').style.visibility=t>=T_END-.08?'visible':'hidden';$('end').style.transform=`translateY(${(1-e)*50-10*P(t,T_END,T_FIN-T_END)}px)`;
- growPill($('dc'),$('dct'),t,Bn(33),0);$('lib').style.opacity=E(P(t,Bn(34),.4));
+ growPill($('dc'),$('dct'),t,T_END+1*BPr,0);$('lib').style.opacity=E(P(t,T_END+2*BPr,.4));
 };
 seek(0);
 </script></body></html>

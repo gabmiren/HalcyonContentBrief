@@ -57,7 +57,7 @@ C5.forEach((c,i)=>{const d=document.createElement('div');d.className='cert';d.id
  <div class="rb">#${c.r}</div><div class="flag" style="flex-direction:${c.dir==='col'?'column':'row'}">${fl}</div>`;host.appendChild(d);});
 const ctx=$('bg').getContext('2d');
 // timing: fast, no music. Each certificate holds about 1.1 s.
-const T0=0.9,ST=1.15,T_END=T0+5*ST,DUR=T_END+2.4;
+const T0=0.9,ST=1.8,T_END=T0+5*ST,DUR=T_END+2.8;
 const GRID={4:[540,700,.56],3:[285,1118,.46],2:[795,1118,.46],1:[285,1462,.46],0:[795,1462,.46]};
 window.seek=function(t){
  drift(t);bgAurora(ctx,t,0.3);
