@@ -21,6 +21,28 @@ SRC_DAY = (("TheStreet, close 4 Nov", "https://www.thestreet.com/stock-market-to
 SITE = ("Halcyon site (rules, fees)", "https://www.halcyontraderfunding.com")
 
 posts = [
+ # ------------------------------------------------------------- LAUNCH
+ {"id": "wc", "title": "Welcome (pinned)", "short": "Welcome", "when": "Launch · Carousel · New",
+  "brief": {"job": "The first post on the new account and the first of three pinned posts: who Halcyon is, what the feed will be, and what to do next. Pinned with the four cards and the drawdown explainer as they go live.",
+            "topics": "One-off, refresh when the offer changes",
+            "fixed": "Glowing Halcyon mark on the cover, three glass cards for what we post, the evaluation in four glowing numbers with the disclaimer, a three-habit checklist, then Follow, Save, Discord.",
+            "cadence": "Once, pinned"},
+  "versions": [
+   {"name": "Welcome to Halcyon",
+    "caption": C("Welcome to Halcyon 👋",
+                 "This is where futures news gets explained in points, and the rules come with memes to help them stick.\nSave what helps, and tell us in the comments what you'd like explained next.",
+                 "👉 Come say hi in our Discord: link in bio", "#futurestrading #propfirm #daytrading", disc=True),
+    "frames": fr("wcA", ["Cover", "What we post", "What Halcyon is", "How to use it", "Follow"]), "links": L(SITE)},
+  ]},
+ {"id": "hl", "title": "Highlight covers", "short": "Highlights", "when": "Launch · Profile · New",
+  "brief": {"job": "Profile highlight covers, set up before the first post so the profile looks finished from day one.",
+            "topics": "Rules · Dynamic · Explainers · News · Memes",
+            "fixed": "One glowing cyan line icon per cover inside a ring, centred for Instagram's circle crop. 1080 x 1920 files.",
+            "cadence": "Once, before launch"},
+  "versions": [
+   {"name": "Five covers", "caption": "Profile setup. Upload each file as a highlight cover: Rules (the rule memes and Know your hours), Dynamic (the four cards and Why Halcyon), Explainers, News (This week and news days) and Memes.",
+    "frames": one("hlSheet", "All five") + [{"src": f"img/hl{k}.png", "cap": k} for k in ["Rules", "Dynamic", "Explainers", "News", "Memes"]], "links": []},
+  ]},
  # ------------------------------------------------------------- NEWS
  {"id": "nb", "title": "News brief", "short": "News brief", "when": "News · Carousel",
   "brief": {"job": "The big market story in plain English within 24 hours, told in points and finished with the Halcyon angle: how much of a $2,000 drawdown the move would use on one ES and one MES.",
@@ -71,7 +93,7 @@ posts = [
             "fixed": "Stacked glass rows, a mood pill for each market (cyan, red or grey), the move glowing on the right. The day's winner gets the glowing panel.",
             "cadence": "After big days, or Fridays"},
   "versions": [
-   {"name": "How every market's Wednesday went", "caption": C("How every market's Wednesday went 😮‍💨", "The Dow had its best day since April 2025. Oil was down bad. The VIX took the day off.\nWhich one matched your mood?", "👉 Drop your mood in our Discord: link in bio", "#futurestrading #tradinghumor #stockmarket"),
+   {"name": "How every market's Wednesday went", "caption": C("How every market's Wednesday went 🫠", "The Dow had its best day since April 2025. Oil was down bad. The VIX took the day off.\nWhich one matched your mood?", "👉 Drop your mood in our Discord: link in bio", "#futurestrading #tradinghumor #stockmarket"),
     "frames": one("mdA", "Mood board"), "links": L(*SRC_DAY)},
   ]},
  {"id": "wk", "title": "This week", "short": "This week", "when": "News · Carousel",
@@ -167,6 +189,19 @@ posts = [
     "frames": one("whC", "Platforms"), "links": L(SITE)},
   ]},
  # ------------------------------------------------------------- STORIES
+ {"id": "st", "title": "Story stickers", "short": "Story stickers", "when": "Stories · New",
+  "brief": {"job": "Daily interactive Stories so the new account gets taps, votes and replies, which tells Instagram people care. Each one pairs with that day's post or market event.",
+            "topics": "Polls on news days · Countdown to CPI · Quizzes from explainers · Question box",
+            "fixed": "9:16, wordmark, a date pill and the question in big type, with the middle left clear for Instagram's own sticker. Post the clean file and add the sticker in the app; the preview shows where it goes.",
+            "cadence": "Every day there's no big-number story"},
+  "versions": [
+   {"name": "Fri 6 · Jobs report poll", "caption": "Post at 8:10 AM ET, right after the welcome post and before the 8:30 release. Poll sticker: Trading it / Waiting it out.", "frames": [{"src": "img/stAp.png", "cap": "Preview"}, {"src": "img/stA.png", "cap": "Clean file to post"}], "links": []},
+   {"name": "Sun 8 · CPI countdown", "caption": "Post at 11:00 AM ET with the This week post. Countdown sticker: CPI, Tue 10 Nov 8:30 AM ET. Add a link sticker to the post.", "frames": [{"src": "img/stBp.png", "cap": "Preview"}, {"src": "img/stB.png", "cap": "Clean file to post"}], "links": []},
+   {"name": "Tue 10 · CPI hot or cool", "caption": "Post at 8:00 AM ET, before the release. Poll sticker: Hot / Cool.", "frames": [{"src": "img/stCp.png", "cap": "Preview"}, {"src": "img/stC.png", "cap": "Clean file to post"}], "links": []},
+   {"name": "Wed 11 · Stop order quiz", "caption": "Post at 12:00 PM ET. Quiz sticker: Market order (correct) / Limit order / Nothing. Add a link sticker to Market, limit or stop?", "frames": [{"src": "img/stDp.png", "cap": "Preview"}, {"src": "img/stD.png", "cap": "Clean file to post"}], "links": []},
+   {"name": "Thu 12 · Ask us anything", "caption": "Post at 12:00 PM ET. Question sticker: Ask us about the evaluation. Answer the best few in Friday's Stories, checking each answer against the rules.", "frames": [{"src": "img/stEp.png", "cap": "Preview"}, {"src": "img/stE.png", "cap": "Clean file to post"}], "links": []},
+   {"name": "Fri 13 · Trading superstition", "caption": "Post at 1:00 PM ET. Question sticker: My trading superstition is... Reshare the funniest answers.", "frames": [{"src": "img/stFp.png", "cap": "Preview"}, {"src": "img/stF.png", "cap": "Clean file to post"}], "links": []},
+  ]},
  {"id": "bn", "title": "One big number", "short": "Big number", "when": "Stories",
   "brief": {"job": "Send story viewers to the feed post with one huge glowing number and a tappable post card.",
             "topics": "The day's big move · A rule · A product number",

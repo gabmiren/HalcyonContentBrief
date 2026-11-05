@@ -426,3 +426,89 @@ def story(name, big, unit, line, card_img, card_title, seed, kind):
         f'<img src="{card_img}" style="width:100%;display:block;border-radius:8px"></div>'
         f'<div><p style="font-size:36px;font-weight:700;line-height:1.2;margin:0">{card_title}</p><div style="margin-top:26px"><span class="pill on" style="font-size:20px">&larr; Tap to read</span></div></div></div>'
         '<div style="position:absolute;left:64px;right:64px;top:300px;display:flex;justify-content:center">' + wordmark("margin:0") + '</div>', story=True)
+
+# =====================================================================
+# LAUNCH 01 · WELCOME (pinned carousel)
+# =====================================================================
+add("wcA_1", bg(131, "up", glow=(50, 38)) +
+    '<div class="ctr" style="position:absolute;left:0;right:0;top:250px">'
+    '<div style="width:190px;height:190px;margin:0 auto;border-radius:50%;border:8px solid #00FBF4;position:relative;box-shadow:0 0 80px rgba(0,251,244,.55),inset 0 0 40px rgba(0,251,244,.25)"><div style="position:absolute;left:47px;top:47px;width:80px;height:80px;border-radius:50%;background:#00FBF4;box-shadow:0 0 40px rgba(0,251,244,.8)"></div></div>'
+    '<h1 class="hl xl" style="margin:70px 64px 0">Welcome to <span class="glow">Halcyon</span></h1>'
+    '<p class="body" style="margin:28px 120px 0">Futures news in plain English, rules you&rsquo;ll actually remember, and memes that hit a little too close.</p>'
+    '<div style="margin-top:44px"><span class="pill on" style="font-size:20px;padding:14px 30px">Pinned &middot; start here</span></div></div>' + foot())
+wc_cards = [("News, in points", "What moved, why, and what it meant for one contract. No hype, no guessing."),
+            ("Explainers", "One idea per slide, built to save and come back to."),
+            ("Memes with a rule inside", "A laugh first, then the rule that saves your account.")]
+add("wcA_2", bg(132, "flat") + header_panel("What you&rsquo;ll find here", 'Your feed, <span class="glow">but useful</span>') +
+    '<div class="pad" style="top:400px;display:flex;flex-direction:column;gap:18px">' +
+    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;gap:26px;align-items:center;padding:30px 32px"><div style="flex:none;width:72px;height:72px;border-radius:50%;border:2px solid #00FBF4;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 0 22px rgba(0,251,244,.3)">{ic}</div><div><div style="font-size:34px;font-weight:700">{h}</div><div style="font-size:24px;color:#AFB8BC;margin-top:6px;line-height:1.4">{p}</div></div></div>'
+            for i, ((h, p), ic) in enumerate(zip(wc_cards, ["&#128240;", "&#128161;", "&#128514;"]))) +
+    '</div>' + foot())
+add("wcA_3", bg(133, "up") + header_panel("What Halcyon is", 'A simulated evaluation, <span class="glow">with clear rules</span>', hot=True) +
+    '<div class="pad" style="top:430px;display:grid;grid-template-columns:1fr 1fr;gap:16px">' +
+    "".join(f'<div class="gp ctr" style="padding:30px 20px"><p class="lab">{k}</p><div class="num glow" style="font-size:58px;margin-top:8px">{v}</div></div>' for k, v in [("Account", "$50K"), ("Target", "$3,000"), ("Drawdown", "$2,000"), ("From", "$51")]) +
+    '</div><div class="pad ctr" style="top:960px"><p class="body">Pass the evaluation in simulated trading and move up to a reward account. Every rule is on the site before you start.</p></div>'
+    f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;bottom:116px">{DISC}</p>' + foot())
+add("wcA_4", bg(134, "flat") + header_panel("How to use this account", 'Three habits <span class="glow">worth keeping</span>') +
+    checklist([("Explainers", "Save the ones you&rsquo;ll need again", OK, True), ("Sundays", "Check the week&rsquo;s release times", OK, False),
+               ("Questions", "Ask us anything in our Discord", OK, False)], 400, h=128) +
+    '<div class="pad" style="top:900px"><p class="body ctr">Tell us in the comments what you want explained next. We read every one.</p></div>' + foot())
+follow("wcA_5", 'Glad you&rsquo;re <span class="glow">here</span>', "Follow for news days, explainers and the occasional meme you&rsquo;ll send to your trading friends.", 135)
+
+# =====================================================================
+# STORIES · INTERACTIVE (1080x1920, sticker added in the app)
+# =====================================================================
+def mock_sticker(st):
+    kind, data = st
+    card = 'background:#fff;color:#111;border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.5);font-family:Poppins'
+    if kind == "poll":
+        inner = f'<div style="{card};width:620px;margin:0 auto;padding:30px 30px 34px">' + "".join(f'<div style="border:3px solid #e6e6e6;border-radius:40px;padding:22px;margin-top:{0 if i == 0 else 16}px;font-size:34px;font-weight:600;background:linear-gradient(90deg,#00FBF4,#5FA8FF);-webkit-background-clip:text;color:transparent">{o}</div>' for i, o in enumerate(data)) + '</div>'
+    elif kind == "quiz":
+        inner = f'<div style="{card};width:640px;margin:0 auto;padding:28px 30px 32px;text-align:left">' + "".join(f'<div style="display:flex;align-items:center;gap:18px;border:3px solid #e6e6e6;border-radius:40px;padding:16px 22px;margin-top:{0 if i == 0 else 14}px;font-size:30px;font-weight:600"><span style="width:40px;height:40px;border-radius:50%;border:3px solid #ccc;display:inline-flex;align-items:center;justify-content:center;font-size:20px;color:#999">{"ABC"[i]}</span>{o}</div>' for i, o in enumerate(data)) + '</div>'
+    elif kind == "question":
+        inner = f'<div style="width:640px;margin:0 auto;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)"><div style="background:linear-gradient(90deg,#00C9C3,#3A8DFF);padding:26px;font-size:30px;font-weight:600;color:#fff">{data}</div><div style="background:#fff;padding:30px;font-size:28px;color:#9a9a9a">Type something...</div></div>'
+    else:  # countdown
+        inner = f'<div style="{card};width:600px;margin:0 auto;padding:28px;background:linear-gradient(135deg,#0A3E44,#04151A);color:#fff;border:2px solid rgba(255,255,255,.2)"><div style="font-size:30px;font-weight:600">{data}</div><div style="display:flex;justify-content:center;gap:16px;margin-top:18px">' + "".join(f'<div style="background:rgba(255,255,255,.12);border-radius:14px;padding:12px 18px;font-size:48px;font-weight:700">{x}</div>' for x in ["0", "2", ":", "1", "4"]) + '</div></div>'
+    return (f'<div class="ctr" style="position:absolute;left:0;right:0;top:960px">{inner}'
+            '<p style="font-size:20px;color:#7D878C;margin:22px 0 0;letter-spacing:.08em;text-transform:uppercase">Preview &middot; sticker added in the Instagram app</p></div>')
+
+def sticker_story(name, kicker, q, sub, seed, kind="flat", accent=None, disc=False, st=None):
+    """Clean story background with the question. The poll/quiz/question/countdown sticker is added natively in Instagram in the empty middle zone."""
+    add(name, bg(seed, kind, story=True, glow=(50, 30)) +
+        '<div style="position:absolute;left:64px;right:64px;top:300px;display:flex;justify-content:center">' + wordmark("margin:0") + '</div>'
+        f'<div class="ctr" style="position:absolute;left:64px;right:64px;top:430px"><span class="pill">{kicker}</span>'
+        f'<h1 class="hl" style="margin-top:34px;font-size:84px">{q}</h1>'
+        + (f'<p class="body" style="margin-top:26px;font-size:32px">{sub}</p>' if sub else "") + '</div>'
+        + (f'<div class="ctr" style="position:absolute;left:0;right:0;top:1520px"><div class="num glow" style="font-size:120px;line-height:1">{accent}</div></div>' if accent else "")
+        + (f'<p class="disc ctr" style="position:absolute;left:90px;right:90px;bottom:300px;font-size:20px">{DISC}</p>' if disc else ""), story=True)
+    if st:
+        html_, _ = S[name]
+        S[name + "p"] = (html_.replace('</div></body>', mock_sticker(st) + '</div></body>'), True)
+
+sticker_story("stA", "Jobs report &middot; Fri 6 Nov", 'Trading the jobs report <span class="glow">or waiting it out?</span>', "8:30 AM ET", 141, st=("poll", ["Trading it", "Waiting it out"]))
+sticker_story("stB", "This week &middot; Sun 8 Nov", 'CPI lands <span class="glow">Tuesday</span>', "Set a reminder so 8:30 doesn&rsquo;t sneak up on you.", 142, st=("countdown", "CPI &middot; Tue 8:30 AM ET"))
+sticker_story("stC", "CPI day &middot; Tue 10 Nov", 'CPI in 30 minutes. <span class="glow">Hot or cool?</span>', "Vote before 8:30 AM ET.", 143, "spike", st=("poll", ["Hot", "Cool"]))
+sticker_story("stD", "Quiz &middot; Wed 11 Nov", 'A stop order becomes a <span class="glow">___</span> when it&rsquo;s touched', "Answer, then check the post.", 144, st=("quiz", ["Market order", "Limit order", "Nothing"]))
+sticker_story("stE", "Ask us &middot; Thu 12 Nov", 'Ask us anything about <span class="glow">the $50K evaluation</span>', "We&rsquo;ll answer the best ones on Friday.", 145, "up", disc=True, st=("question", "Ask us about the evaluation"))
+sticker_story("stF", "Friday the 13th", 'What&rsquo;s your <span class="glow">trading superstition?</span>', "We promise not to judge. Much.", 146, "drop", st=("question", "My trading superstition is..."))
+
+# =====================================================================
+# PROFILE · HIGHLIGHT COVERS (1080x1920, icon centred for the circle crop)
+# =====================================================================
+ICONS = {
+ "Rules": '<path d="M60 14l38 14v28c0 26-17 44-38 52-21-8-38-26-38-52V28z" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linejoin="round"/><path d="M42 62l13 13 24-26" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+ "Dynamic": '<rect x="20" y="34" width="52" height="70" rx="9" fill="none" stroke="#00FBF4" stroke-width="6" transform="rotate(-12 46 69)"/><rect x="48" y="22" width="52" height="70" rx="9" fill="#03070A" stroke="#00FBF4" stroke-width="7" transform="rotate(10 74 57)"/><text x="75" y="66" fill="#00FBF4" font-family="Poppins" font-weight="700" font-size="26" text-anchor="middle" transform="rotate(10 74 57)">$</text>',
+ "Explainers": '<circle cx="60" cy="52" r="26" fill="none" stroke="#00FBF4" stroke-width="7"/><path d="M48 84h24M51 98h18" stroke="#00FBF4" stroke-width="7" stroke-linecap="round"/><path d="M60 38v14l9 6" stroke="#00FBF4" stroke-width="6" stroke-linecap="round" fill="none"/>',
+ "News": '<path d="M18 88l24-26 18 14 30-38" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M74 38h16v16" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 104h88" stroke="#00FBF4" stroke-width="5" stroke-linecap="round" opacity=".5"/>',
+ "Memes": '<circle cx="60" cy="60" r="40" fill="none" stroke="#00FBF4" stroke-width="7"/><circle cx="46" cy="52" r="5" fill="#00FBF4"/><circle cx="74" cy="52" r="5" fill="#00FBF4"/><path d="M42 70c8 12 28 12 36 0" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round"/>',
+}
+def hl_icon(k, size):
+    return f'<svg width="{size}" height="{size}" viewBox="0 0 120 120" style="filter:drop-shadow(0 0 14px rgba(0,251,244,.6))">{ICONS[k]}</svg>'
+for i, k in enumerate(ICONS):
+    add(f"hl{k}", '<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,251,244,.22),transparent 38%),#03070A"></div>'
+        '<div style="position:absolute;left:240px;top:660px;width:600px;height:600px;border-radius:50%;border:6px solid rgba(0,251,244,.55);box-shadow:0 0 60px rgba(0,251,244,.25),inset 0 0 60px rgba(0,251,244,.12);display:flex;align-items:center;justify-content:center">'
+        + hl_icon(k, 330) + '</div>', story=True)
+add("hlSheet", bg(150, "flat", glow=(50, 40)) + header_panel("Profile setup", 'Highlight <span class="glow">covers</span>') +
+    '<div style="position:absolute;left:64px;right:64px;top:470px;display:flex;justify-content:space-between">' +
+    "".join(f'<div class="ctr"><div style="width:168px;height:168px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center">{hl_icon(k, 96)}</div><p style="font-size:22px;margin:16px 0 0;font-weight:500">{k}</p></div>' for k in ICONS) +
+    '</div><div class="pad" style="top:800px"><p class="body ctr">Five covers for the profile highlights: rules, the Dynamic evaluation, explainers, news and memes. Each file is 1080 &times; 1920 with the icon centred for Instagram&rsquo;s circle crop.</p></div>' + foot(None))
