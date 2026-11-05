@@ -22,46 +22,46 @@ body{font-family:Inter,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;
 .hl .lt{font-weight:400;color:#E8ECEE}
 .ctr{text-align:center}
 .a,.glow{color:#00FBF4}
-.glow{text-shadow:0 0 34px rgba(0,251,244,.35)}
+.glow{text-shadow:0 0 28px rgba(0,251,244,.22)}
 .glowr,.dn{color:#F472B6}
-.glowr{text-shadow:0 0 30px rgba(244,114,182,.35)}
+.glowr{text-shadow:0 0 28px rgba(244,114,182,.22)}
 .lav{color:#C4B5FD}.g{color:#B0B0B0}
-.kick{font-weight:600;font-size:18px;letter-spacing:.34em;text-transform:uppercase;color:#00FBF4;margin:0}
+.kick{font-weight:600;font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:#00FBF4;margin:0}
 .kick.lav{color:#C4B5FD}.kick.pk{color:#F472B6}.kick.g{color:#B0B0B0}
-.lab{font-weight:600;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:#8E979C;margin:0}
-.body{font-size:30px;line-height:1.42;color:#D3D9DC;margin:0;text-wrap:pretty}
+.lab{font-weight:600;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#9AA3A8;margin:0}
+.body{font-size:32px;line-height:1.4;color:#D3D9DC;margin:0;text-wrap:pretty}
 .body b{color:#fff;font-weight:600}.body .a{font-weight:600}
 .gp{position:relative;border-radius:28px;background:linear-gradient(180deg,rgba(16,20,24,.86),rgba(6,8,10,.90));border:1.5px solid rgba(0,251,244,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 70px rgba(0,0,0,.55);padding:30px 34px}
-.gp.hot{border:2px solid #00FBF4;box-shadow:0 0 0 1px rgba(0,251,244,.12),0 0 60px rgba(0,251,244,.22),0 30px 70px rgba(0,0,0,.6)}
+.gp.hot{border:2px solid #00FBF4;box-shadow:0 0 0 1px rgba(0,251,244,.10),0 0 40px rgba(0,251,244,.16),0 30px 70px rgba(0,0,0,.6)}
 .gp.hot::before,.flare::before{content:"";position:absolute;left:18%;right:18%;top:-2px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,#B9FFFD 50%,transparent);box-shadow:0 0 22px 6px rgba(0,251,244,.55);pointer-events:none}
 .gp.red{border-color:rgba(244,114,182,.55);box-shadow:0 0 50px rgba(244,114,182,.14),0 30px 70px rgba(0,0,0,.55)}
 .gp.lavb{border-color:rgba(196,181,253,.5);box-shadow:0 0 50px rgba(167,139,250,.16),0 30px 70px rgba(0,0,0,.55)}
-.pill{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:10px 22px;font-weight:600;font-size:19px;letter-spacing:0;border:1.5px solid rgba(0,250,242,.32);color:#00FBF4;background:rgba(0,250,242,.09)}
+.pill{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 24px;font-weight:600;font-size:24px;letter-spacing:0;border:1.5px solid rgba(0,250,242,.32);color:#00FBF4;background:rgba(0,250,242,.09)}
 .pill.on{background:#00FBF4;color:#001312;border-color:#00FBF4;box-shadow:0 0 34px rgba(0,251,244,.45)}
 .pill.r{border-color:rgba(244,114,182,.45);color:#F472B6;background:rgba(244,114,182,.10)}
-.pill.gr{border-color:#2A3034;color:#B0B0B0;background:rgba(255,255,255,.03)}
+.pill.gr{border-color:#3A4247;color:#B0B0B0;background:rgba(255,255,255,.03)}
 .pill.lav{border-color:rgba(196,181,253,.45);color:#C4B5FD;background:rgba(167,139,250,.12)}
 .pill.amb{border-color:rgba(252,211,77,.45);color:#FCD34D;background:rgba(245,158,11,.10)}
 .tog{display:inline-flex;border-radius:16px;background:rgba(2,6,23,.6);border:1.5px solid #1D2328;padding:6px}
-.tog span{padding:14px 30px;border-radius:12px;font-weight:600;font-size:23px;color:#94A3B8}
-.tog span.on{background:linear-gradient(180deg,#F472B6,#BE185D);color:#fff;box-shadow:0 0 26px rgba(244,114,182,.4)}
+.tog span{padding:16px 32px;border-radius:12px;font-weight:600;font-size:26px;color:#A3AEBD}
+.tog span.on{background:#C4B5FD;color:#0B0620;box-shadow:0 0 24px rgba(196,181,253,.35)}
 .tog.cy span.on{background:#00FBF4;color:#001312;box-shadow:0 0 26px rgba(0,251,244,.45)}
-.foot{position:absolute;left:72px;right:72px;bottom:50px;display:flex;justify-content:space-between;align-items:center}
-.swipe{font-size:19px;color:#B0B0B0;font-weight:500;display:flex;align-items:center;gap:10px}
-.src{position:absolute;left:72px;right:72px;bottom:118px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#5E676C;margin:0}
+.foot{position:absolute;left:72px;right:72px;bottom:48px;display:flex;justify-content:space-between;align-items:center}
+.swipe{font-size:24px;color:#B0B0B0;font-weight:500;display:flex;align-items:center;gap:10px}
+.src{position:absolute;left:72px;right:72px;bottom:120px;font-size:20px;line-height:1.4;letter-spacing:.02em;color:#8E979C;margin:0}
 .num{font-family:"Inter Display",Inter,sans-serif;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.disc{font-size:15px;line-height:1.5;color:#7A8388;margin:0}
+.disc{font-size:20px;line-height:1.45;color:#9AA3A8;margin:0}
 .ic{flex:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.ic.ok{background:rgba(196,181,253,.16);border:1.5px solid rgba(196,181,253,.6)}
+.ic.ok{background:rgba(0,251,244,.12);border:1.5px solid rgba(0,251,244,.5)}
 .ic.no{border:1.5px solid #3A4247}
 .ic.wn{background:rgba(244,114,182,.16);border:1.5px solid rgba(244,114,182,.7)}
 .ghost{position:absolute;font-family:"Inter Display",Inter,sans-serif;font-weight:800;line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(0,251,244,.13);letter-spacing:-.05em;pointer-events:none}
-.tick{position:absolute;left:0;right:0;top:0;height:58px;background:rgba(0,0,0,.6);border-bottom:1px solid rgba(0,251,244,.2);display:flex;align-items:center;overflow:hidden;white-space:nowrap;font-family:"DejaVu Sans Mono",monospace;font-size:19px;letter-spacing:.08em;color:#00FBF4}
+.tick{position:absolute;left:0;right:0;top:0;height:56px;background:rgba(0,0,0,.6);border-bottom:1px solid rgba(0,251,244,.2);display:flex;align-items:center;overflow:hidden;white-space:nowrap;font-family:"DejaVu Sans Mono",monospace;font-size:20px;letter-spacing:.08em;color:#00FBF4}
 .tick span{padding:0 26px;opacity:.9}.tick em{font-style:normal;color:#F472B6}
 .bubble{max-width:720px;padding:24px 32px;font-size:35px;line-height:1.32}
 .bubble.l{align-self:flex-start;background:#1F2226;border-radius:34px 34px 34px 10px}
 .bubble.r{align-self:flex-end;background:linear-gradient(180deg,#14E8E1,#00BDB7);color:#00201E;border-radius:34px 34px 10px 34px;font-weight:500}
-.who{font-size:20px;color:#7A8388;letter-spacing:.04em;margin:0 0 -14px 14px}
+.who{font-size:24px;color:#9AA3A8;letter-spacing:.04em;margin:0 0 -14px 14px}
 """
 
 def logo(h=56, kind="full", st=""):
@@ -86,18 +86,18 @@ def rings(cx, cy, rs=(230, 330, 450), col="0,251,244"):
     """Concentric orbit rings (the circle half of the circles + rectangles system)."""
     return "".join(f'<div style="position:absolute;left:{cx - r_}px;top:{cy - r_}px;width:{2 * r_}px;height:{2 * r_}px;border-radius:50%;border:1.5px solid rgba({col},{.22 - i * .06:.2f})"></div>' for i, r_ in enumerate(rs))
 
-def foot(left="Swipe &rarr;", logo_on=True):
+def foot(left=None, logo_on=True):
     l = f'<span class="swipe">{left}</span>' if left else '<span></span>'
     lg = lockup(42) if logo_on else '<span></span>'
     return f'<div class="foot">{lg}{l}</div>'
 
-def src(t, bottom=118):
+def src(t, bottom=120):
     return f'<p class="src" style="bottom:{bottom}px">{t}</p>'
 
 def page(inner, story=False):
     return f'<!doctype html><html><head><meta charset=utf8><style>{CSS}</style></head><body><div class="s{" st" if story else ""}">{inner}</div></body></html>'
 
-_ck = '<svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 10.5l3.4 3.4L15.5 6.5" stroke="#C4B5FD" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+_ck = '<svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 10.5l3.4 3.4L15.5 6.5" stroke="#00FBF4" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 OK = f'<div class="ic ok">{_ck}</div>'
 NO = '<div class="ic no"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" stroke="#6E777C" stroke-width="2.2" stroke-linecap="round"/></svg></div>'
 WN = '<div class="ic wn"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 4.5v7" stroke="#F472B6" stroke-width="2.8" stroke-linecap="round"/><circle cx="10" cy="15" r="1.7" fill="#F472B6"/></svg></div>'
@@ -155,7 +155,7 @@ def wave(top, story=False, h=120):
             f'<defs><linearGradient id="wf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E4A49" stop-opacity=".9"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs>'
             f'<polygon points="0,{h} {pts} {w},{h}" fill="url(#wf)"/><polyline points="{pts}" fill="none" stroke="#00FBF4" stroke-width="3" style="filter:drop-shadow(0 0 8px rgba(0,251,244,.8))"/></svg>')
 
-def hud(l, t, w, h, c1="#00FBF4", c2="#F472B6", s=46):
+def hud(l, t, w, h, c1="#00FBF4", c2="#00FBF4", s=48):
     """Certificate-style corner brackets: cyan top-left/bottom-right, pink top-right/bottom-left."""
     def corner(x, y, rot, col):
         return (f'<svg width="{s}" height="{s}" style="position:absolute;left:{x}px;top:{y}px;transform:rotate({rot}deg);filter:drop-shadow(0 0 8px {col})">'
@@ -181,17 +181,17 @@ def hero_chart(seed, kind, top=120, h=520, n=30, op=1, tilt=False, left=72, righ
             f'<g style="filter:drop-shadow(0 0 8px rgba(0,251,244,.45))">{candles_svg(r, w, h, kind, n=n, col_dn="#F472B6")}</g></svg></div>')
 
 # ---------- components ----------
-def header_panel(kicker, title, top=110, hot=False, ctr=False):
+def header_panel(kicker, title, top=112, hot=False, ctr=False):
     """FTMO-style title block: spaced kicker over a big title. No box."""
     al = "text-align:center;" if ctr else ""
-    k = f'<p class="kick{" lav" if hot else ""}" style="margin-bottom:18px">{kicker}</p>' if kicker else ""
-    return f'<div class="pad" style="top:{top}px;{al}">{k}<h1 class="hl m">{title}</h1></div>'
+    k = f'<p class="kick{" lav" if hot else ""}" style="margin-bottom:16px">{kicker}</p>' if kicker else ""
+    return f'<div class="pad" style="top:{top}px;{al}">{k}<h1 class="hl">{title}</h1></div>'
 
 def stats(items, top, cols=3):
     cells = []
     for i, (lab, big, small, up) in enumerate(items):
         cls = "a" if up is True else ("dn" if up is False else "")
-        cells.append(f'<div class="gp {"hot" if i == 0 else ""}" style="padding:26px 26px 24px"><p class="lab">{lab}</p><div class="num {cls}" style="font-size:54px;margin-top:10px;line-height:1">{big}</div>' + (f'<div style="font-size:21px;color:#8E979C;margin-top:8px">{small}</div>' if small else "") + '</div>')
+        cells.append(f'<div class="gp" style="padding:24px 24px 24px"><p class="lab">{lab}</p><div class="num {cls}" style="font-size:54px;margin-top:10px;line-height:1">{big}</div>' + (f'<div style="font-size:24px;color:#9AA3A8;margin-top:8px">{small}</div>' if small else "") + '</div>')
     return f'<div class="pad" style="top:{top}px;display:grid;grid-template-columns:repeat({cols},1fr);gap:16px">{"".join(cells)}</div>'
 
 def bars(rows, top, scale, label_w=260, val_w=170, row_h=90):
@@ -202,18 +202,18 @@ def bars(rows, top, scale, label_w=260, val_w=170, row_h=90):
         w = min(abs(v) / scale, 1) * mid; up = v >= 0; col = CY if up else DN
         x = mid if up else mid - w
         bd = "" if i == len(rows) - 1 else "border-bottom:1px solid rgba(255,255,255,.05);"
-        out.append(f'<div style="display:flex;align-items:center;height:{row_h}px;{bd}"><div style="width:{label_w}px"><div style="font-size:26px;font-weight:600">{lab}</div><div style="font-size:16px;color:#7A8388">{sub}</div></div>'
+        out.append(f'<div style="display:flex;align-items:center;height:{row_h}px;{bd}"><div style="width:{label_w}px"><div style="font-size:30px;font-weight:600">{lab}</div>' + (f'<div style="font-size:22px;color:#9AA3A8">{sub}</div>' if sub else "") + f'</div>'
                    f'<div style="position:relative;width:{track}px;height:100%"><div style="position:absolute;left:{mid}px;top:16px;bottom:16px;width:2px;background:rgba(255,255,255,.12)"></div>'
                    f'<div style="position:absolute;left:{x:.0f}px;top:{row_h / 2 - 9}px;width:{max(w, 6):.0f}px;height:18px;border-radius:9px;background:{col};box-shadow:0 0 16px {col}88"></div></div>'
-                   f'<div class="num" style="width:{val_w}px;text-align:right;font-size:32px;color:{col}">{t}</div></div>')
+                   f'<div class="num" style="width:{val_w}px;text-align:right;font-size:34px;color:{col}">{t}</div></div>')
     out.append('</div>')
     return "".join(out)
 
 def steps(items, top, gap=18, big=32, small=24):
     out = [f'<div class="pad" style="top:{top}px;display:flex;flex-direction:column;gap:{gap}px">']
     for i, (h, p) in enumerate(items, 1):
-        out.append(f'<div class="gp {"hot" if i == 1 else ""}" style="display:flex;gap:28px;align-items:flex-start;padding:28px 32px">'
-                   f'<div class="num" style="flex:none;width:64px;font-size:46px;line-height:1;color:{"#00FBF4" if i == 1 else "#3E474C"}">{i:02d}</div>'
+        out.append(f'<div class="gp" style="display:flex;gap:24px;align-items:flex-start;padding:32px">'
+                   f'<div class="num" style="flex:none;width:64px;font-size:44px;line-height:1.05;color:#00FBF4">{i:02d}</div>'
                    f'<div><div style="font-size:{big}px;font-weight:700;line-height:1.2;letter-spacing:-.01em">{h}</div>' + (f'<div style="font-size:{small}px;line-height:1.45;color:#AEB6BA;margin-top:8px">{p}</div>' if p else "") + '</div></div>')
     out.append('</div>')
     return "".join(out)
@@ -224,7 +224,7 @@ def checklist(rows, top, h=100):
         bg_ = "background:rgba(0,251,244,.07);border:1.5px solid rgba(0,251,244,.5);box-shadow:0 0 30px rgba(0,251,244,.12);" if key else "border:1.5px solid transparent;"
         sep = "" if key or i == len(rows) - 1 else "box-shadow:inset 0 -1px 0 rgba(255,255,255,.05);"
         out.append(f'<div style="display:flex;align-items:center;gap:22px;height:{h}px;padding:0 22px;border-radius:20px;{bg_}{sep}">{ic}'
-                   f'<div style="flex:1;font-size:28px;font-weight:{700 if key else 500};color:{"#fff" if key else "#D3D9DC"}">{lab}</div><div class="num" style="font-size:28px;color:{"#00FBF4" if key else "#B0B0B0"}">{t}</div></div>')
+                   f'<div style="flex:1;font-size:30px;font-weight:{700 if key else 500};color:{"#fff" if key else "#D3D9DC"}">{lab}</div><div class="num" style="font-size:30px;color:{"#00FBF4" if key else "#B0B0B0"}">{t}</div></div>')
     out.append('</div>')
     return "".join(out)
 
@@ -234,8 +234,8 @@ def meter(label, room, move, unit, top, note=None):
     tag = f'{frac:.0f}x your room' if over else f'{frac * 100:.0f}% of your room'
     ticks = "".join(f'<div style="position:absolute;left:{w * k / 4:.0f}px;top:-7px;bottom:-7px;width:2px;background:rgba(255,255,255,.14)"></div>' for k in range(1, 4))
     return (f'<div class="gp {"red" if over else "hot"}" style="position:absolute;left:72px;right:72px;top:{top}px;padding:30px 34px">'
-            f'<div style="display:flex;justify-content:space-between;align-items:center"><span class="num" style="font-size:42px">{label}</span><span class="pill {"r" if over else "on"}">{tag}</span></div>'
-            f'<div style="font-size:24px;color:#AEB6BA;margin-top:10px">Room <b style="color:#fff">{room:,} {unit}</b> &nbsp;&middot;&nbsp; Move <b style="color:#fff">{move:,} {unit}</b></div>'
+            f'<div style="display:flex;justify-content:space-between;align-items:center"><span class="num" style="font-size:44px">{label}</span><span class="pill {"r" if over else "on"}">{tag}</span></div>'
+            f'<div style="font-size:28px;color:#AEB6BA;margin-top:8px">Room <b style="color:#fff">{room:,} {unit}</b> &nbsp;&middot;&nbsp; Move <b style="color:#fff">{move:,} {unit}</b></div>'
             f'<div style="position:relative;margin-top:24px;width:{w}px;height:24px;border-radius:12px;background:rgba(255,255,255,.06)">{ticks}'
             f'<div style="position:absolute;left:0;top:0;height:24px;width:{fill:.0f}px;border-radius:12px;background:{col};box-shadow:0 0 22px {col}99"></div></div>'
-            + (f'<div style="font-size:22px;color:#8E979C;margin-top:14px">{note}</div>' if note else "") + '</div>')
+            + (f'<div style="font-size:26px;color:#9AA3A8;margin-top:16px">{note}</div>' if note else "") + '</div>')

@@ -32,7 +32,7 @@ for n, box in CROPS.items():
 dep = [(k, S[k]) for k in DEP if k in S]
 S.clear(); render(dep)
 I = f"file://{D}/img/"
-story("bnA", "+3.03", "%", "The Dow&rsquo;s best post-midterm day since 1982.", I + "nbA_1.png", "The full story, in points.", 121, "vshape")
+story("bnA", "+3.03", "%", "The Dow&rsquo;s best post-midterm day since&nbsp;1982.", I + "nbA_1.png", "The full story, in points.", 121, "vshape")
 story("bnB", "4:45", "PM ET", "Be flat by then, every trading day.", I + "mmB_1.png", "Myth or fact? Test yourself.", 122, "flat")
 story("bnC", "40", "pts", "Your whole $2,000 drawdown on one ES contract.", I + "etA_1.png", "How many points is yours?", 123, "up")
 render(list(S.items()))
