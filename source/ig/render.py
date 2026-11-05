@@ -1,3 +1,4 @@
+import os
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from playwright.sync_api import sync_playwright
@@ -20,8 +21,16 @@ def render(items):
             pg.locator(".s").screenshot(path=f"{D}/img/{name}.png")
         b.close()
 
-render(list(S.items()))
-S.clear()
+# slides that embed other renders go last, after their sources exist
+DEP = ["wcB_1", "wcA_2", "wcD_1"]
+render([kv for kv in S.items() if kv[0] not in DEP])
+from PIL import Image
+CROPS = {"etA_1_t": (40, 360, 1040, 1360), "nbA_1_t": (80, 290, 1000, 1210), "mmB_1_t": (90, 120, 990, 1020)}
+for n, box in CROPS.items():
+    p = f"{D}/img/{n}.png"
+    if os.path.exists(p): Image.open(p).crop(box).save(f"{D}/img/{n}c.png")
+dep = [(k, S[k]) for k in DEP if k in S]
+S.clear(); render(dep)
 I = f"file://{D}/img/"
 story("bnA", "+3.03", "%", "The Dow&rsquo;s best post-midterm day since 1982.", I + "nbA_1.png", "The full story, in points.", 121, "vshape")
 story("bnB", "4:45", "PM ET", "Be flat by then, every trading day.", I + "mmB_1.png", "Myth or fact? Test yourself.", 122, "flat")
