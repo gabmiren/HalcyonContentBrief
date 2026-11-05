@@ -20,19 +20,23 @@ SRC_DAY = (("TheStreet, close 4 Nov", "https://www.thestreet.com/stock-market-to
            ("Finwire, oil, gold and yields", "https://finwire.io/news/forex-news/financial-forex-market-recap-nov-4-2026"))
 SITE = ("Halcyon site (rules, fees)", "https://www.halcyontraderfunding.com")
 
+WCAP = C("Welcome to Halcyon 👋",
+                 "This is where futures news gets explained in points, and the rules come with memes to help them stick.\nSave what helps, and tell us in the comments what you'd like explained next.",
+                 "👉 Come say hi in our Discord: link in bio", "#futurestrading #propfirm #daytrading", disc=True)
 posts = [
  # ------------------------------------------------------------- LAUNCH
  {"id": "wc", "title": "Welcome (pinned)", "short": "Welcome", "when": "Launch · Carousel · New",
-  "brief": {"job": "The first post on the new account and the first of three pinned posts: who Halcyon is, what the feed will be, and what to do next. Pinned with the four cards and the drawdown explainer as they go live.",
+  "brief": {"job": "Three options for the cover and end slide, sharing the same middle slides. The first post on the new account and the first of three pinned posts: who Halcyon is, what the feed will be, and what to do next. Pinned with the four cards and the drawdown explainer as they go live.",
             "topics": "One-off, refresh when the offer changes",
             "fixed": "Glowing Halcyon mark on the cover, three glass cards for what we post, the evaluation in four glowing numbers with the disclaimer, a three-habit checklist, then Follow, Save, Discord.",
             "cadence": "Once, pinned"},
   "versions": [
-   {"name": "Welcome to Halcyon",
-    "caption": C("Welcome to Halcyon 👋",
-                 "This is where futures news gets explained in points, and the rules come with memes to help them stick.\nSave what helps, and tell us in the comments what you'd like explained next.",
-                 "👉 Come say hi in our Discord: link in bio", "#futurestrading #propfirm #daytrading", disc=True),
-    "frames": fr("wcA", ["Cover", "What we post", "What Halcyon is", "How to use it", "Follow"]), "links": L(SITE)},
+   {"name": "Option 1 · The hand", "caption": WCAP,
+    "frames": [{"src": "img/wcB_1.png", "cap": "Cover · fanned cards"}, {"src": "img/wcA_2.png", "cap": "What we post"}, {"src": "img/wcA_3.png", "cap": "What Halcyon is"}, {"src": "img/wcA_4.png", "cap": "How to use it"}, {"src": "img/wcB_5.png", "cap": "End · keep the deck close"}], "links": L(SITE)},
+   {"name": "Option 2 · Big wordmark", "caption": WCAP,
+    "frames": [{"src": "img/wcC_1.png", "cap": "Cover · glowing wordmark and rising chart"}, {"src": "img/wcA_2.png", "cap": "What we post"}, {"src": "img/wcA_3.png", "cap": "What Halcyon is"}, {"src": "img/wcA_4.png", "cap": "How to use it"}, {"src": "img/wcC_5.png", "cap": "End · your week with us"}], "links": L(SITE)},
+   {"name": "Option 3 · Profile preview", "caption": WCAP,
+    "frames": [{"src": "img/wcD_1.png", "cap": "Cover · the profile, previewed"}, {"src": "img/wcA_2.png", "cap": "What we post"}, {"src": "img/wcA_3.png", "cap": "What Halcyon is"}, {"src": "img/wcA_4.png", "cap": "How to use it"}, {"src": "img/wcD_5.png", "cap": "End · notifications"}], "links": L(SITE)},
   ]},
  {"id": "hl", "title": "Highlight covers", "short": "Highlights", "when": "Launch · Profile · New",
   "brief": {"job": "Profile highlight covers, set up before the first post so the profile looks finished from day one.",

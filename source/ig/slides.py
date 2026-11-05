@@ -512,3 +512,72 @@ add("hlSheet", bg(150, "flat", glow=(50, 40)) + header_panel("Profile setup", 'H
     '<div style="position:absolute;left:64px;right:64px;top:470px;display:flex;justify-content:space-between">' +
     "".join(f'<div class="ctr"><div style="width:168px;height:168px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center">{hl_icon(k, 96)}</div><p style="font-size:22px;margin:16px 0 0;font-weight:500">{k}</p></div>' for k in ICONS) +
     '</div><div class="pad" style="top:800px"><p class="body ctr">Five covers for the profile highlights: rules, the Dynamic evaluation, explainers, news and memes. Each file is 1080 &times; 1920 with the icon centred for Instagram&rsquo;s circle crop.</p></div>' + foot(None))
+
+# =====================================================================
+# WELCOME · COVER + END OPTIONS
+# =====================================================================
+IMG = "file:///home/claude/halcyon/ig/img/"
+def mini_icon(kind):
+    return {"News": hl_icon("News", 120), "Explainers": hl_icon("Explainers", 120), "Memes": hl_icon("Memes", 120)}[kind]
+
+# ---- Option 1 · The hand (fanned cards)
+def hand(top, labels, spread=1.0):
+    cards = [(-13, -250 * spread, 50), (0, 0, 0), (13, 250 * spread, 50)]
+    out = [f'<div style="position:absolute;left:0;right:0;top:{top}px;height:520px">']
+    for i, ((rot, dx, dy), (lab, sub)) in enumerate(zip(cards, labels)):
+        out.append(f'<div class="gp {"hot" if i == 1 else ""} ctr" style="position:absolute;left:{540 - 155 + dx:.0f}px;top:{dy}px;width:310px;height:430px;transform:rotate({rot}deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px">'
+                   f'<div style="width:150px;height:150px;border-radius:50%;border:2px solid rgba(0,251,244,.35);display:flex;align-items:center;justify-content:center">{mini_icon(lab)}</div>'
+                   f'<div style="font-size:34px;font-weight:700">{lab}</div><div style="font-size:19px;color:#AFB8BC;line-height:1.35">{sub}</div></div>')
+    out.append('</div>')
+    return "".join(out)
+HAND = [("News", "What moved, in points"), ("Explainers", "One idea per slide"), ("Memes", "With a rule inside")]
+add("wcB_1", bg(161, "up", glow=(50, 30)) +
+    '<div class="pad ctr" style="top:90px"><span class="pill">New account &middot; start here</span></div>' + hand(200, HAND, spread=1.27) +
+    '<div class="pad ctr" style="top:780px"><h1 class="hl xl">Welcome to <span class="glow">Halcyon</span></h1>'
+    '<p class="body" style="margin-top:24px">Three kinds of posts, dealt fresh every week. Swipe to see what&rsquo;s in the deck.</p></div>' + foot())
+add("wcB_5", bg(162, "up", glow=(50, 35)) +
+    '<div style="position:absolute;left:0;right:0;top:150px;height:560px">' +
+    "".join(f'<div class="gp" style="position:absolute;left:{325 + k * 22}px;top:{k * 22}px;width:430px;height:520px;opacity:{.35 + k * .2}"></div>' for k in range(2)) +
+    '<div class="gp hot ctr" style="position:absolute;left:369px;top:44px;width:430px;height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">'
+    '<div style="width:130px;height:130px;border-radius:50%;border:6px solid #00FBF4;position:relative;box-shadow:0 0 50px rgba(0,251,244,.55)"><div style="position:absolute;left:33px;top:33px;width:52px;height:52px;border-radius:50%;background:#00FBF4"></div></div>'
+    '<div style="font-size:40px;font-weight:700">Halcyon</div><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span></div></div>'
+    '<div class="pad ctr" style="top:790px"><h1 class="hl m">Keep the deck <span class="glow">close</span></h1>'
+    '<p class="body" style="margin-top:20px">Follow for the next deal, and bring your questions to our Discord.</p>'
+    '<div style="display:flex;justify-content:center;gap:14px;margin-top:34px"><span class="pill" style="font-size:20px;padding:13px 26px">Save</span><span class="pill" style="font-size:20px;padding:13px 26px">Discord in bio</span></div></div>' + foot(None))
+
+# ---- Option 2 · Big glow wordmark + rising chart
+add("wcC_1", bg(171, "up", glow=(50, 70)) + hero_chart(171, "up", top=690, h=560, n=34) +
+    '<div class="pad ctr" style="top:150px"><p style="font-size:54px;font-weight:500;color:#AFB8BC;margin:0;letter-spacing:.02em">Welcome to</p>'
+    '<div class="num glow" style="font-size:190px;line-height:1;letter-spacing:.06em;margin-top:6px">HALCYON</div>'
+    '<p class="body" style="margin-top:30px">Futures news in plain English, explainers worth saving, and memes that hit a little too close.</p></div>' + foot())
+week = [("Sun", "Week ahead"), ("8:30", "News days"), ("Wed", "Explainers"), ("Daily", "Stories and polls"), ("Fri", "Memes")]
+add("wcC_5", bg(172, "flat", glow=(50, 30)) +
+    '<div class="pad ctr" style="top:150px"><span class="pill">Your week with us</span><h1 class="hl xl" style="margin-top:26px">See you on the next <span class="glow">news day</span></h1></div>'
+    '<div style="position:absolute;left:64px;right:64px;top:640px">'
+    '<div style="position:absolute;left:90px;right:90px;top:43px;height:3px;background:linear-gradient(90deg,rgba(0,251,244,.2),#00FBF4,rgba(0,251,244,.2));box-shadow:0 0 18px rgba(0,251,244,.5)"></div>'
+    '<div style="display:flex;justify-content:space-between;position:relative">' +
+    "".join(f'<div class="ctr" style="width:180px"><div style="width:90px;height:90px;margin:0 auto;border-radius:50%;background:#03070A;border:3px solid {"#00FBF4" if i in (0, 2, 4) else "#2B3A41"};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:{22 if len(d) > 3 else 24}px;{"box-shadow:0 0 26px rgba(0,251,244,.5);color:#00FBF4" if i in (0, 2, 4) else "color:#AFAFAF"}">{d}</div><div style="font-size:22px;margin-top:16px;font-weight:500">{t}</div></div>' for i, (d, t) in enumerate(week)) +
+    '</div></div>'
+    '<div class="pad ctr" style="top:930px"><p class="body">Follow so the next one finds you.</p>'
+    '<div style="display:flex;justify-content:center;gap:14px;margin-top:30px"><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span><span class="pill" style="font-size:20px;padding:13px 26px">Save</span><span class="pill" style="font-size:20px;padding:13px 26px">Discord in bio</span></div></div>' + foot(None))
+
+# ---- Option 3 · Profile preview + notifications
+grid_imgs = ["mmA_1", "etA_1", "wkA_1", "mmB_1", "etB_1", "dyA_1"]
+add("wcD_1", bg(181, "flat", glow=(50, 20)) +
+    '<div class="pad ctr" style="top:80px"><h1 class="hl" style="font-size:76px">You found <span class="glow">Halcyon</span></h1></div>'
+    '<div class="gp hot" style="position:absolute;left:150px;right:150px;top:240px;height:960px;padding:30px 30px 0;overflow:hidden;border-radius:46px">'
+    '<div style="display:flex;align-items:center;gap:24px"><div style="flex:none;width:120px;height:120px;border-radius:50%;padding:5px;background:conic-gradient(#00FBF4,#0A5C5E,#00FBF4)"><div style="width:100%;height:100%;border-radius:50%;background:#03070A;display:flex;align-items:center;justify-content:center"><div style="width:62px;height:62px;border-radius:50%;border:5px solid #00FBF4;position:relative"><div style="position:absolute;left:13px;top:13px;width:26px;height:26px;border-radius:50%;background:#00FBF4"></div></div></div></div>'
+    '<div><div style="font-size:30px;font-weight:700">Halcyon Trader Funding</div><div style="font-size:19px;color:#AFB8BC;margin-top:6px;line-height:1.4">Futures news in plain English, and the rules that keep accounts alive.</div></div></div>'
+    '<div style="display:flex;justify-content:space-between;margin:28px 6px 0">' +
+    "".join(f'<div class="ctr"><div style="width:96px;height:96px;border-radius:50%;border:3px solid rgba(0,251,244,.55);display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(0,251,244,.15),#03070A 70%)">{hl_icon(k, 54)}</div><div style="font-size:15px;margin-top:8px">{k}</div></div>' for k in ICONS) +
+    '</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:28px -30px 0">' +
+    "".join(f'<img src="{IMG}{g}.png" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">' for g in grid_imgs) +
+    '</div></div>' + foot())
+notes = [("Story", "CPI in 30 minutes. Hot or cool? Vote before 8:30.", "now"), ("New post", "CPI day: every market&rsquo;s mood", "2h"), ("New post", "Market, limit or stop? Explained in five slides.", "1d")]
+add("wcD_5", bg(182, "flat", glow=(50, 25)) +
+    '<div class="pad ctr" style="top:120px"><h1 class="hl xl">Let news days <span class="glow">come to you</span></h1></div>'
+    '<div class="pad" style="top:520px;display:flex;flex-direction:column;gap:16px">' +
+    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;align-items:center;gap:22px;padding:24px 28px;border-radius:26px;margin:0 {i * 26}px;opacity:{1 - i * .18}"><div style="flex:none;width:64px;height:64px;border-radius:16px;background:#03070A;border:2px solid rgba(0,251,244,.5);display:flex;align-items:center;justify-content:center"><div style="width:30px;height:30px;border-radius:50%;border:4px solid #00FBF4;position:relative"><div style="position:absolute;left:5px;top:5px;width:12px;height:12px;border-radius:50%;background:#00FBF4"></div></div></div>'
+            f'<div style="flex:1"><div style="display:flex;justify-content:space-between"><span style="font-size:21px;font-weight:700">Halcyon &middot; {k}</span><span style="font-size:18px;color:#7D878C">{t}</span></div><div style="font-size:23px;color:#C9D1D4;margin-top:4px">{m}</div></div></div>' for i, (k, m, t) in enumerate(notes)) +
+    '</div><div class="pad ctr" style="top:1010px"><p class="body">Follow, then turn on notifications for posts and Stories.</p>'
+    '<div style="display:flex;justify-content:center;gap:14px;margin-top:26px"><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span><span class="pill" style="font-size:20px;padding:13px 26px">&#128276; Notifications</span></div></div>' + foot(None))
