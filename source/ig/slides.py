@@ -534,13 +534,27 @@ IMG = "file:///home/claude/halcyon/ig/img/"
 THUMB = {"News": "nbA_1", "Explainers": "etA_1", "Memes": "mmB_1"}
 
 # ---- Option 1 · The hand (fanned cards)
+def card_visual(lab):
+    """Text-free visuals for the pinned cover cards."""
+    box = 'width:236px;height:270px;border-radius:16px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px'
+    if lab == "News":
+        return f'<div style="{box}"><svg width="206" height="220" style="filter:drop-shadow(0 0 6px rgba(0,251,244,.45))">{candles_svg(random.Random(14), 206, 220, "vshape", n=16, col_dn="#F472B6", pad=.06)}</svg></div>'
+    if lab == "Explainers":
+        sm = "".join('<div style="width:30px;height:30px;border-radius:8px;background:#00FBF4;opacity:.85;box-shadow:0 0 10px rgba(0,251,244,.4)"></div>' for _ in range(10))
+        return (f'<div style="{box}"><div style="width:92px;height:92px;border-radius:18px;background:#00FBF4;box-shadow:0 0 26px rgba(0,251,244,.5)"></div>'
+                '<div style="width:44px;height:14px;border-top:4px solid #8E979C;border-bottom:4px solid #8E979C"></div>'
+                f'<div style="display:grid;grid-template-columns:repeat(5,30px);gap:8px">{sm}</div></div>')
+    bub = lambda side, w: (f'<div style="align-self:flex-{"end" if side == "r" else "start"};width:{w}px;height:34px;border-radius:{"17px 17px 5px 17px" if side == "r" else "17px 17px 17px 5px"};'
+                           f'background:{"linear-gradient(180deg,#14E8E1,#00BDB7)" if side == "r" else "#2A2E33"}"></div>')
+    dots = '<div style="align-self:flex-start;display:flex;gap:7px;padding:12px 16px;border-radius:17px;background:#2A2E33">' + "".join('<i style="width:9px;height:9px;border-radius:50%;background:#8E979C;display:block"></i>' for _ in range(3)) + '</div>'
+    return f'<div style="{box};align-items:stretch;padding:22px 20px;justify-content:center;gap:12px">{bub("l", 150)}{bub("r", 120)}{bub("l", 176)}{bub("r", 96)}{dots}</div>'
+
 def hand(top, labels, spread=1.0):
     cards = [(-13, -250 * spread, 50), (0, 0, 0), (13, 250 * spread, 50)]
     out = [f'<div style="position:absolute;left:0;right:0;top:{top}px;height:520px">']
     for i, ((rot, dx, dy), (lab, sub)) in enumerate(zip(cards, labels)):
-        out.append(f'<div class="gp {"hot" if i == 1 else ""} ctr" style="position:absolute;left:{540 - 155 + dx:.0f}px;top:{dy}px;width:310px;height:430px;transform:rotate({rot}deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px">'
-                   f'<img src="{IMG}{THUMB[lab]}.png" style="width:232px;aspect-ratio:4/5;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.12);display:block">'
-                   f'<div style="font-size:36px;font-weight:700">{lab}</div></div>')
+        out.append(f'<div class="gp {"hot" if i == 1 else ""} ctr" style="position:absolute;left:{540 - 155 + dx:.0f}px;top:{dy}px;width:310px;height:430px;transform:rotate({rot}deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px">'
+                   f'<div style="font-size:36px;font-weight:700">{lab}</div>{card_visual(lab)}</div>')
     out.append('</div>')
     return "".join(out)
 HAND = [("Explainers", ""), ("News", ""), ("Memes", "")]
@@ -663,8 +677,8 @@ add("mmB_1", bg(81, "flat", glow=(50, 30)) + cover_top() +
     '<div class="pad ctr" style="top:740px"><h1 class="hl xl">Myth <span class="lt">or</span> <span class="glow">fact?</span></h1>'
     '<p class="body" style="margin-top:26px">Five claims about the $50K evaluation. Keep score.</p></div>' + foot("Play along &rarr;", logo_on=False))
 
-add("wcB_1", bg(161, "flat", glow=(50, 30)) + cover_top() + hand(220, HAND, spread=1.27) +
-    '<div class="pad ctr" style="top:790px"><h1 class="hl xl">Welcome to <span class="glow">Halcyon</span></h1>'
+add("wcB_1", bg(161, "flat", glow=(50, 34)) + cover_top() + hand(270, HAND, spread=1.27) +
+    '<div class="pad ctr" style="top:880px"><h1 class="hl xl">Welcome to <span class="glow">Halcyon</span></h1>'
     '<div style="margin-top:34px"><span class="pill on" style="font-size:20px;padding:12px 28px">Pinned &middot; start here</span></div></div>' + foot("Swipe &rarr;", logo_on=False))
 
 add("wcC_1", bg(171, "up", glow=(50, 34)) + rings(540, 380, (270, 390, 520)) + hero_chart(171, "up", top=800, h=460, n=34, op=1, left=90, right=90) +
