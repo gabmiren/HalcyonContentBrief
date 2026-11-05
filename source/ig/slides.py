@@ -117,12 +117,12 @@ def chat(name, title, msgs, seed, left="Swipe &rarr;"):
         f'<div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#00FBF4,#0A5C5E);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;color:#022">FT</div>'
         f'<div><div style="font-size:26px;font-weight:700">{title}</div><div style="font-size:17px;color:#7D878C">Wed 4 Nov</div></div></div>'
         f'<div style="display:flex;flex-direction:column;gap:22px;padding:34px 34px">{"".join(rows)}</div></div>' + foot(left))
-chat("gcA_1", "futures traders 📈", [("jay", "l", "oil just dropped 8% 💀"), ("me", "r", "on a WEDNESDAY??"),
+chat("gcA_1", "futures traders", [("jay", "l", "oil just dropped 8%"), ("me", "r", "on a WEDNESDAY??"),
      ("jay", "l", "election results came in and the war-risk talk cooled off"), ("me", "r", "so the CL long i was &ldquo;holding for the weekend&rdquo;..."),
      ("jay", "l", "we don&rsquo;t talk about the CL long")], 41)
-chat("gcA_2", "futures traders 📈", [("sam", "l", "wait what did gold do"), ("jay", "l", "back above 4k"),
-     ("sam", "l", "and the dow??"), ("jay", "l", "+1,569 &#128558;"),
-     ("me", "r", "i was flat all day 🙃"), ("sam", "l", "most disciplined thing you&rsquo;ve ever done tbh")], 42)
+chat("gcA_2", "futures traders", [("sam", "l", "wait what did gold do"), ("jay", "l", "back above 4k"),
+     ("sam", "l", "and the dow??"), ("jay", "l", "+1,569"),
+     ("me", "r", "i was flat all day"), ("sam", "l", "most disciplined thing you&rsquo;ve ever done tbh")], 42)
 add("gcA_3", bg(43, "drop") + header_panel("What actually happened", 'The chat, <span class="glow">fact-checked</span>') +
     checklist([("&asymp;&minus;8.5%", "Oil fell to about $89", WN, False), ("+3.3%", "Gold back above $4,000", OK, True),
                ("+3.03%", "Dow, best post-midterm day since 1982", OK, False), ("+1.58%", "S&amp;P 500 closed at 7,689", OK, False),
@@ -325,7 +325,7 @@ meme("mmA_5", "Meme 04",
      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:20px 54px 0">'
      '<div class="gp hot" style="padding:36px"><p class="lab">Account 1</p><div class="num glow" style="font-size:72px;margin-top:10px">LONG</div><div style="font-size:32px">2 MES</div></div>'
      '<div class="gp red" style="padding:36px"><p class="lab">Account 2</p><div class="num glowr" style="font-size:72px;margin-top:10px">SHORT</div><div style="font-size:32px">2 MES</div></div></div>'
-     '<div class="ctr" style="font-size:190px;margin-top:20px">&#129504;</div>',
+     '<div class="ctr" style="margin-top:44px"><div class="num" style="font-size:120px;line-height:1;color:#fff">Net: 0</div><div style="margin-top:18px"><span class="pill gr" style="font-size:22px">big brain move</span></div></div>',
      "<b>Hedging</b> is banned, including across accounts and micro against mini.", 75)
 add("mmA_6", bg(76, "flat") + header_panel("", 'Read the rules <span class="glow">before the chart</span>') +
     checklist([("Daily", "Flat by 4:45 PM ET", OK, True), ("Every trade", "Use a stop loss", OK, False), ("News", "No straddles", NO, False), ("Accounts", "No hedging", NO, False)], 400, h=112) +
@@ -591,7 +591,7 @@ add("wcD_5", bg(182, "flat", glow=(50, 25)) +
     "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;align-items:center;gap:22px;padding:24px 28px;border-radius:26px;margin:0 {i * 26}px;opacity:{1 - i * .18}"><div style="flex:none;width:64px;height:64px;border-radius:16px;background:#03070A;border:2px solid rgba(0,251,244,.5);display:flex;align-items:center;justify-content:center"><img src="{BRAND}logo_mark.png" style="width:44px"></div>'
             f'<div style="flex:1"><div style="display:flex;justify-content:space-between"><span style="font-size:21px;font-weight:700">Halcyon &middot; {k}</span><span style="font-size:18px;color:#7D878C">{t}</span></div><div style="font-size:23px;color:#C9D1D4;margin-top:4px">{m}</div></div></div>' for i, (k, m, t) in enumerate(notes)) +
     '</div><div class="pad ctr" style="top:1000px">'
-    '<div style="display:flex;justify-content:center;gap:14px"><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span><span class="pill" style="font-size:20px;padding:13px 26px">&#128276; Notifications</span></div></div>' + foot(None))
+    '<div style="display:flex;justify-content:center;gap:14px"><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span><span class="pill" style="font-size:20px;padding:13px 26px">Notifications</span></div></div>' + foot(None))
 
 # =====================================================================
 # V3 COVERS · real logo top-centre, FTMO-style centred titles, site HUD / wave / ticker motifs
