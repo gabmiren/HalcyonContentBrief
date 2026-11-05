@@ -184,14 +184,14 @@ def hero_chart(seed, kind, top=120, h=520, n=30, op=1, tilt=False, left=72, righ
 def header_panel(kicker, title, top=110, hot=False, ctr=False):
     """FTMO-style title block: spaced kicker over a big title. No box."""
     al = "text-align:center;" if ctr else ""
-    return (f'<div class="pad" style="top:{top}px;{al}"><p class="kick{" lav" if hot else ""}">{kicker}</p>'
-            f'<h1 class="hl m" style="margin-top:18px">{title}</h1></div>')
+    k = f'<p class="kick{" lav" if hot else ""}" style="margin-bottom:18px">{kicker}</p>' if kicker else ""
+    return f'<div class="pad" style="top:{top}px;{al}">{k}<h1 class="hl m">{title}</h1></div>'
 
 def stats(items, top, cols=3):
     cells = []
     for i, (lab, big, small, up) in enumerate(items):
         cls = "a" if up is True else ("dn" if up is False else "")
-        cells.append(f'<div class="gp {"hot" if i == 0 else ""}" style="padding:26px 26px 24px"><p class="lab">{lab}</p><div class="num {cls}" style="font-size:54px;margin-top:10px;line-height:1">{big}</div><div style="font-size:21px;color:#8E979C;margin-top:8px">{small}</div></div>')
+        cells.append(f'<div class="gp {"hot" if i == 0 else ""}" style="padding:26px 26px 24px"><p class="lab">{lab}</p><div class="num {cls}" style="font-size:54px;margin-top:10px;line-height:1">{big}</div>' + (f'<div style="font-size:21px;color:#8E979C;margin-top:8px">{small}</div>' if small else "") + '</div>')
     return f'<div class="pad" style="top:{top}px;display:grid;grid-template-columns:repeat({cols},1fr);gap:16px">{"".join(cells)}</div>'
 
 def bars(rows, top, scale, label_w=260, val_w=170, row_h=90):
@@ -214,7 +214,7 @@ def steps(items, top, gap=18, big=32, small=24):
     for i, (h, p) in enumerate(items, 1):
         out.append(f'<div class="gp {"hot" if i == 1 else ""}" style="display:flex;gap:28px;align-items:flex-start;padding:28px 32px">'
                    f'<div class="num" style="flex:none;width:64px;font-size:46px;line-height:1;color:{"#00FBF4" if i == 1 else "#3E474C"}">{i:02d}</div>'
-                   f'<div><div style="font-size:{big}px;font-weight:700;line-height:1.2;letter-spacing:-.01em">{h}</div><div style="font-size:{small}px;line-height:1.45;color:#AEB6BA;margin-top:8px">{p}</div></div></div>')
+                   f'<div><div style="font-size:{big}px;font-weight:700;line-height:1.2;letter-spacing:-.01em">{h}</div>' + (f'<div style="font-size:{small}px;line-height:1.45;color:#AEB6BA;margin-top:8px">{p}</div>' if p else "") + '</div></div>')
     out.append('</div>')
     return "".join(out)
 

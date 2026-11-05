@@ -24,7 +24,7 @@ render(list(S.items()))
 S.clear()
 I = f"file://{D}/img/"
 story("bnA", "+3.03", "%", "The Dow&rsquo;s best post-midterm day since 1982.", I + "nbA_1.png", "The full story, in points.", 121, "vshape")
-story("bnB", "4:45", "PM ET", "Be flat by then, every trading day.", I + "mmB_1.png", "Myth or fact? Five to test yourself on.", 122, "flat")
+story("bnB", "4:45", "PM ET", "Be flat by then, every trading day.", I + "mmB_1.png", "Myth or fact? Test yourself.", 122, "flat")
 story("bnC", "40", "pts", "Your whole $2,000 drawdown on one ES contract.", I + "etA_1.png", "How many points is yours?", 123, "up")
 render(list(S.items()))
 print("done")
