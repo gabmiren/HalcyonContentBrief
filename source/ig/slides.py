@@ -3,6 +3,7 @@ from lib import *
 S = {}
 def add(name, inner, story=False): S[name] = (page(inner, story), story)
 
+IMG = "file:///home/claude/halcyon/ig/img/"
 DISC = "Halcyon offers simulated educational accounts. Results not guaranteed. T&amp;C apply."
 
 def follow(name, head, sub, seed, disc=False):
@@ -450,8 +451,8 @@ wc_cards = [("News, in points", "What moved, why, and what it meant for one cont
             ("Memes with a rule inside", "A laugh first, then the rule that saves your account.")]
 add("wcA_2", bg(132, "flat") + header_panel("What you&rsquo;ll find here", 'Your feed, <span class="glow">but useful</span>') +
     '<div class="pad" style="top:390px;display:flex;flex-direction:column;gap:22px">' +
-    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;gap:30px;align-items:center;padding:44px 36px"><div style="flex:none;width:96px;height:96px;border-radius:50%;border:2px solid #00FBF4;display:flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 0 22px rgba(0,251,244,.3)">{ic}</div><div><div style="font-size:40px;font-weight:700">{h}</div><div style="font-size:27px;color:#AFB8BC;margin-top:8px;line-height:1.4">{p}</div></div></div>'
-            for i, ((h, p), ic) in enumerate(zip(wc_cards, ["&#128240;", "&#128161;", "&#128514;"]))) +
+    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;gap:30px;align-items:center;padding:44px 36px"><img src="{IMG}{ic}.png" style="flex:none;width:120px;aspect-ratio:4/5;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.14)"><div><div style="font-size:40px;font-weight:700">{h}</div><div style="font-size:27px;color:#AFB8BC;margin-top:8px;line-height:1.4">{p}</div></div></div>'
+            for i, ((h, p), ic) in enumerate(zip(wc_cards, ["nbA_1", "etA_1", "mmA_1"]))) +
     '</div>' + foot())
 add("wcA_3", bg(133, "up") + header_panel("What Halcyon is", 'A simulated evaluation, <span class="glow">with clear rules</span>', hot=True) +
     '<div class="pad" style="top:430px;display:grid;grid-template-columns:1fr 1fr;gap:16px">' +
@@ -504,42 +505,45 @@ sticker_story("stF", "Friday the 13th", 'What&rsquo;s your <span class="glow">tr
 # =====================================================================
 # PROFILE · HIGHLIGHT COVERS (1080x1920, icon centred for the circle crop)
 # =====================================================================
-ICONS = {
- "Rules": '<path d="M60 14l38 14v28c0 26-17 44-38 52-21-8-38-26-38-52V28z" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linejoin="round"/><path d="M42 62l13 13 24-26" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
- "Dynamic": '<rect x="20" y="34" width="52" height="70" rx="9" fill="none" stroke="#00FBF4" stroke-width="6" transform="rotate(-12 46 69)"/><rect x="48" y="22" width="52" height="70" rx="9" fill="#03070A" stroke="#00FBF4" stroke-width="7" transform="rotate(10 74 57)"/><text x="75" y="66" fill="#00FBF4" font-family="Poppins" font-weight="700" font-size="26" text-anchor="middle" transform="rotate(10 74 57)">$</text>',
- "Explainers": '<circle cx="60" cy="52" r="26" fill="none" stroke="#00FBF4" stroke-width="7"/><path d="M48 84h24M51 98h18" stroke="#00FBF4" stroke-width="7" stroke-linecap="round"/><path d="M60 38v14l9 6" stroke="#00FBF4" stroke-width="6" stroke-linecap="round" fill="none"/>',
- "News": '<path d="M18 88l24-26 18 14 30-38" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M74 38h16v16" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 104h88" stroke="#00FBF4" stroke-width="5" stroke-linecap="round" opacity=".5"/>',
- "Memes": '<circle cx="60" cy="60" r="40" fill="none" stroke="#00FBF4" stroke-width="7"/><circle cx="46" cy="52" r="5" fill="#00FBF4"/><circle cx="74" cy="52" r="5" fill="#00FBF4"/><path d="M42 70c8 12 28 12 36 0" fill="none" stroke="#00FBF4" stroke-width="7" stroke-linecap="round"/>',
-}
-def hl_icon(k, size):
-    return f'<svg width="{size}" height="{size}" viewBox="0 0 120 120" style="filter:drop-shadow(0 0 14px rgba(0,251,244,.6))">{ICONS[k]}</svg>'
-for i, k in enumerate(ICONS):
-    add(f"hl{k}", '<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,251,244,.22),transparent 38%),#03070A"></div>'
-        '<div style="position:absolute;left:240px;top:660px;width:600px;height:600px;border-radius:50%;border:6px solid rgba(0,251,244,.55);box-shadow:0 0 60px rgba(0,251,244,.25),inset 0 0 60px rgba(0,251,244,.12);display:flex;align-items:center;justify-content:center">'
-        + hl_icon(k, 330) + '</div>', story=True)
-add("hlStart", '<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,251,244,.22),transparent 38%),#03070A"></div>'
-    '<div style="position:absolute;left:240px;top:660px;width:600px;height:600px;border-radius:50%;border:6px solid rgba(0,251,244,.55);box-shadow:0 0 60px rgba(0,251,244,.25),inset 0 0 60px rgba(0,251,244,.12);display:flex;align-items:center;justify-content:center">'
-    f'<img src="{BRAND}logo_mark.png" style="width:360px;filter:drop-shadow(0 0 18px rgba(0,251,244,.6))"></div>', story=True)
+HLK = ["Start", "Rules", "Dynamic", "Explainers", "News", "Memes"]
+def hl_face(k, D):
+    """What sits inside a highlight circle of diameter D. No icon set: the logo, a real number or a real chart."""
+    t = lambda txt, col, fs, sub=None: (f'<div class="ctr" style="line-height:1"><div class="num" style="font-size:{fs:.0f}px;color:{col};text-shadow:0 0 {D * .06:.0f}px {col}88">{txt}</div>'
+                                         + (f'<div style="font-size:{D * .075:.0f}px;font-weight:600;letter-spacing:.12em;color:#B0B0B0;margin-top:{D * .03:.0f}px">{sub}</div>' if sub else "") + '</div>')
+    if k == "Start":
+        return f'<img src="{BRAND}logo_mark.png" style="width:{D * .6:.0f}px;filter:drop-shadow(0 0 {D * .03:.0f}px rgba(0,251,244,.6))">'
+    if k == "Rules": return t("4:45", DN, D * .27, "PM ET")
+    if k == "Dynamic": return t("$50K", LAV, D * .25, "DYNAMIC")
+    if k == "Explainers": return t("1 pt", CY, D * .27, "= $50 ON ES")
+    if k == "Memes": return t("lol", CY, D * .32)
+    w, h = D * .66, D * .46
+    return f'<svg width="{w:.0f}" height="{h:.0f}">{candles_svg(random.Random(9), w, h, "up", n=9, col_dn="#F472B6", pad=.04)}</svg>'
+
+def hl_ring(k, D, bw):
+    return (f'<div style="width:{D}px;height:{D}px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.14),#03070A 72%);border:{bw}px solid rgba(0,251,244,.55);'
+            f'box-shadow:0 0 {D * .1:.0f}px rgba(0,251,244,.22);display:flex;align-items:center;justify-content:center">{hl_face(k, D)}</div>')
+
+for k in HLK:
+    add(f"hl{k}", '<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,251,244,.18),transparent 40%),#03070A"></div>'
+        '<div style="position:absolute;left:240px;top:660px">' + hl_ring(k, 600, 6) + '</div>', story=True)
 add("hlSheet", bg(150, "flat", glow=(50, 40)) + header_panel("Profile setup", 'Highlight <span class="glow">covers</span>') +
     '<div style="position:absolute;left:64px;right:64px;top:470px;display:flex;justify-content:space-between">' +
-    f'<div class="ctr"><div style="width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center"><img src="{BRAND}logo_mark.png" style="width:92px"></div><p style="font-size:22px;margin:16px 0 0;font-weight:500">Start</p></div>' +
-    "".join(f'<div class="ctr"><div style="width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center">{hl_icon(k, 96)}</div><p style="font-size:22px;margin:16px 0 0;font-weight:500">{k}</p></div>' for k in ICONS) +
-    '</div><div class="pad" style="top:800px"><p class="body ctr">Six covers for the profile highlights: start here, rules, the Dynamic evaluation, explainers, news and memes. Each file is 1080 &times; 1920 with the icon centred for Instagram&rsquo;s circle crop.</p></div>' + foot(None))
+    "".join(f'<div class="ctr">{hl_ring(k, 150, 4)}<p style="font-size:22px;margin:16px 0 0;font-weight:500">{k}</p></div>' for k in HLK) +
+    '</div><div class="pad" style="top:800px"><p class="body ctr">Six covers for the profile highlights: start here, rules, the Dynamic evaluation, explainers, news and memes. Each file is 1080 &times; 1920 with the design centred for Instagram&rsquo;s circle crop.</p></div>' + foot(None))
 
 # =====================================================================
 # WELCOME · COVER + END OPTIONS
 # =====================================================================
 IMG = "file:///home/claude/halcyon/ig/img/"
-def mini_icon(kind):
-    return {"News": hl_icon("News", 120), "Explainers": hl_icon("Explainers", 120), "Memes": hl_icon("Memes", 120)}[kind]
+THUMB = {"News": "nbA_1", "Explainers": "etA_1", "Memes": "mmB_1"}
 
 # ---- Option 1 · The hand (fanned cards)
 def hand(top, labels, spread=1.0):
     cards = [(-13, -250 * spread, 50), (0, 0, 0), (13, 250 * spread, 50)]
     out = [f'<div style="position:absolute;left:0;right:0;top:{top}px;height:520px">']
     for i, ((rot, dx, dy), (lab, sub)) in enumerate(zip(cards, labels)):
-        out.append(f'<div class="gp {"hot" if i == 1 else ""} ctr" style="position:absolute;left:{540 - 155 + dx:.0f}px;top:{dy}px;width:310px;height:430px;transform:rotate({rot}deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px">'
-                   f'<div style="width:150px;height:150px;border-radius:50%;border:2px solid rgba(0,251,244,.35);display:flex;align-items:center;justify-content:center">{mini_icon(lab)}</div>'
+        out.append(f'<div class="gp {"hot" if i == 1 else ""} ctr" style="position:absolute;left:{540 - 155 + dx:.0f}px;top:{dy}px;width:310px;height:430px;transform:rotate({rot}deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px">'
+                   f'<img src="{IMG}{THUMB[lab]}.png" style="width:232px;aspect-ratio:4/5;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.12);display:block">'
                    f'<div style="font-size:34px;font-weight:700">{lab}</div><div style="font-size:19px;color:#AFB8BC;line-height:1.35">{sub}</div></div>')
     out.append('</div>')
     return "".join(out)
@@ -581,7 +585,7 @@ add("wcD_1", bg(181, "flat", glow=(50, 20)) +
     '<div style="display:flex;align-items:center;gap:24px"><div style="flex:none;width:120px;height:120px;border-radius:50%;padding:5px;background:conic-gradient(#00FBF4,#0A5C5E,#00FBF4)"><div style="width:100%;height:100%;border-radius:50%;background:#03070A;display:flex;align-items:center;justify-content:center"><img src="file:///home/claude/halcyon/ig/brand/logo_mark.png" style="width:78px"></div></div>'
     '<div><div style="font-size:30px;font-weight:700">Halcyon Trader Funding</div><div style="font-size:19px;color:#AFB8BC;margin-top:6px;line-height:1.4">Futures news in plain English, and the rules that keep accounts alive.</div></div></div>'
     '<div style="display:flex;justify-content:space-between;margin:28px 6px 0">' +
-    "".join(f'<div class="ctr"><div style="width:96px;height:96px;border-radius:50%;border:3px solid rgba(0,251,244,.55);display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(0,251,244,.15),#03070A 70%)">{hl_icon(k, 54)}</div><div style="font-size:15px;margin-top:8px">{k}</div></div>' for k in ICONS) +
+    "".join(f'<div class="ctr">{hl_ring(k, 88, 3)}<div style="font-size:15px;margin-top:8px">{k}</div></div>' for k in HLK) +
     '</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:28px -30px 0">' +
     "".join(f'<img src="{IMG}{g}.png" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">' for g in grid_imgs) +
     '</div></div>' + foot())
@@ -628,9 +632,15 @@ add("etA_1", bg(51, "flat", glow=(50, 62)) + cover_top() +
     '<div style="margin-top:22px;display:flex;justify-content:center;gap:12px"><span class="pill on" style="font-size:22px">= ? points on ES</span><span class="pill lav" style="font-size:22px">= ? on MES</span></div></div>'
     + foot("Swipe to find out &rarr;", logo_on=False))
 
+def mini_order(kind, col, seed):
+    w, h = 250, 150; rr = random.Random(seed)
+    lvl = {"market": 66, "limit": 128, "stop": 22}[kind]
+    return (f'<svg width="{w}" height="{h}" style="display:block">{candles_svg(rr, w - 40, h, "flat", n=12, col_dn="#F472B6", pad=.22)}'
+            f'<line x1="0" y1="{lvl}" x2="{w}" y2="{lvl}" stroke="{col}" stroke-width="2.5" stroke-dasharray="7 6"/>'
+            f'<circle cx="{w - 14}" cy="{lvl}" r="7" fill="{col}" style="filter:drop-shadow(0 0 6px {col})"/></svg>')
 def ticket(lab, cls, col, px_, status, icon):
     return (f'<div class="gp {cls} ctr" style="height:540px;padding:46px 22px 36px;display:flex;flex-direction:column;align-items:center;gap:22px">'
-            f'<div style="width:120px;height:120px;border-radius:50%;border:2px solid {col};display:flex;align-items:center;justify-content:center;box-shadow:0 0 26px {col}55">{icon}</div>'
+            f'<div style="padding:10px;border-radius:16px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.06)">{icon}</div>'
             f'<div style="font-size:46px;font-weight:700;color:{col}">{lab}</div><div class="num" style="font-size:36px">{px_}</div>'
             f'<div style="font-size:24px;color:#AEB6BA;line-height:1.4;margin-top:auto">{status}</div></div>')
 ar = lambda c, d: f'<svg width="46" height="46" viewBox="0 0 46 46"><path d="{d}" stroke="{c}" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -638,9 +648,9 @@ add("etB_1", bg(57, "flat", glow=(50, 55)) + cover_top() +
     '<div class="pad ctr" style="top:200px"><p class="kick">Every trader should know</p><h1 class="hl xl" style="margin-top:26px">Market, limit <span class="glow">or stop?</span></h1>'
     '<p class="body" style="margin-top:24px">Three order types, and when each one can surprise you.</p></div>'
     '<div class="pad" style="top:640px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px">' +
-    ticket("Market", "hot", CY, "Now", "Fills at the next price available", ar(CY, "M8 23h28M26 13l10 10-10 10")) +
-    ticket("Limit", "lavb", LAV, "5,999.00", "Waits for your price or better", ar(LAV, "M8 14h30M8 23h30M8 32h30")) +
-    ticket("Stop", "red", DN, "6,001.00", "Triggers, then fills at market", ar(DN, "M23 8v20M23 36v1")) +
+    ticket("Market", "hot", CY, "Now", "Fills at the next price available", mini_order("market", CY, 3)) +
+    ticket("Limit", "lavb", LAV, "5,999.00", "Waits for your price or better", mini_order("limit", LAV, 4)) +
+    ticket("Stop", "red", DN, "6,001.00", "Triggers, then fills at market", mini_order("stop", DN, 5)) +
     '</div>' + foot("Swipe to learn &rarr;", logo_on=False))
 
 ways = [("01", "4:44 PM", "Still in the trade", DN), ("02", "No stop", "&ldquo;I can feel it&rdquo;", DN), ("03", "8:29:59", "Both sides of CPI", DN), ("04", "Long + short", "Two accounts", DN)]
@@ -663,7 +673,7 @@ add("wcB_1", bg(161, "flat", glow=(50, 30)) + cover_top() + hand(220, HAND, spre
     '<p class="body" style="margin-top:24px">Three kinds of posts, dealt fresh every week. Swipe to see what&rsquo;s in the deck.</p>'
     '<div style="margin-top:30px"><span class="pill on" style="font-size:20px;padding:12px 28px">Pinned &middot; start here</span></div></div>' + foot("Swipe &rarr;", logo_on=False))
 
-add("wcC_1", bg(171, "up", glow=(50, 34)) + rings(540, 380, (270, 390, 520)) + hero_chart(171, "up", top=820, h=440, n=34, op=.55, tilt=True, left=90, right=90) +
+add("wcC_1", bg(171, "up", glow=(50, 34)) + rings(540, 380, (270, 390, 520)) + hero_chart(171, "up", top=800, h=460, n=34, op=1, left=90, right=90) +
     '<div class="pad ctr" style="top:120px"><p style="font-size:46px;font-weight:500;color:#C9D1D4;margin:0;letter-spacing:.01em">Welcome to</p></div>'
     '<div style="position:absolute;left:0;right:0;top:210px">' + biglogo(330) + '</div>'
     '<div class="pad ctr" style="top:600px"><p class="body" style="margin:0 30px">Futures news in plain English, explainers worth saving, and memes that hit a little too close.</p></div>' + foot("Swipe &rarr;", logo_on=False))

@@ -112,20 +112,29 @@ def stars(r, w, h, n=90):
         out.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{s}" fill="{col}" opacity="{op:.2f}"/>')
     return "".join(out)
 
-def candles_svg(r, w, h, kind, n=26, base=None, col_up="#00FBF4", col_dn="#21474B"):
+def price_path(r, n, kind):
+    """Closes with a trend shape plus real swings: pullbacks in uptrends, bounces in downtrends."""
+    shape = {"up": lambda t: t, "down": lambda t: 1 - t, "flat": lambda t: .5,
+             "spike": lambda t: .35 + (0 if t < .7 else (t - .7) * 2.2), "drop": lambda t: .65 - (0 if t < .7 else (t - .7) * 2.2),
+             "vshape": lambda t: abs(t - .45) * 1.6}.get(kind, lambda t: .5)
+    ph1, ph2 = r.uniform(0, 6.3), r.uniform(0, 6.3)
+    out, ar_ = [], 0
+    for i in range(n + 1):
+        t = i / n
+        ar_ = ar_ * .55 + r.gauss(0, .05)
+        out.append(shape(t) + math.sin(t * 6.3 * 2.6 + ph1) * .09 + math.sin(t * 6.3 * 5.3 + ph2) * .04 + ar_)
+    return out
+
+def candles_svg(r, w, h, kind, n=26, base=None, col_up="#00FBF4", col_dn="#21474B", pad=.12):
+    cl = price_path(r, n, kind); lo_, hi_ = min(cl), max(cl); rng = (hi_ - lo_) or 1
+    y = lambda v: h * pad + (1 - (v - lo_) / rng) * h * (1 - 2 * pad)
     out = []; cw = w / n
-    p = base if base is not None else h * (0.7 if kind in ("up", "spike") else 0.35)
     for i in range(n):
-        t = i / (n - 1)
-        drift = {"up": -h * .018, "down": h * .016, "flat": 0,
-                 "spike": -h * (0.003 if t < .7 else .06), "drop": h * (0.003 if t < .7 else .06),
-                 "vshape": h * (0.03 if t < .5 else -0.034)}.get(kind, 0)
-        o = p; c = p + drift + r.uniform(-h * .035, h * .035)
-        hi = min(o, c) - r.uniform(6, h * .05); lo = max(o, c) + r.uniform(6, h * .05)
+        o, c = y(cl[i]), y(cl[i + 1]) + r.uniform(-h * .006, h * .006)
+        hi = min(o, c) - r.uniform(4, h * .035); lo = max(o, c) + r.uniform(4, h * .035)
         up = c < o; x = i * cw + cw / 2; col = col_up if up else col_dn
         out.append(f'<line x1="{x:.0f}" y1="{hi:.0f}" x2="{x:.0f}" y2="{lo:.0f}" stroke="{col}" stroke-width="3"/>'
                    f'<rect x="{x - cw * .3:.0f}" y="{min(o, c):.0f}" width="{cw * .6:.0f}" height="{max(abs(c - o), 4):.0f}" rx="3" fill="{col}"/>')
-        p = c
     return "".join(out)
 
 def bg(seed=1, kind="flat", story=False, glow=(50, 18), blur=8, op=.16, lav=False):
@@ -165,11 +174,11 @@ def ghostnum(n, right=40, top=60, size=560):
 def hero_chart(seed, kind, top=120, h=520, n=30, op=1, tilt=False, left=72, right=72):
     """Glass panel holding a crisp glowing candle chart. tilt=True floats it in 3D like FTMO's UI panels."""
     r = random.Random(seed); w = 1080 - left - right
-    tf = "transform:perspective(1600px) rotateX(16deg) rotateZ(-2deg);transform-origin:50% 100%;" if tilt else ""
+    tf = ""  # always face forward
     return (f'<div class="gp hot" style="position:absolute;left:{left}px;right:{right}px;top:{top}px;height:{h}px;padding:0;overflow:hidden;{tf}">'
             f'<svg width="{w}" height="{h}" style="position:absolute;left:0;top:0;opacity:{op}">' +
             "".join(f'<line x1="0" y1="{y}" x2="{w}" y2="{y}" stroke="rgba(0,251,244,.07)" stroke-width="1.5"/>' for y in range(60, h, 80)) +
-            f'<g style="filter:drop-shadow(0 0 8px rgba(0,251,244,.45))">{candles_svg(r, w, h, kind, n=n, col_dn="#2C5A5F")}</g></svg></div>')
+            f'<g style="filter:drop-shadow(0 0 8px rgba(0,251,244,.45))">{candles_svg(r, w, h, kind, n=n, col_dn="#F472B6")}</g></svg></div>')
 
 # ---------- components ----------
 def header_panel(kicker, title, top=110, hot=False, ctr=False):

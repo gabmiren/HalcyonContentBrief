@@ -41,7 +41,7 @@ posts = [
  {"id": "hl", "title": "Highlight covers", "short": "Highlights", "when": "Launch · Profile · New",
   "brief": {"job": "Profile highlight covers, set up before the first post so the profile looks finished from day one.",
             "topics": "Start · Rules · Dynamic · Explainers · News · Memes",
-            "fixed": "The real Halcyon candle mark on Start, then one glowing cyan line icon per cover inside a ring, centred for Instagram's circle crop. 1080 x 1920 files.",
+            "fixed": "No icon set. Start uses the real Halcyon candle mark, News a real candle chart, and the rest a number traders know (4:45, $50K, 1 pt, lol), centred for Instagram's circle crop. 1080 x 1920 files.",
             "cadence": "Once, before launch"},
   "versions": [
    {"name": "Six covers", "caption": "Profile setup. Upload each file as a highlight cover: Start (the pinned Welcome post and the bio link), Rules (the rule memes and Know your hours), Dynamic (the four cards and Why Halcyon), Explainers, News (This week and news days) and Memes.",
