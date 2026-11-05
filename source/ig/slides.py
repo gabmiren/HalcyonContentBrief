@@ -6,21 +6,24 @@ def add(name, inner, story=False): S[name] = (page(inner, story), story)
 DISC = "Halcyon offers simulated educational accounts. Results not guaranteed. T&amp;C apply."
 
 def follow(name, head, sub, seed, disc=False):
-    """End slide for news, explainers and memes: follow, save, Discord. Same CTA as TikTok."""
-    add(name, bg(seed, "up", glow=(50, 40)) +
-        f'<div class="gp hot ctr" style="position:absolute;left:64px;right:64px;top:300px;padding:64px 56px">'
-        f'<div style="width:96px;height:96px;margin:0 auto;border-radius:50%;border:4px solid #00FBF4;position:relative;box-shadow:0 0 40px rgba(0,251,244,.5)"><div style="position:absolute;left:28px;top:28px;width:32px;height:32px;border-radius:50%;background:#00FBF4"></div></div>'
-        f'<h1 class="hl m" style="margin-top:36px">{head}</h1><p class="body" style="margin-top:20px">{sub}</p>'
-        f'<div style="display:flex;justify-content:center;gap:14px;margin-top:40px"><span class="pill on" style="font-size:20px;padding:14px 28px">Follow</span><span class="pill" style="font-size:20px;padding:14px 28px">Save</span><span class="pill" style="font-size:20px;padding:14px 28px">Discord in bio</span></div></div>'
-        + (f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;bottom:116px">{DISC}</p>' if disc else "") + foot(None))
+    """End slide: the real logo, big and glowing, inside orbit rings, then the TikTok CTA. Site wave at the base."""
+    add(name, bg(seed, "flat", glow=(50, 26)) + rings(540, 330, (250, 360, 480)) +
+        f'<div style="position:absolute;left:0;right:0;top:150px">{biglogo(330)}</div>'
+        f'<div class="pad ctr" style="top:610px"><h1 class="hl">{head}</h1><p class="body" style="margin:24px 40px 0">{sub}</p>'
+        f'<div style="display:flex;justify-content:center;gap:14px;margin-top:44px"><span class="pill on" style="font-size:22px;padding:16px 34px">Follow</span><span class="pill" style="font-size:22px;padding:16px 34px">Save</span><span class="pill lav" style="font-size:22px;padding:16px 34px">Discord in bio</span></div></div>'
+        + (f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;top:1118px">{DISC}</p>' if disc else "") + wave(1190, h=160))
 
 def promo_end(name, head, sub, seed):
-    add(name, bg(seed, "up", glow=(50, 35)) +
-        f'<div class="gp hot ctr" style="position:absolute;left:64px;right:64px;top:290px;padding:60px 56px">'
-        f'<p class="lab">Halcyon Dynamic &middot; $50K evaluation</p><h1 class="hl m" style="margin-top:16px">{head}</h1><p class="body" style="margin-top:20px">{sub}</p>'
-        f'<div style="margin-top:40px"><span class="pill on" style="font-size:24px;padding:18px 36px;letter-spacing:.06em;text-transform:none">Start from $51 &middot; link in bio</span></div>'
-        f'<div style="margin-top:26px"><div class="tog"><span class="on">Trailing $51</span><span>End of day $53</span></div></div></div>'
-        f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;bottom:116px">{DISC}</p>' + foot(None))
+    """Promo end: lavender light like the site's Go Dynamic button, featured card with HUD corners, pink toggle."""
+    add(name, bg(seed, "flat", glow=(50, 42), lav=True) + cover_top(80) +
+        f'<div class="pad ctr" style="top:200px"><p class="kick lav">Halcyon Dynamic &middot; $50K evaluation</p><h1 class="hl" style="margin-top:22px">{head}</h1></div>' +
+        hud(84, 392, 912, 560) +
+        f'<div class="gp hot ctr" style="position:absolute;left:120px;right:120px;top:428px;height:488px;padding:44px 40px">'
+        f'<p class="lab">One-time fee &middot; from</p><div class="num glow" style="font-size:190px;line-height:1;margin-top:8px">$51</div>'
+        f'<div style="margin-top:22px"><div class="tog"><span class="on">Trailing $51</span><span>End of day $53</span></div></div>'
+        f'<p class="body" style="margin-top:26px;font-size:26px">{sub}</p></div>'
+        f'<div class="pad ctr" style="top:1000px"><span class="pill on" style="font-size:24px;padding:18px 40px">Start today &middot; link in bio</span></div>'
+        f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;top:1150px">{DISC}</p>' + wave(1210, h=140))
 
 # =====================================================================
 # NEWS 01 · NEWS BRIEF (carousel)
@@ -38,19 +41,20 @@ add("nbA_2", bg(8, "drop") + header_panel("Wednesday 4 Nov", 'Not everyone was <
 add("nbA_3", bg(9, "up") + header_panel("Why it moved", 'Three things <span class="glow">changed overnight</span>') +
     steps([("The waiting was over.", "The results came in, and a known result is easier to price than a guess."),
            ("Gridlock.", "Investors bet on a divided government, where big policy swings get harder to pass."),
-           ("Cheaper oil.", "Crude fell about 8.5% as war-risk talk cooled, and the 10-year yield eased to around 4.89%.")], 400, gap=22) +
+           ("Cheaper oil.", "Crude fell about 8.5% as war-risk talk cooled, and the 10-year yield eased to around 4.89%.")], 380, gap=26, big=40, small=29) +
     src("Sources: CNN, TheStreet, Finwire. Market reaction only, no political view.") + foot())
 
 def pts_rows(rows, top):
     out = [f'<div class="pad" style="top:{top}px;display:flex;flex-direction:column;gap:16px">']
     for sym, name, move, up in rows:
-        out.append(f'<div class="gp {"" if up else "red"}" style="display:flex;align-items:center;gap:26px;padding:24px 32px"><div class="num" style="font-size:48px;width:130px">{sym}</div>'
-                   f'<div style="flex:1;font-size:22px;color:#AFB8BC">{name}</div><div class="num {"glow" if up else "glowr"}" style="font-size:46px">{move}</div></div>')
+        out.append(f'<div class="gp {"" if up else "red"}" style="display:flex;align-items:center;gap:26px;padding:34px 34px"><div class="num" style="font-size:56px;width:150px">{sym}</div>'
+                   f'<div style="flex:1;font-size:25px;color:#AFB8BC">{name}</div><div class="num {"glow" if up else "glowr"}" style="font-size:52px">{move}</div></div>')
     out.append('</div>')
     return "".join(out)
 add("nbA_4", bg(10, "up") + header_panel("What it meant for futures", 'The move, <span class="glow">in points</span>') +
     pts_rows([("ES", "S&amp;P 500 futures", "+119.7 pts", True), ("YM", "Dow futures", "+1,569 pts", True),
-              ("RTY", "Russell 2000 futures", "+44.5 pts", True), ("CL", "Crude oil, per barrel", "&asymp;&minus;$8.30", False)], 400) +
+              ("RTY", "Russell 2000 futures", "+44.5 pts", True), ("CL", "Crude oil, per barrel", "&asymp;&minus;$8.30", False)], 390) +
+    '<div class="pad" style="top:1040px"><p class="body ctr">Same headline, very different point counts. Know yours before the open.</p></div>' +
     src("Index and spot moves shown as a guide. Futures closes differ slightly.") + foot())
 add("nbA_5", bg(11, "spike") + header_panel("The Halcyon angle", 'Your <span class="glow">$2,000 drawdown</span> vs Wednesday', hot=True) +
     meter("1 ES", 40, 119.7, "pts", 420, "$50 a point, so $2,000 of room is 40 points.") +
@@ -90,7 +94,7 @@ add("nbB_3", bg(23, "down") + header_panel("What drove it", 'Where October <span
     steps([("AI spending doubts.", "Big tech kept raising its AI budgets, and investors started asking when it pays off."),
            ("Chip warnings.", "Intel cut its outlook late in the month, and chip stocks followed it down."),
            ("Oil shocks.", "Attacks in the Middle East pushed crude higher, and energy was one of the few sectors to lead."),
-           ("Nerves.", "The VIX climbed about 30% across the month.")], 380, gap=16, big=29, small=22) +
+           ("Nerves.", "The VIX climbed about 30% across the month.")], 370, gap=18, big=34, small=25) +
     src("Sources: Tapeboard, AP and Reuters reporting.") + foot())
 add("nbB_4", bg(24, "down") + header_panel("The Halcyon angle", 'October vs a <span class="glow">$2,000 drawdown</span>', hot=True) +
     meter("1 ES", 40, 163, "pts", 420, "The S&amp;P 500 moved about 163 points over the month.") +
@@ -129,23 +133,26 @@ add("gcA_3", bg(43, "drop") + header_panel("What actually happened", 'The chat, 
 # =====================================================================
 # NEWS 03 · NEWS ALERT (singles)
 # =====================================================================
+TICK = ["DOW <b>+3.03%</b>", "S&amp;P 500 +1.58%", "NASDAQ +1.44%", "GOLD +3.3%", "<em>WTI &minus;8.5%</em>", "<em>VIX &asymp;&minus;20%</em>", "ES +119.7 PTS"]
 def alert(name, kicker, title, chart_kind, seed, a, b, la, lb, up, sub, srct):
     ca, cb = ("#3A4A50", DN) if not up else ("#3A4A50", CY)
     ha, hb = (360, 330) if not up else (330, 360)
-    add(name, bg(seed, chart_kind) +
-        f'<div class="gp hot" style="position:absolute;left:64px;right:64px;top:96px;height:640px;padding:0;overflow:hidden">'
+    add(name, bg(seed, chart_kind) + ticker(TICK) + hud(46, 112, 988, 676) +
+        f'<div class="gp hot" style="position:absolute;left:64px;right:64px;top:130px;height:640px;padding:0;overflow:hidden">'
+        f'<div style="position:absolute;left:30px;top:26px">{lockup(36)}</div><div style="position:absolute;right:30px;top:28px"><span class="pill r">&#9679; Breaking</span></div>'
         f'<div style="position:absolute;left:0;right:0;bottom:70px;display:flex;justify-content:center;gap:70px;align-items:flex-end">'
         f'<div class="ctr"><div class="num" style="font-size:44px">{a}</div><div style="width:210px;height:{ha}px;border-radius:20px 20px 6px 6px;background:{ca};margin-top:14px"></div><div style="margin-top:14px"><span class="pill gr">{la}</span></div></div>'
         f'<div class="ctr"><div class="num {"glow" if up else "glowr"}" style="font-size:44px">{b}</div><div style="width:210px;height:{hb}px;border-radius:20px 20px 6px 6px;background:{cb};box-shadow:0 0 50px {cb}77;margin-top:14px"></div><div style="margin-top:14px"><span class="pill {"on" if up else "r"}">{lb}</span></div></div></div></div>'
-        f'<div class="pad" style="top:790px"><span class="pill r">&#9679; {kicker}</span><h1 class="hl" style="margin-top:22px">{title}</h1><p class="body" style="margin-top:18px">{sub}</p></div>'
+        f'<div class="pad" style="top:820px"><span class="pill gr">{kicker} &middot; Wed 4 Nov</span><h1 class="hl" style="margin-top:22px">{title}</h1><p class="body" style="margin-top:18px">{sub}</p></div>'
         + src(srct) + foot(None))
 alert("naA", "Oil", 'Oil had a <span class="glowr">rough Wednesday</span>', "drop", 61, "&asymp;$97.7", "&asymp;$89.4", "Tue", "Wed", False,
       "WTI fell about 8.5% in one session as war-risk talk cooled after the election.", "Source: Finwire, CNBC via Stocktitan. 4 Nov 2026. Approximate.")
 alert("naB", "Gold", 'Gold is back <span class="glow">above $4,000</span>', "spike", 62, "&asymp;$3,933", "&asymp;$4,063", "Tue", "Wed", True,
       "Up about 3.3% as the dollar and bond yields slipped.", "Source: Finwire, 4 Nov 2026. Spot gold, approximate.")
-add("naC", bg(63, "vshape") + hero_chart(63, "vshape", top=96, h=640, op=.3) +
-    '<div style="position:absolute;left:64px;right:64px;top:300px;text-align:center"><div class="num glow" style="font-size:210px;line-height:1">+1,569</div><span class="pill on" style="margin-top:10px">Dow points &middot; Wed 4 Nov</span></div>'
-    '<div class="pad" style="top:790px"><span class="pill r">&#9679; Stocks</span><h1 class="hl" style="margin-top:22px">The Dow&rsquo;s best day <span class="glow">since April 2025</span></h1>'
+add("naC", bg(63, "vshape") + ticker(TICK) + hud(46, 112, 988, 676) + hero_chart(63, "vshape", top=130, h=640, op=.3) +
+    f'<div style="position:absolute;left:94px;top:156px">{lockup(36)}</div><div style="position:absolute;right:94px;top:158px"><span class="pill r">&#9679; Breaking</span></div>'
+    '<div style="position:absolute;left:64px;right:64px;top:330px;text-align:center"><div class="num glow" style="font-size:220px;line-height:1">+1,569</div><span class="pill on" style="margin-top:14px">Dow points &middot; Wed 4 Nov</span></div>'
+    '<div class="pad" style="top:820px"><span class="pill gr">Stocks &middot; Wed 4 Nov</span><h1 class="hl" style="margin-top:22px">The Dow&rsquo;s best day <span class="glow">since April 2025</span></h1>'
     '<p class="body" style="margin-top:18px">Up 3.03% to 53,356, its biggest post-midterm gain since 1982.</p></div>' + src("Source: CNN, CFRA Research, TheStreet. 4 Nov 2026.") + foot(None))
 
 # =====================================================================
@@ -154,7 +161,7 @@ add("naC", bg(63, "vshape") + hero_chart(63, "vshape", top=96, h=640, op=.3) +
 moods = [("Dow", "Best day since April 2025", "+3.03%", True, "on"), ("Gold", "Back above $4K", "+3.3%", True, "on"),
          ("S&amp;P 500", "Vibing", "+1.58%", True, ""), ("Russell 2000", "Along for the ride", "+1.58%", True, ""),
          ("Oil", "Down bad", "&minus;8.5%", False, "r"), ("VIX", "Took the day off", "&asymp;&minus;20%", False, "gr")]
-add("mdA", bg(71, "up", glow=(50, 15)) + header_panel("Market mood &middot; Wed 4 Nov", 'How every market&rsquo;s <span class="glow">Wednesday went</span>') +
+add("mdA", bg(71, "up", glow=(50, 15)) + ticker(TICK) + header_panel("Market mood &middot; Wed 4 Nov", 'How every market&rsquo;s <span class="glow">Wednesday went</span>') +
     '<div class="pad" style="top:400px;display:flex;flex-direction:column;gap:14px">' +
     "".join(f'<div class="gp {"hot" if i == 0 else ("red" if c == "r" else "")}" style="display:flex;align-items:center;gap:20px;padding:22px 30px">'
             f'<div style="width:250px;font-size:30px;font-weight:700">{m}</div><div style="flex:1"><span class="pill {c}" style="text-transform:none;letter-spacing:.02em;font-size:20px">{mood}</span></div>'
@@ -167,13 +174,13 @@ add("mdA", bg(71, "up", glow=(50, 15)) + header_panel("Market mood &middot; Wed 
 def daycards(days, top):
     cells = []
     for d, n, lab, hot in days:
-        cells.append(f'<div class="gp {"hot" if hot else ""} ctr" style="padding:20px 12px;border-radius:24px;min-height:220px"><p class="lab">{d}</p><div class="num {"glow" if hot else ""}" style="font-size:58px;margin-top:4px">{n}</div>'
-                     f'<div style="font-size:18px;line-height:1.3;color:#C9D1D4;margin-top:8px">{lab}</div></div>')
+        cells.append(f'<div class="gp {"hot" if hot else ""} ctr" style="padding:24px 12px;border-radius:24px;min-height:260px"><p class="lab">{d}</p><div class="num {"glow" if hot else ""}" style="font-size:66px;margin-top:6px">{n}</div>'
+                     f'<div style="font-size:20px;line-height:1.3;color:#C9D1D4;margin-top:10px">{lab}</div></div>')
     return f'<div class="pad" style="top:{top}px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px">{"".join(cells)}</div>'
 
 def event(name, kicker, wd, d, time, title, what, why, note=None, seed=1, big=None, bigpill=None):
     extra = f'<div class="gp red" style="margin-top:16px;display:flex;gap:20px;align-items:center">{WN}<p class="body" style="font-size:24px"><b>Halcyon rule:</b> {note}</p></div>' if note else ""
-    add(name, bg(seed, "flat") +
+    add(name, bg(seed, "flat") + ghostnum(d, right=30, top=120, size=520) +
         f'<div class="pad" style="top:110px;display:flex;align-items:center;gap:26px"><div class="gp hot ctr" style="padding:18px 30px;border-radius:26px"><p class="lab">{wd}</p><div class="num glow" style="font-size:82px;line-height:1">{d}</div></div>'
         f'<div><span class="pill">{kicker}</span><div style="font-size:26px;color:#C9D1D4;margin-top:14px">&#9719;&nbsp; {time}</div></div></div>'
         f'<div class="pad" style="top:400px"><h1 class="hl m">{title}</h1>'
@@ -233,8 +240,8 @@ add("etA_1", bg(51, "up", glow=(70, 30)) +
 pv = [("ES", "S&amp;P 500", "$50"), ("MES", "Micro S&amp;P", "$5"), ("NQ", "Nasdaq-100", "$20"), ("MNQ", "Micro Nasdaq", "$2"), ("CL", "Crude oil, per $1", "$1,000"), ("GC", "Gold, per $1", "$100")]
 add("etA_2", bg(52, "flat") + header_panel("Step 1", 'What <span class="glow">one point</span> is worth') +
     '<div class="pad" style="top:390px;display:grid;grid-template-columns:1fr 1fr;gap:16px">' +
-    "".join(f'<div class="gp {"hot" if c == "ES" else ""}" style="padding:26px 30px"><div style="display:flex;justify-content:space-between;align-items:baseline"><span class="num" style="font-size:40px">{c}</span><span class="num glow" style="font-size:40px">{v}</span></div><div style="font-size:19px;color:#8A959A;margin-top:4px">{n}</div></div>' for c, n, v in pv) +
-    '</div><div class="pad" style="top:1010px"><p class="body ctr">One point on ES is four ticks of $12.50 each.</p></div>' + src("CME contract specs.") + foot())
+    "".join(f'<div class="gp {"hot" if c == "ES" else ""}" style="padding:36px 32px;height:176px;display:flex;flex-direction:column;justify-content:space-between"><div style="display:flex;justify-content:space-between;align-items:baseline"><span class="num" style="font-size:50px">{c}</span><span class="num glow" style="font-size:50px">{v}</span></div><div style="font-size:22px;color:#8A959A">{n}</div></div>' for c, n, v in pv) +
+    '</div><div class="pad" style="top:1010px"><p class="body ctr" style="margin-top:20px">One point on ES is four ticks of $12.50 each.</p></div>' + src("CME contract specs.") + foot())
 room = [("ES", "40 pts"), ("MES", "400 pts"), ("NQ", "100 pts"), ("MNQ", "1,000 pts"), ("CL", "$2.00 a barrel"), ("GC", "$20 an ounce")]
 add("etA_3", bg(53, "flat") + header_panel("Step 2", '$2,000 of room, <span class="glow">in points</span>', hot=True) +
     checklist([(v, f"1 {c}", f'<div class="ic" style="border:2px solid rgba(0,251,244,.45);color:#00FBF4;font-size:13px;font-weight:700;width:58px;border-radius:14px">{c}</div>', c == "ES") for c, v in room], 390, h=108) +
@@ -244,13 +251,13 @@ add("etA_4", bg(54, "spike") + header_panel("Step 3 &middot; real example", 'Wed
     meter("1 MES", 400, 119.7, "pts", 680, "Under a third of the cushion. Same chart.") +
     '<div class="pad" style="top:980px"><p class="body ctr">If that day went against you, size decided whether the account was still there on Thursday.</p></div>' +
     src("Simulated. $50K Halcyon Dynamic evaluation.") + foot())
-minis = '<div style="width:150px;height:150px;border-radius:26px;background:#00FBF4;box-shadow:0 0 40px rgba(0,251,244,.5)"></div>'
-micros = "".join('<div style="width:58px;height:58px;border-radius:14px;background:#00FBF4;opacity:.8;box-shadow:0 0 14px rgba(0,251,244,.4)"></div>' for _ in range(10))
+minis = '<div style="width:190px;height:190px;border-radius:30px;background:#00FBF4;box-shadow:0 0 40px rgba(0,251,244,.5)"></div>'
+micros = "".join('<div style="width:66px;height:66px;border-radius:16px;background:#00FBF4;opacity:.8;box-shadow:0 0 14px rgba(0,251,244,.4)"></div>' for _ in range(10))
 add("etA_5", bg(55, "flat") + header_panel("Step 4", '10 Micros <span class="glow">= 1 Mini</span>') +
-    f'<div class="gp" style="position:absolute;left:64px;right:64px;top:390px;display:flex;justify-content:center;align-items:center;gap:50px;padding:46px">'
+    f'<div class="gp" style="position:absolute;left:64px;right:64px;top:380px;height:430px;display:flex;justify-content:center;align-items:center;gap:50px;padding:46px">'
     f'<div class="ctr">{minis}<div style="margin-top:16px"><span class="pill gr">1 ES</span></div></div><div style="font-size:80px;color:#AFAFAF">=</div>'
-    f'<div class="ctr"><div style="display:grid;grid-template-columns:repeat(5,58px);gap:12px">{micros}</div><div style="margin-top:16px"><span class="pill gr">10 MES</span></div></div></div>'
-    '<div class="gp hot" style="position:absolute;left:64px;right:64px;top:780px"><p class="lab" style="color:#00FBF4">On Halcyon Dynamic</p><p class="body" style="margin-top:10px">The limit is <b>5 Mini or 25 Micro</b>. Maxing out on micros is the same size as <b>2.5 Mini</b>, so you can scale in smaller steps.</p></div>' + foot())
+    f'<div class="ctr"><div style="display:grid;grid-template-columns:repeat(5,66px);gap:14px">{micros}</div><div style="margin-top:16px"><span class="pill gr">10 MES</span></div></div></div>'
+    '<div class="gp hot" style="position:absolute;left:64px;right:64px;top:850px;padding:38px 40px"><p class="lab" style="color:#00FBF4">On Halcyon Dynamic</p><p class="body" style="margin-top:14px;font-size:33px">The limit is <b>5 Mini or 25 Micro</b>. Maxing out on micros is the same size as <b>2.5 Mini</b>, so you can scale in smaller steps.</p></div>' + foot())
 follow("etA_6", 'Know your cushion <span class="glow">before you size</span>', "Save this cheat sheet, and ask us anything about it in our Discord.", 56, disc=True)
 
 # =====================================================================
@@ -290,7 +297,7 @@ follow("etB_5", 'Pick the order <span class="glow">before the moment</span>', "S
 # =====================================================================
 def meme(name, idx, panel, rule, seed, red=True):
     add(name, bg(seed, "flat") + f'<div class="pad" style="top:84px"><span class="pill">{idx}</span></div>'
-        f'<div class="gp" style="position:absolute;left:64px;right:64px;top:160px;height:780px;padding:0;overflow:hidden">{panel}</div>'
+        f'<div class="gp" style="position:absolute;left:64px;right:64px;top:160px;height:780px;padding:0 0 30px;overflow:hidden;display:flex;flex-direction:column;justify-content:center">{panel}</div>'
         f'<div class="gp {"red" if red else "hot"}" style="position:absolute;left:64px;right:64px;top:970px;display:flex;gap:22px;align-items:center">{WN if red else OK}<p class="body" style="font-size:25px">{rule}</p></div>' + foot())
 add("mmA_1", bg(71, "drop", glow=(70, 30)) + hero_chart(71, "drop", top=96, h=520) +
     '<div class="pad" style="top:680px"><span class="pill">Evaluation memes</span><h1 class="hl" style="margin-top:22px">4 ways to fail <span class="glow">without a losing trade</span></h1>'
@@ -308,7 +315,7 @@ meme("mmA_3", "Meme 02 &middot; the stop",
      "Trading with <b>no stop loss</b> is on Halcyon&rsquo;s list of banned practices.", 73)
 meme("mmA_4", "Meme 03 &middot; the cheat code",
      '<div style="padding:50px 54px;font-size:38px;font-weight:700;line-height:1.25">Me at 8:29:59 thinking I found a cheat code:</div>'
-     '<div style="margin:10px 70px 0;display:flex;flex-direction:column;gap:40px;align-items:stretch">'
+     '<div style="margin:20px 70px 0;display:flex;flex-direction:column;gap:56px;align-items:stretch">'
      '<div style="border:2px solid rgba(0,251,244,.6);border-radius:22px;padding:22px 28px;font-size:30px;font-weight:500;color:#00FBF4;display:flex;justify-content:space-between;box-shadow:0 0 30px rgba(0,251,244,.15)"><span>BUY STOP</span><span>+10 ticks</span></div>'
      '<div class="ctr"><span class="pill r" style="font-size:24px;padding:12px 26px">CPI &middot; 8:30:00</span></div>'
      '<div style="border:2px solid #3A464C;border-radius:22px;padding:22px 28px;font-size:30px;font-weight:500;color:#AFAFAF;display:flex;justify-content:space-between"><span>SELL STOP</span><span>&minus;10 ticks</span></div></div>',
@@ -316,9 +323,9 @@ meme("mmA_4", "Meme 03 &middot; the cheat code",
 meme("mmA_5", "Meme 04 &middot; the big brain",
      '<div style="padding:50px 54px;font-size:38px;font-weight:700;line-height:1.25">Can&rsquo;t lose if I&rsquo;m on both sides.</div>'
      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:20px 54px 0">'
-     '<div class="gp hot"><p class="lab">Account 1</p><div class="num glow" style="font-size:56px;margin-top:10px">LONG</div><div style="font-size:28px">2 MES</div></div>'
-     '<div class="gp red"><p class="lab">Account 2</p><div class="num glowr" style="font-size:56px;margin-top:10px">SHORT</div><div style="font-size:28px">2 MES</div></div></div>'
-     '<div class="ctr" style="font-size:130px;margin-top:10px">&#129504;</div>',
+     '<div class="gp hot" style="padding:36px"><p class="lab">Account 1</p><div class="num glow" style="font-size:72px;margin-top:10px">LONG</div><div style="font-size:32px">2 MES</div></div>'
+     '<div class="gp red" style="padding:36px"><p class="lab">Account 2</p><div class="num glowr" style="font-size:72px;margin-top:10px">SHORT</div><div style="font-size:32px">2 MES</div></div></div>'
+     '<div class="ctr" style="font-size:190px;margin-top:20px">&#129504;</div>',
      "<b>Hedging</b> is banned, including across accounts and micro against mini.", 75)
 add("mmA_6", bg(76, "flat") + header_panel("The takeaway", 'Read the rules <span class="glow">before the chart</span>') +
     checklist([("Daily", "Flat by 4:45 PM ET", OK, True), ("Every trade", "Use a stop loss", OK, False), ("News", "No straddles", NO, False), ("Accounts", "No hedging", NO, False)], 400, h=112) +
@@ -327,10 +334,10 @@ add("mmA_6", bg(76, "flat") + header_panel("The takeaway", 'Read the rules <span
 
 def myth(name, idx, claim, verdict, expl, seed):
     m = verdict == "MYTH"
-    add(name, bg(seed, "flat", glow=(50, 30)) + f'<div class="pad" style="top:96px"><span class="pill">Myth or fact &middot; {idx}</span></div>'
-        f'<div class="gp ctr" style="position:absolute;left:64px;right:64px;top:200px;padding:70px 56px 60px"><div style="font-size:150px;line-height:.5;color:rgba(0,251,244,.25);font-weight:700">&ldquo;</div><h1 class="hl m" style="margin-top:20px">{claim}</h1></div>'
-        f'<div class="ctr" style="position:absolute;left:0;right:0;top:640px"><div style="display:inline-block;border:5px solid {DN if m else CY};color:{DN if m else CY};font-weight:700;font-size:84px;letter-spacing:.08em;padding:4px 40px;border-radius:24px;transform:rotate(-4deg);box-shadow:0 0 50px {(DN if m else CY)}44">{verdict}</div></div>'
-        f'<div class="gp {"red" if m else "hot"}" style="position:absolute;left:64px;right:64px;top:850px"><p class="body">{expl}</p></div>' + foot())
+    add(name, bg(seed, "flat", glow=(50, 30)) + ghostnum(idx, right=20, top=40, size=480) + f'<div class="pad" style="top:96px"><span class="pill">Myth or fact &middot; {idx}</span></div>'
+        f'<div class="gp ctr" style="position:absolute;left:64px;right:64px;top:200px;height:440px;padding:70px 56px 60px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:150px;line-height:.5;color:rgba(0,251,244,.25);font-weight:700">&ldquo;</div><h1 class="hl" style="margin-top:30px">{claim}</h1></div>'
+        f'<div class="ctr" style="position:absolute;left:0;right:0;top:700px"><div style="display:inline-block;border:5px solid {DN if m else CY};color:{DN if m else CY};font-weight:700;font-size:104px;letter-spacing:.08em;padding:4px 46px;border-radius:24px;transform:rotate(-4deg);box-shadow:0 0 50px {(DN if m else CY)}44">{verdict}</div></div>'
+        f'<div class="gp {"red" if m else "hot"}" style="position:absolute;left:64px;right:64px;top:930px;padding:36px 40px"><p class="body" style="font-size:32px">{expl}</p></div>' + foot())
 add("mmB_1", bg(81, "flat", glow=(50, 25)) +
     '<div class="pad ctr" style="top:330px"><span class="pill">Evaluation edition</span><h1 class="hl xl" style="margin-top:30px;font-size:130px">Myth <span class="g">or</span> <span class="glow">fact?</span></h1>'
     '<p class="body" style="margin-top:30px">Five things traders get wrong about the $50K evaluation.</p>'
@@ -364,20 +371,21 @@ def fan(top):
     out = [f'<div style="position:absolute;left:0;right:0;top:{top}px;height:560px">']
     for i, (lab, v, rot, dx, dy) in enumerate(cards):
         out.append(f'<div class="gp {"hot" if i == 1 else ""} ctr" style="position:absolute;left:{540 - 140 + dx}px;top:{dy + 40}px;width:280px;height:400px;transform:rotate({rot}deg);display:flex;flex-direction:column;justify-content:center;padding:20px">'
-                   f'<p class="lab">{lab}</p><div class="num glow" style="font-size:52px;margin-top:12px">{v}</div><div style="margin-top:18px"><span class="pill gr">{i + 1} / 4</span></div></div>')
+                   f'<img src="{BRAND}logo_mark.png" style="height:44px;margin:0 auto 26px;opacity:.95"><p class="lab">{lab}</p><div class="num glow" style="font-size:52px;margin-top:12px">{v}</div><div style="margin-top:18px"><span class="pill lav">{i + 1} / 4</span></div></div>')
     out.append('</div>')
     return "".join(out)
-add("dyA_1", bg(101, "up", glow=(50, 55)) +
-    '<div class="pad ctr" style="top:130px"><span class="pill">Halcyon Dynamic</span><h1 class="hl xl" style="margin-top:26px">Your $50K evaluation <span class="glow">in four cards</span></h1></div>' +
-    fan(560) + foot("Deal them &rarr;"))
+add("dyA_1", bg(101, "flat", glow=(50, 62), lav=True) + cover_top() +
+    '<div class="pad ctr" style="top:200px"><p class="kick lav">Halcyon Dynamic</p><h1 class="hl xl" style="margin-top:26px">Your $50K evaluation <span class="lav" style="text-shadow:0 0 34px rgba(167,139,250,.45)">in four cards</span></h1></div>' +
+    fan(590) + foot("Deal them &rarr;", logo_on=False))
 def dcard(name, n, lab, big, sub, extra, seed):
-    add(name, bg(seed, "up", glow=(50, 45)) +
-        f'<div class="pad ctr" style="top:110px"><p class="lab">Halcyon Dynamic &middot; $50K evaluation</p></div>'
-        '<div class="gp" style="position:absolute;left:180px;right:180px;top:340px;height:700px;opacity:.3"></div><div class="gp" style="position:absolute;left:145px;right:145px;top:300px;height:700px;opacity:.55"></div>'
-        f'<div class="gp hot" style="position:absolute;left:110px;right:110px;top:260px;height:700px;padding:56px 56px 60px">'
-        f'<span class="pill">{n} / 4</span><p style="font-size:38px;font-weight:500;margin:30px 0 0">{lab}</p>'
-        f'<div class="num glow" style="font-size:170px;line-height:1.05;margin-top:10px">{big}</div>{extra}'
-        f'<p class="body" style="margin-top:30px;font-size:29px">{sub}</p></div>'
+    add(name, bg(seed, "flat", glow=(50, 45), lav=True) + ghostnum(f"0{n}", right=10, top=880, size=440) +
+        f'<div class="pad ctr" style="top:120px"><p class="kick lav">Halcyon Dynamic &middot; $50K evaluation</p></div>'
+        '<div class="gp lavb" style="position:absolute;left:180px;right:180px;top:340px;height:700px;opacity:.3"></div><div class="gp lavb" style="position:absolute;left:145px;right:145px;top:300px;height:700px;opacity:.55"></div>'
+        f'<div class="gp hot" style="position:absolute;left:110px;right:110px;top:260px;height:700px;padding:56px 56px 60px;display:flex;flex-direction:column;align-items:flex-start">'
+        f'<img src="{BRAND}logo_mark.png" style="position:absolute;right:50px;top:50px;height:52px">'
+        f'<span class="pill lav">{n} / 4</span><p style="font-size:38px;font-weight:500;margin:30px 0 0">{lab}</p>'
+        f'<div class="num glow" style="font-size:180px;line-height:1.05;margin-top:10px">{big}</div>{extra}'
+        f'<p class="body" style="margin-top:auto;font-size:32px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px;width:100%">{sub}</p></div>'
         f'<div class="pad ctr" style="top:1110px;display:flex;justify-content:center;gap:14px">' + "".join(f'<div style="width:{60 if k == n else 18}px;height:18px;border-radius:9px;background:{"#00FBF4" if k == n else "rgba(255,255,255,.18)"};box-shadow:{"0 0 16px rgba(0,251,244,.6)" if k == n else "none"}"></div>' for k in range(1, 5)) + '</div>' + foot())
 dcard("dyA_2", 1, "Profit target", "$3,000", "Reach it in simulated trading to pass. The minimum is 1 trading day.", "", 102)
 dcard("dyA_3", 2, "Max drawdown", "$2,000", "You pick the type at checkout.", '<div style="margin-top:26px"><div class="tog"><span class="on">Trailing $51</span><span>End of day $53</span></div></div>', 103)
@@ -395,7 +403,8 @@ promo_end("dyA_7", 'Ready to <span class="glow">deal yourself in?</span>', "One 
 # =====================================================================
 def whyq(name, head, items, seed):
     add(name, bg(seed, "up", glow=(85, 10)) +
-        f'<div class="pad" style="top:110px"><h1 class="hl xl">{head}</h1></div>' + steps(items, 340, gap=22, big=38, small=27) +
+        f'<img src="{BRAND}logo_mark.png" style="position:absolute;right:72px;top:96px;height:150px;filter:drop-shadow(0 0 30px rgba(0,251,244,.5))">'
+        f'<div class="pad" style="top:120px"><h1 class="hl xl">{head}</h1></div>' + steps(items, 330, gap=22, big=38, small=27) +
         f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;bottom:116px">{DISC}</p>' + foot(None))
 whyq("whA", 'Why <span class="glow">Halcyon?</span>',
      [("One fee, from $51.", "A one-time fee for a $50K simulated evaluation."),
@@ -422,17 +431,17 @@ def story(name, big, unit, line, card_img, card_title, seed, kind):
         f'<p style="font-size:46px;font-weight:500;line-height:1.25;margin:40px 0 0">{line}</p></div>'
         f'<div class="gp hot" style="position:absolute;left:64px;right:64px;top:1150px;display:flex;align-items:center;gap:40px;padding:30px">'
         f'<div style="width:420px;flex:none;background:#fff;border-radius:22px;padding:12px;transform:rotate(-3deg);box-shadow:0 30px 70px rgba(0,0,0,.7)">'
-        f'<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 10px"><div style="width:28px;height:28px;border-radius:50%;background:#03070A;border:3px solid #00FBF4"></div><span style="color:#111;font-size:16px;font-weight:600">Halcyon</span></div>'
+        f'<div style="display:flex;align-items:center;gap:10px;padding:2px 4px 10px"><div style="width:30px;height:30px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center"><img src="{BRAND}logo_mark.png" style="width:22px"></div><span style="color:#111;font-size:16px;font-weight:600">Halcyon</span></div>'
         f'<img src="{card_img}" style="width:100%;display:block;border-radius:8px"></div>'
         f'<div><p style="font-size:36px;font-weight:700;line-height:1.2;margin:0">{card_title}</p><div style="margin-top:26px"><span class="pill on" style="font-size:20px">&larr; Tap to read</span></div></div></div>'
-        '<div style="position:absolute;left:64px;right:64px;top:300px;display:flex;justify-content:center">' + wordmark("margin:0") + '</div>', story=True)
+        '<div style="position:absolute;left:64px;right:64px;top:300px;display:flex;justify-content:center">' + wordmark("margin:0") + '</div>' + wave(1800, h=120), story=True)
 
 # =====================================================================
 # LAUNCH 01 · WELCOME (pinned carousel)
 # =====================================================================
 add("wcA_1", bg(131, "up", glow=(50, 38)) +
     '<div class="ctr" style="position:absolute;left:0;right:0;top:250px">'
-    '<div style="width:190px;height:190px;margin:0 auto;border-radius:50%;border:8px solid #00FBF4;position:relative;box-shadow:0 0 80px rgba(0,251,244,.55),inset 0 0 40px rgba(0,251,244,.25)"><div style="position:absolute;left:47px;top:47px;width:80px;height:80px;border-radius:50%;background:#00FBF4;box-shadow:0 0 40px rgba(0,251,244,.8)"></div></div>'
+    + biglogo(260) +
     '<h1 class="hl xl" style="margin:70px 64px 0">Welcome to <span class="glow">Halcyon</span></h1>'
     '<p class="body" style="margin:28px 120px 0">Futures news in plain English, rules you&rsquo;ll actually remember, and memes that hit a little too close.</p>'
     '<div style="margin-top:44px"><span class="pill on" style="font-size:20px;padding:14px 30px">Pinned &middot; start here</span></div></div>' + foot())
@@ -440,19 +449,19 @@ wc_cards = [("News, in points", "What moved, why, and what it meant for one cont
             ("Explainers", "One idea per slide, built to save and come back to."),
             ("Memes with a rule inside", "A laugh first, then the rule that saves your account.")]
 add("wcA_2", bg(132, "flat") + header_panel("What you&rsquo;ll find here", 'Your feed, <span class="glow">but useful</span>') +
-    '<div class="pad" style="top:400px;display:flex;flex-direction:column;gap:18px">' +
-    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;gap:26px;align-items:center;padding:30px 32px"><div style="flex:none;width:72px;height:72px;border-radius:50%;border:2px solid #00FBF4;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 0 22px rgba(0,251,244,.3)">{ic}</div><div><div style="font-size:34px;font-weight:700">{h}</div><div style="font-size:24px;color:#AFB8BC;margin-top:6px;line-height:1.4">{p}</div></div></div>'
+    '<div class="pad" style="top:390px;display:flex;flex-direction:column;gap:22px">' +
+    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;gap:30px;align-items:center;padding:44px 36px"><div style="flex:none;width:96px;height:96px;border-radius:50%;border:2px solid #00FBF4;display:flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 0 22px rgba(0,251,244,.3)">{ic}</div><div><div style="font-size:40px;font-weight:700">{h}</div><div style="font-size:27px;color:#AFB8BC;margin-top:8px;line-height:1.4">{p}</div></div></div>'
             for i, ((h, p), ic) in enumerate(zip(wc_cards, ["&#128240;", "&#128161;", "&#128514;"]))) +
     '</div>' + foot())
 add("wcA_3", bg(133, "up") + header_panel("What Halcyon is", 'A simulated evaluation, <span class="glow">with clear rules</span>', hot=True) +
     '<div class="pad" style="top:430px;display:grid;grid-template-columns:1fr 1fr;gap:16px">' +
-    "".join(f'<div class="gp ctr" style="padding:30px 20px"><p class="lab">{k}</p><div class="num glow" style="font-size:58px;margin-top:8px">{v}</div></div>' for k, v in [("Account", "$50K"), ("Target", "$3,000"), ("Drawdown", "$2,000"), ("From", "$51")]) +
-    '</div><div class="pad ctr" style="top:960px"><p class="body">Pass the evaluation in simulated trading and move up to a reward account. Every rule is on the site before you start.</p></div>'
+    "".join(f'<div class="gp {"hot" if k == "Account" else ""} ctr" style="padding:44px 20px"><p class="lab">{k}</p><div class="num glow" style="font-size:80px;margin-top:10px">{v}</div></div>' for k, v in [("Account", "$50K"), ("Target", "$3,000"), ("Drawdown", "$2,000"), ("From", "$51")]) +
+    '</div><div class="pad ctr" style="top:1000px"><p class="body">Pass the evaluation in simulated trading and move up to a reward account. Every rule is on the site before you start.</p></div>'
     f'<p class="disc ctr" style="position:absolute;left:64px;right:64px;bottom:116px">{DISC}</p>' + foot())
 add("wcA_4", bg(134, "flat") + header_panel("How to use this account", 'Three habits <span class="glow">worth keeping</span>') +
     checklist([("Explainers", "Save the ones you&rsquo;ll need again", OK, True), ("Sundays", "Check the week&rsquo;s release times", OK, False),
-               ("Questions", "Ask us anything in our Discord", OK, False)], 400, h=128) +
-    '<div class="pad" style="top:900px"><p class="body ctr">Tell us in the comments what you want explained next. We read every one.</p></div>' + foot())
+               ("Questions", "Ask us anything in our Discord", OK, False)], 400, h=150) +
+    '<div class="pad" style="top:950px"><p class="body ctr">Tell us in the comments what you want explained next. We read every one.</p></div>' + foot())
 follow("wcA_5", 'Glad you&rsquo;re <span class="glow">here</span>', "Follow for news days, explainers and the occasional meme you&rsquo;ll send to your trading friends.", 135)
 
 # =====================================================================
@@ -480,7 +489,7 @@ def sticker_story(name, kicker, q, sub, seed, kind="flat", accent=None, disc=Fal
         f'<h1 class="hl" style="margin-top:34px;font-size:84px">{q}</h1>'
         + (f'<p class="body" style="margin-top:26px;font-size:32px">{sub}</p>' if sub else "") + '</div>'
         + (f'<div class="ctr" style="position:absolute;left:0;right:0;top:1520px"><div class="num glow" style="font-size:120px;line-height:1">{accent}</div></div>' if accent else "")
-        + (f'<p class="disc ctr" style="position:absolute;left:90px;right:90px;bottom:300px;font-size:20px">{DISC}</p>' if disc else ""), story=True)
+        + (f'<p class="disc ctr" style="position:absolute;left:90px;right:90px;bottom:300px;font-size:20px">{DISC}</p>' if disc else "") + wave(1700, h=220), story=True)
     if st:
         html_, _ = S[name]
         S[name + "p"] = (html_.replace('</div></body>', mock_sticker(st) + '</div></body>'), True)
@@ -508,10 +517,14 @@ for i, k in enumerate(ICONS):
     add(f"hl{k}", '<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,251,244,.22),transparent 38%),#03070A"></div>'
         '<div style="position:absolute;left:240px;top:660px;width:600px;height:600px;border-radius:50%;border:6px solid rgba(0,251,244,.55);box-shadow:0 0 60px rgba(0,251,244,.25),inset 0 0 60px rgba(0,251,244,.12);display:flex;align-items:center;justify-content:center">'
         + hl_icon(k, 330) + '</div>', story=True)
+add("hlStart", '<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,251,244,.22),transparent 38%),#03070A"></div>'
+    '<div style="position:absolute;left:240px;top:660px;width:600px;height:600px;border-radius:50%;border:6px solid rgba(0,251,244,.55);box-shadow:0 0 60px rgba(0,251,244,.25),inset 0 0 60px rgba(0,251,244,.12);display:flex;align-items:center;justify-content:center">'
+    f'<img src="{BRAND}logo_mark.png" style="width:360px;filter:drop-shadow(0 0 18px rgba(0,251,244,.6))"></div>', story=True)
 add("hlSheet", bg(150, "flat", glow=(50, 40)) + header_panel("Profile setup", 'Highlight <span class="glow">covers</span>') +
     '<div style="position:absolute;left:64px;right:64px;top:470px;display:flex;justify-content:space-between">' +
-    "".join(f'<div class="ctr"><div style="width:168px;height:168px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center">{hl_icon(k, 96)}</div><p style="font-size:22px;margin:16px 0 0;font-weight:500">{k}</p></div>' for k in ICONS) +
-    '</div><div class="pad" style="top:800px"><p class="body ctr">Five covers for the profile highlights: rules, the Dynamic evaluation, explainers, news and memes. Each file is 1080 &times; 1920 with the icon centred for Instagram&rsquo;s circle crop.</p></div>' + foot(None))
+    f'<div class="ctr"><div style="width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center"><img src="{BRAND}logo_mark.png" style="width:92px"></div><p style="font-size:22px;margin:16px 0 0;font-weight:500">Start</p></div>' +
+    "".join(f'<div class="ctr"><div style="width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(0,251,244,.2),#03070A 70%);border:4px solid rgba(0,251,244,.6);box-shadow:0 0 30px rgba(0,251,244,.25);display:flex;align-items:center;justify-content:center">{hl_icon(k, 96)}</div><p style="font-size:22px;margin:16px 0 0;font-weight:500">{k}</p></div>' for k in ICONS) +
+    '</div><div class="pad" style="top:800px"><p class="body ctr">Six covers for the profile highlights: start here, rules, the Dynamic evaluation, explainers, news and memes. Each file is 1080 &times; 1920 with the icon centred for Instagram&rsquo;s circle crop.</p></div>' + foot(None))
 
 # =====================================================================
 # WELCOME · COVER + END OPTIONS
@@ -536,12 +549,11 @@ add("wcB_1", bg(161, "up", glow=(50, 30)) +
     '<div class="pad ctr" style="top:780px"><h1 class="hl xl">Welcome to <span class="glow">Halcyon</span></h1>'
     '<p class="body" style="margin-top:24px">Three kinds of posts, dealt fresh every week. Swipe to see what&rsquo;s in the deck.</p></div>' + foot())
 add("wcB_5", bg(162, "up", glow=(50, 35)) +
-    '<div style="position:absolute;left:0;right:0;top:150px;height:560px">' +
-    "".join(f'<div class="gp" style="position:absolute;left:{325 + k * 22}px;top:{k * 22}px;width:430px;height:520px;opacity:{.35 + k * .2}"></div>' for k in range(2)) +
-    '<div class="gp hot ctr" style="position:absolute;left:369px;top:44px;width:430px;height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">'
-    '<div style="width:130px;height:130px;border-radius:50%;border:6px solid #00FBF4;position:relative;box-shadow:0 0 50px rgba(0,251,244,.55)"><div style="position:absolute;left:33px;top:33px;width:52px;height:52px;border-radius:50%;background:#00FBF4"></div></div>'
-    '<div style="font-size:40px;font-weight:700">Halcyon</div><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span></div></div>'
-    '<div class="pad ctr" style="top:790px"><h1 class="hl m">Keep the deck <span class="glow">close</span></h1>'
+    '<div style="position:absolute;left:0;right:0;top:120px;height:700px">' +
+    "".join(f'<div class="gp" style="position:absolute;left:{250 + k * 26}px;top:{k * 26}px;width:540px;height:620px;opacity:{.35 + k * .2}"></div>' for k in range(2)) +
+    '<div class="gp hot ctr" style="position:absolute;left:302px;top:52px;width:540px;height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">'
+    + biglogo(240) + '<span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span></div></div>'
+    '<div class="pad ctr" style="top:880px"><h1 class="hl">Keep the deck <span class="glow">close</span></h1>'
     '<p class="body" style="margin-top:20px">Follow for the next deal, and bring your questions to our Discord.</p>'
     '<div style="display:flex;justify-content:center;gap:14px;margin-top:34px"><span class="pill" style="font-size:20px;padding:13px 26px">Save</span><span class="pill" style="font-size:20px;padding:13px 26px">Discord in bio</span></div></div>' + foot(None))
 
@@ -566,7 +578,7 @@ grid_imgs = ["mmA_1", "etA_1", "wkA_1", "mmB_1", "etB_1", "dyA_1"]
 add("wcD_1", bg(181, "flat", glow=(50, 20)) +
     '<div class="pad ctr" style="top:80px"><h1 class="hl" style="font-size:76px">You found <span class="glow">Halcyon</span></h1></div>'
     '<div class="gp hot" style="position:absolute;left:150px;right:150px;top:240px;height:960px;padding:30px 30px 0;overflow:hidden;border-radius:46px">'
-    '<div style="display:flex;align-items:center;gap:24px"><div style="flex:none;width:120px;height:120px;border-radius:50%;padding:5px;background:conic-gradient(#00FBF4,#0A5C5E,#00FBF4)"><div style="width:100%;height:100%;border-radius:50%;background:#03070A;display:flex;align-items:center;justify-content:center"><div style="width:62px;height:62px;border-radius:50%;border:5px solid #00FBF4;position:relative"><div style="position:absolute;left:13px;top:13px;width:26px;height:26px;border-radius:50%;background:#00FBF4"></div></div></div></div>'
+    '<div style="display:flex;align-items:center;gap:24px"><div style="flex:none;width:120px;height:120px;border-radius:50%;padding:5px;background:conic-gradient(#00FBF4,#0A5C5E,#00FBF4)"><div style="width:100%;height:100%;border-radius:50%;background:#03070A;display:flex;align-items:center;justify-content:center"><img src="file:///home/claude/halcyon/ig/brand/logo_mark.png" style="width:78px"></div></div>'
     '<div><div style="font-size:30px;font-weight:700">Halcyon Trader Funding</div><div style="font-size:19px;color:#AFB8BC;margin-top:6px;line-height:1.4">Futures news in plain English, and the rules that keep accounts alive.</div></div></div>'
     '<div style="display:flex;justify-content:space-between;margin:28px 6px 0">' +
     "".join(f'<div class="ctr"><div style="width:96px;height:96px;border-radius:50%;border:3px solid rgba(0,251,244,.55);display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(0,251,244,.15),#03070A 70%)">{hl_icon(k, 54)}</div><div style="font-size:15px;margin-top:8px">{k}</div></div>' for k in ICONS) +
@@ -577,7 +589,81 @@ notes = [("Story", "CPI in 30 minutes. Hot or cool? Vote before 8:30.", "now"), 
 add("wcD_5", bg(182, "flat", glow=(50, 25)) +
     '<div class="pad ctr" style="top:120px"><h1 class="hl xl">Let news days <span class="glow">come to you</span></h1></div>'
     '<div class="pad" style="top:520px;display:flex;flex-direction:column;gap:16px">' +
-    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;align-items:center;gap:22px;padding:24px 28px;border-radius:26px;margin:0 {i * 26}px;opacity:{1 - i * .18}"><div style="flex:none;width:64px;height:64px;border-radius:16px;background:#03070A;border:2px solid rgba(0,251,244,.5);display:flex;align-items:center;justify-content:center"><div style="width:30px;height:30px;border-radius:50%;border:4px solid #00FBF4;position:relative"><div style="position:absolute;left:5px;top:5px;width:12px;height:12px;border-radius:50%;background:#00FBF4"></div></div></div>'
+    "".join(f'<div class="gp {"hot" if i == 0 else ""}" style="display:flex;align-items:center;gap:22px;padding:24px 28px;border-radius:26px;margin:0 {i * 26}px;opacity:{1 - i * .18}"><div style="flex:none;width:64px;height:64px;border-radius:16px;background:#03070A;border:2px solid rgba(0,251,244,.5);display:flex;align-items:center;justify-content:center"><img src="{BRAND}logo_mark.png" style="width:44px"></div>'
             f'<div style="flex:1"><div style="display:flex;justify-content:space-between"><span style="font-size:21px;font-weight:700">Halcyon &middot; {k}</span><span style="font-size:18px;color:#7D878C">{t}</span></div><div style="font-size:23px;color:#C9D1D4;margin-top:4px">{m}</div></div></div>' for i, (k, m, t) in enumerate(notes)) +
     '</div><div class="pad ctr" style="top:1010px"><p class="body">Follow, then turn on notifications for posts and Stories.</p>'
     '<div style="display:flex;justify-content:center;gap:14px;margin-top:26px"><span class="pill on" style="font-size:22px;padding:14px 34px">Follow</span><span class="pill" style="font-size:20px;padding:13px 26px">&#128276; Notifications</span></div></div>' + foot(None))
+
+# =====================================================================
+# V3 COVERS · real logo top-centre, FTMO-style centred titles, site HUD / wave / ticker motifs
+# =====================================================================
+def news_cover(name, seed, kind, pill, title, stats_, tick):
+    add(name, bg(seed, kind, glow=(50, 55)) + ticker(tick) + cover_top(96) +
+        f'<div class="pad ctr" style="top:200px"><span class="pill">{pill}</span><h1 class="hl" style="margin-top:24px;font-size:84px">{title}</h1></div>' +
+        hero_chart(seed, kind, top=560, h=380, tilt=True, left=110, right=110) +
+        stats(stats_, 990) + foot("Swipe &rarr;", logo_on=False))
+news_cover("nbA_1", 7, "vshape", "News brief &middot; Wed 4 Nov", 'The Dow&rsquo;s best <span class="glow">post&#8209;midterm day</span> since 1982',
+           [("Dow", "+3.03%", "53,356", True), ("S&amp;P 500", "+1.58%", "7,689", True), ("Nasdaq", "+1.44%", "25,737", True)], TICK)
+news_cover("nbB_1", 21, "down", "News brief &middot; October 2026", 'A rough month inside <span class="glow">a good year</span>',
+           [("S&amp;P 500", "&minus;2.11%", "7,580", False), ("Nasdaq", "&minus;6.03%", "25,437", False), ("VIX", "+30.6%", "Fear gauge", True)],
+           ["OCTOBER 2026", "<em>S&amp;P 500 &minus;2.11%</em>", "<em>NASDAQ &minus;6.03%</em>", "VIX +30.6%", "S&amp;P YTD +10.52%", "NASDAQ YTD +9.47%"])
+
+def week_cover(name, seed, pill, title, sub, days):
+    add(name, bg(seed, "flat", glow=(50, 28)) + cover_top() +
+        f'<div class="pad ctr" style="top:210px"><span class="pill">{pill}</span><h1 class="hl xl" style="margin-top:28px">{title}</h1>'
+        f'<p class="body" style="margin-top:24px">{sub}</p></div>' + daycards(days, 760) +
+        '<div class="pad ctr" style="top:1060px"><span class="pill gr" style="font-size:20px">All times Eastern &middot; save it for Sunday night</span></div>' + foot("Swipe for each one &rarr;", logo_on=False))
+week_cover("wkA_1", 4, "This week &middot; 9 to 13 Nov", 'Inflation week <span class="glow">is here</span>', "Two price reports, with a bond holiday in the middle.",
+           [("Mon", "9", "Earnings: Constellation, Barrick", False), ("Tue", "10", "CPI, 8:30 AM ET", True),
+            ("Wed", "11", "Veterans Day, bonds shut", False), ("Thu", "12", "Jobless claims", False), ("Fri", "13", "PPI, 8:30 AM ET", True)])
+week_cover("wkB_1", 31, "This week &middot; 23 to 27 Nov", 'Short week, <span class="glow">busy Wednesday</span>', "Thanksgiving cuts two sessions short.",
+           [("Mon", "23", "Normal hours", False), ("Tue", "24", "Normal hours", False), ("Wed", "25", "GDP + PCE, 8:30 AM ET", True),
+            ("Thu", "26", "Halt 1:00 PM ET", True), ("Fri", "27", "Close 1:15 PM ET", True)])
+
+add("etA_1", bg(51, "flat", glow=(50, 62)) + cover_top() +
+    '<div class="pad ctr" style="top:200px"><p class="kick">Every trader should know</p><h1 class="hl xl" style="margin-top:26px">How many points is <span class="glow">your drawdown?</span></h1></div>' +
+    hud(70, 636, 940, 470) +
+    '<div class="gp hot ctr" style="position:absolute;left:104px;right:104px;top:670px;height:402px;padding:46px 40px">'
+    '<p class="lab">Max drawdown &middot; $50K evaluation</p><div class="num glow" style="font-size:168px;line-height:1.05;margin-top:12px">$2,000</div>'
+    '<div style="margin-top:22px;display:flex;justify-content:center;gap:12px"><span class="pill on" style="font-size:22px">= ? points on ES</span><span class="pill lav" style="font-size:22px">= ? on MES</span></div></div>'
+    + foot("Swipe to find out &rarr;", logo_on=False))
+
+def ticket(lab, cls, col, px_, status, icon):
+    return (f'<div class="gp {cls} ctr" style="height:540px;padding:46px 22px 36px;display:flex;flex-direction:column;align-items:center;gap:22px">'
+            f'<div style="width:120px;height:120px;border-radius:50%;border:2px solid {col};display:flex;align-items:center;justify-content:center;box-shadow:0 0 26px {col}55">{icon}</div>'
+            f'<div style="font-size:46px;font-weight:700;color:{col}">{lab}</div><div class="num" style="font-size:36px">{px_}</div>'
+            f'<div style="font-size:24px;color:#AEB6BA;line-height:1.4;margin-top:auto">{status}</div></div>')
+ar = lambda c, d: f'<svg width="46" height="46" viewBox="0 0 46 46"><path d="{d}" stroke="{c}" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+add("etB_1", bg(57, "flat", glow=(50, 55)) + cover_top() +
+    '<div class="pad ctr" style="top:200px"><p class="kick">Every trader should know</p><h1 class="hl xl" style="margin-top:26px">Market, limit <span class="glow">or stop?</span></h1>'
+    '<p class="body" style="margin-top:24px">Three order types, and when each one can surprise you.</p></div>'
+    '<div class="pad" style="top:640px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px">' +
+    ticket("Market", "hot", CY, "Now", "Fills at the next price available", ar(CY, "M8 23h28M26 13l10 10-10 10")) +
+    ticket("Limit", "lavb", LAV, "5,999.00", "Waits for your price or better", ar(LAV, "M8 14h30M8 23h30M8 32h30")) +
+    ticket("Stop", "red", DN, "6,001.00", "Triggers, then fills at market", ar(DN, "M23 8v20M23 36v1")) +
+    '</div>' + foot("Swipe to learn &rarr;", logo_on=False))
+
+ways = [("01", "4:44 PM", "Still in the trade", DN), ("02", "No stop", "&ldquo;I can feel it&rdquo;", DN), ("03", "8:29:59", "Both sides of CPI", DN), ("04", "Long + short", "Two accounts", DN)]
+add("mmA_1", bg(71, "flat", glow=(50, 30)) + cover_top() + hud(100, 160, 880, 560, c1=DN, c2=CY) +
+    '<div style="position:absolute;left:136px;right:136px;top:196px;display:grid;grid-template-columns:1fr 1fr;gap:18px">' +
+    "".join(f'<div class="gp red" style="height:235px;padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between"><span class="num" style="font-size:26px;color:#5E676C">{n}</span><div><div class="num glowr" style="font-size:52px;line-height:1">{t}</div><div style="font-size:22px;color:#AEB6BA;margin-top:10px">{sub}</div></div></div>' for n, t, sub, c in ways) +
+    '</div><div class="pad ctr" style="top:790px"><p class="kick">Evaluation memes</p><h1 class="hl" style="margin-top:22px;font-size:84px">4 ways to fail <span class="glow">without a losing trade</span></h1>'
+    '<p class="body" style="margin-top:24px">Your strategy can be fine and these still end the account.</p></div>' + foot("Swipe &rarr;", logo_on=False))
+
+add("mmB_1", bg(81, "flat", glow=(50, 30)) + cover_top() +
+    '<div class="ghost" style="left:0;right:0;top:120px;text-align:center;font-size:640px">?</div>'
+    '<div style="position:absolute;left:0;right:0;top:260px;height:380px">'
+    f'<div style="position:absolute;left:150px;top:40px;border:6px solid {DN};color:{DN};font-weight:800;font-size:120px;letter-spacing:.06em;padding:6px 40px;border-radius:28px;transform:rotate(-9deg);box-shadow:0 0 60px {DN}55;background:rgba(0,0,0,.55)">MYTH</div>'
+    f'<div style="position:absolute;right:150px;top:170px;border:6px solid {CY};color:{CY};font-weight:800;font-size:120px;letter-spacing:.06em;padding:6px 40px;border-radius:28px;transform:rotate(6deg);box-shadow:0 0 60px {CY}55;background:rgba(0,0,0,.55)">FACT</div></div>'
+    '<div class="pad ctr" style="top:720px"><p class="kick">Evaluation edition</p><h1 class="hl xl" style="margin-top:24px">Myth <span class="lt">or</span> <span class="glow">fact?</span></h1>'
+    '<p class="body" style="margin-top:26px">Five things traders get wrong about the $50K evaluation. Keep score.</p></div>' + foot("Play along &rarr;", logo_on=False))
+
+add("wcB_1", bg(161, "flat", glow=(50, 30)) + cover_top() + hand(220, HAND, spread=1.27) +
+    '<div class="pad ctr" style="top:790px"><h1 class="hl xl">Welcome to <span class="glow">Halcyon</span></h1>'
+    '<p class="body" style="margin-top:24px">Three kinds of posts, dealt fresh every week. Swipe to see what&rsquo;s in the deck.</p>'
+    '<div style="margin-top:30px"><span class="pill on" style="font-size:20px;padding:12px 28px">Pinned &middot; start here</span></div></div>' + foot("Swipe &rarr;", logo_on=False))
+
+add("wcC_1", bg(171, "up", glow=(50, 34)) + rings(540, 380, (270, 390, 520)) + hero_chart(171, "up", top=820, h=440, n=34, op=.55, tilt=True, left=90, right=90) +
+    '<div class="pad ctr" style="top:120px"><p style="font-size:46px;font-weight:500;color:#C9D1D4;margin:0;letter-spacing:.01em">Welcome to</p></div>'
+    '<div style="position:absolute;left:0;right:0;top:210px">' + biglogo(330) + '</div>'
+    '<div class="pad ctr" style="top:600px"><p class="body" style="margin:0 30px">Futures news in plain English, explainers worth saving, and memes that hit a little too close.</p></div>' + foot("Swipe &rarr;", logo_on=False))

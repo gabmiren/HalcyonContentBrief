@@ -40,12 +40,12 @@ posts = [
   ]},
  {"id": "hl", "title": "Highlight covers", "short": "Highlights", "when": "Launch · Profile · New",
   "brief": {"job": "Profile highlight covers, set up before the first post so the profile looks finished from day one.",
-            "topics": "Rules · Dynamic · Explainers · News · Memes",
-            "fixed": "One glowing cyan line icon per cover inside a ring, centred for Instagram's circle crop. 1080 x 1920 files.",
+            "topics": "Start · Rules · Dynamic · Explainers · News · Memes",
+            "fixed": "The real Halcyon candle mark on Start, then one glowing cyan line icon per cover inside a ring, centred for Instagram's circle crop. 1080 x 1920 files.",
             "cadence": "Once, before launch"},
   "versions": [
-   {"name": "Five covers", "caption": "Profile setup. Upload each file as a highlight cover: Rules (the rule memes and Know your hours), Dynamic (the four cards and Why Halcyon), Explainers, News (This week and news days) and Memes.",
-    "frames": one("hlSheet", "All five") + [{"src": f"img/hl{k}.png", "cap": k} for k in ["Rules", "Dynamic", "Explainers", "News", "Memes"]], "links": []},
+   {"name": "Six covers", "caption": "Profile setup. Upload each file as a highlight cover: Start (the pinned Welcome post and the bio link), Rules (the rule memes and Know your hours), Dynamic (the four cards and Why Halcyon), Explainers, News (This week and news days) and Memes.",
+    "frames": one("hlSheet", "All six") + [{"src": f"img/hl{k}.png", "cap": k} for k in ["Start", "Rules", "Dynamic", "Explainers", "News", "Memes"]], "links": []},
   ]},
  # ------------------------------------------------------------- NEWS
  {"id": "nb", "title": "News brief", "short": "News brief", "when": "News · Carousel",
@@ -246,7 +246,7 @@ h = h.replace("--bg:#16191C;--surface:#1C2023;--line:#2C3136;--ink:#E4E6E6;--ink
 # softer, rounder chrome to match the glow-panel slides
 h = h.replace("</style>\n\n<div class=\"wrap\">", "#tabs button,nav button,.pick,.meta div,.tray,.ref,.vid,#vbar button{border-radius:14px}figure button{border-radius:12px;overflow:hidden}.meta div{border:1px solid var(--line)}\n</style>\n\n<div class=\"wrap\">", 1)
 h = h.replace("18th Street Trading · internal", "Halcyon Trader Funding · new Instagram account · Miren Partners").replace(".wrap{max-width:1500px;", ".wrap{max-width:1180px;").replace("padding-left:max(16px,", "padding-left:max(20px,").replace("padding-right:max(16px,", "padding-right:max(20px,").replace("<title>Design Drafts</title>", "<title>Halcyon Instagram design drafts</title>")
-h = h.replace("<h1>Design drafts</h1>", "<h1>Instagram drafts</h1>\n  <p class=\"lede\">Same look and voice as the TikTok: glow panels, Poppins, cyan, short warm captions and a Discord CTA. News is told five ways, explainers teach one idea per slide, and promos reuse the TikTok's four numbers. Moves are shown in points, never as dollar wins.</p>")
+h = h.replace("<h1>Design drafts</h1>", "<h1>Instagram drafts</h1>\n  <p class=\"lede\">Redesigned from the Halcyon site with the real logo on every slide: pure black with pink and cyan star dust, Inter, cyan with lavender for Dynamic and pink for warnings, HUD corners and the site&rsquo;s wave. Same warm voice and Discord CTA as the TikTok. Moves are shown in points, never as dollar wins.</p>")
 h = h.replace("'picks7'", "'hal_ig_picks2'").replace("'post4'", "'hal_ig_post2'")
 h = h.replace('<p class="insp">Inspiration: ', '<p class="insp">Sources: ').replace("for 18th Street", "for Halcyon")
 open(f"{OUT}/index.html", "w").write(h)
