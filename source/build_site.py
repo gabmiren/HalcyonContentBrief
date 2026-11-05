@@ -148,7 +148,7 @@ page=f"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Halcyon content drafts</title>
+<title>Halcyon content drafts · TikTok and Instagram</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -212,15 +212,49 @@ pre{{white-space:pre-wrap;background:#050505;border:1px solid #222;border-radius
 .compare figcaption{{padding:12px 16px;font-size:14px;color:#AFAFAF}}.compare b{{color:#fff;margin-right:6px}}
 .card.notes{{margin-top:18px}}
 footer{{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:#6f6f6f;font-size:13px}}
+.pbar{{position:sticky;top:0;z-index:20;height:64px;background:rgba(5,5,5,.94);backdrop-filter:blur(8px);border-bottom:1px solid #1d1d1d}}
+.pbar div.in{{max-width:1180px;height:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}}
+.pbar .brand{{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#AFAFAF;font-weight:600}}
+.seg{{display:inline-flex;background:#0f0f0f;border:1px solid #262626;border-radius:999px;padding:4px}}
+.seg button{{border:0;background:transparent;color:#AFAFAF;font:600 14px Inter,Helvetica,Arial,sans-serif;padding:9px 22px;border-radius:999px;cursor:pointer}}
+.seg button[aria-pressed="true"]{{background:#00FBF4;color:#000;box-shadow:0 0 18px rgba(0,251,244,.35)}}
+nav.tabs{{top:64px}}
+#ig{{position:fixed;left:0;right:0;top:64px;bottom:0;background:#03070A}}
+#ig iframe{{width:100%;height:100%;border:0;display:block}}
+body.igmode{{overflow:hidden}}
 </style>
 </head>
 <body>
+<div class="pbar"><div class="in"><span class="brand">Halcyon content drafts</span><div class="seg" role="group" aria-label="Platform"><button type="button" id="btnTT" aria-pressed="true">TikTok</button><button type="button" id="btnIG" aria-pressed="false">Instagram</button></div></div></div>
+<div id="tt">
 <header><p class="eyebrow">Halcyon Trader Funding · new TikTok account · Miren Partners</p>
 <h1>Content drafts</h1>
 <p>Every draft built so far from the content pillars brief, with its status and review notes from 3 Nov 2026. Reference posts belong to other creators and are linked to show the format works; we never copy them.</p></header>
 <nav class="tabs" aria-label="Pillars"><div><a href="#community">Community &amp; Proof<b>40%</b></a><a href="#entertainment">Entertainment<b>40%</b></a><a href="#education">Education<b>10%</b></a><a href="#promo">Promo<b>10%</b></a></div></nav>
 <main>{body}</main>
 <footer>Halcyon offers simulated educational accounts. Results not guaranteed. T&amp;C apply.</footer>
+</div>
+<div id="ig" hidden><iframe id="igf" title="Instagram design drafts" loading="lazy" data-src="ig/index.html"></iframe></div>
+<script>
+(function(){{
+  var tt=document.getElementById('tt'), ig=document.getElementById('ig'), f=document.getElementById('igf');
+  var bT=document.getElementById('btnTT'), bI=document.getElementById('btnIG'), y=0;
+  function show(p, push){{
+    var isIG=p==='ig';
+    if(isIG){{y=window.scrollY;if(!f.getAttribute('src'))f.setAttribute('src',f.getAttribute('data-src'));}}
+    tt.hidden=isIG; ig.hidden=!isIG; document.body.classList.toggle('igmode',isIG);
+    bT.setAttribute('aria-pressed',String(!isIG)); bI.setAttribute('aria-pressed',String(isIG));
+    if(!isIG)window.scrollTo(0,y);
+    if(push){{try{{history.replaceState(null,'',isIG?'#ig':location.pathname+location.search)}}catch(e){{}}}}
+    try{{localStorage.setItem('hal_platform',p)}}catch(e){{}}
+  }}
+  bT.onclick=function(){{show('tt',true)}}; bI.onclick=function(){{show('ig',true)}};
+  window.addEventListener('hashchange',function(){{show(location.hash==='#ig'?'ig':'tt',false)}});
+  var start=location.hash==='#ig'?'ig':'tt';
+  if(!location.hash){{try{{if(localStorage.getItem('hal_platform')==='ig')start='ig'}}catch(e){{}}}}
+  show(start,false);
+}})();
+</script>
 <script>
 (function(){{
   var track=document.getElementById('track'), vp=document.getElementById('vp');if(!track)return;
